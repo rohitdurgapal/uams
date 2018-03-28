@@ -21,7 +21,7 @@
 						
 						
 						<li>
-							<a href=""><i class="fa fa-book nav_icon"></i>Add New Category</a>
+							<a href="<?php echo site_url('start/category');?>"<?php if($active == 'category'){ echo 'class="active"'; } ?>><i class="fa fa-book nav_icon"></i>Add New Category</a>
 						</li>
 						
 

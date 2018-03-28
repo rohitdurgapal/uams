@@ -30,8 +30,9 @@ class Start extends CI_Controller {
 	}
 
 	function category(){
+		$data['active'] = 'category';
 		$this->load->view('templates/header');
-		$this->load->view('category');
+		$this->load->view('category',$data);
 		$this->load->view('templates/footer');
 	}	
 
