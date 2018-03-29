@@ -8,7 +8,7 @@
 						
 
 						<li>
-							<a href="<?php echo site_url('start/dashboard');?>"<?php if($active == 'dashboard'){ echo 'class="active"'; } ?>><i class="fa fa-home nav_icon"></i>Dashboard</a>
+							<a href="<?php echo site_url('start');?>"<?php if($active == 'dashboard'){ echo 'class="active"'; } ?>><i class="fa fa-home nav_icon"></i>Dashboard</a>
 						</li>
 						
 
