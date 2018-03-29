@@ -1,10 +1,12 @@
 <div class="main-content">
 
-	<div class=" sidebar" role="navigation">
+	<div class="sidebar" role="navigation">
            <div class="navbar-collapse">
 				
 				<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
 					<ul class="nav" id="side-menu">
+						
+
 						<li>
 							<a href="<?php echo site_url('start/dashboard');?>"<?php if($active == 'dashboard'){ echo 'class="active"'; } ?>><i class="fa fa-home nav_icon"></i>Dashboard</a>
 						</li>
@@ -15,55 +17,67 @@
 						</li>
 						
 						
+
 						<li>
 							<a href="<?php echo site_url('start/unit');?>"<?php if($active == 'unit'){ echo 'class="active"'; } ?>><i class="fa fa-book nav_icon"></i>Add New Unit</a>
 						</li>
 						
 						
+
 						<li>
 							<a href="<?php echo site_url('start/category');?>"<?php if($active == 'category'){ echo 'class="active"'; } ?>><i class="fa fa-book nav_icon"></i>Add New Category</a>
 						</li>
 						
 
 						<li>
-							<a href=""><i class="fa fa-book nav_icon"></i>Add Candidates</a>
+							<a href="<?php echo site_url('start/addcan');?>"<?php if($active == 'addcan'){ echo 'class="active"'; } ?>><i class="fa fa-book nav_icon"></i>Add Candidates</a>
 						</li>
 						
 
+
 						<li>
-							<a href=""><i class="fa fa-table nav_icon"></i>Take Attendance</a>
+							<a href="<?php echo site_url('start/attendance');?>"<?php if($active == 'attendance'){ echo 'class="active"'; } ?>><i class="fa fa-table nav_icon"></i>Take Attendance</a>
 						</li>
 
 
 					</ul>
 
 
-					<!-- //sidebar-collapse -->
+					
 				</nav>
 			</div>
 		</div>
 
 
 
-				<div class="sticky-header header-section ">
-						<div class="header-left">
-							<!--toggle button start-->
-								<button id="showLeftPush"><i class="fa fa-bars"></i></button>
-								<!--toggle button end-->
-						<!--logo -->
-							<div class="logo">
-									<a href="">
-										<h1>AdminPanel</h1>
-								<span style="font-size:6pt">Universal Attendance Management System</span></br>
-									</a>
-							</div>
 
-						</div>
-				</div>
+<div class="sticky-header header-section">
+	<div class="header-left">
+			<!--toggle button start-->
+				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
+			<!--toggle button end-->
+						
+					<!--logo -->
+			
+			<div class="logo">
+			<a href="<?php echo site_url('start/dashboard');?>">
+						<h1>AdminPanel</h1>
+						<span style="font-size:4pt">Universal Attendance Management System</span>
+			</a>
+			</div>
+
+	 </div>
 
 
-	
 </div>
+
+
+</div>
+
+
+
+
+
 
 
 

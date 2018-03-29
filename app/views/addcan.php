@@ -1,9 +1,9 @@
 <?php $this->load->view('mainpage')?>
-<<div id="page-wrapper">
-                <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
-                        <div class="form-title">
-                            <h2>Add Candidates for Attendance</h2>
-                        </div>
+<div id="page-wrapper">
+    <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
+        <div class="form-title">
+            <h2>Add Candidates for Attendance</h2>
+        </div>
                         
 
 
@@ -45,6 +45,7 @@
                                     <option >FEMALE</option>
                                     <option>OTHER</option>
                                     </select>
+                                </div>
 
                                  <div class="form-group"> 
                                     <label for="mobno">Mobile No</label> 
