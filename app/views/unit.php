@@ -18,10 +18,9 @@
                         <label for="country">Country</label>
                             <select  id="country" name="country" class="form-control">
                                 <?php foreach($country as $item){?>
-                                    <option selected value="<?php echo $item->COUNTRYID; ?>"<?php echo $item->COUNTRY; ?></option>
+                                    <option selected value="<?php echo $item->COUNTRYID; ?>"><?php echo $item->COUNTRY; ?></option>
                                 <?php }?>   
-                            </select>
-                                
+                            </select>        
                 </div> 
 
 
@@ -29,7 +28,7 @@
                          <label for="state">State</label>
                              <select  id="state" name="state" class="form-control">
                                   <?php foreach($state as $item){?>
-                                    <option selected value="<?php echo $item->STATEID; ?>"<?php echo $item->STATE; ?></option>
+                                    <option selected value="<?php echo $item->STATEID; ?>"><?php echo $item->STATE; ?></option>
                                    <?php }?> 
                             </select>
                                 
