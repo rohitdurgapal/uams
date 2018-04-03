@@ -23,7 +23,7 @@
 					</label>
 					
 						<p>Already register?</p>
-					<a href="<?php echo site_url('Start/index');?>" class="hvr-shutter-in-horizontal">Signup</a>
+					<a href="<?php echo site_url('Start/registration');?>" class="hvr-shutter-in-horizontal">Signup</a>
 				
 				</div>
 			</form>

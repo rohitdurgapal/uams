@@ -49,6 +49,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="<?php echo base_url('js1/site.js');?>"></script>
 <script src="<?php echo base_url('js1/skycons.js');?>"></script>
 <script src="<?php echo base_url('js1/underscore-min.js');?>"></script>
+<script src="<?php echo base_url('js/myscript.js');?>"></script>
 
 
 

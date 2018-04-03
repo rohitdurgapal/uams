@@ -39,6 +39,9 @@
 							<a href="<?php echo site_url('start/attendance');?>"<?php if($active == 'attendance'){ echo 'class="active"'; } ?>><i class="fa fa-table nav_icon"></i>Take Attendance</a>
 						</li>
 
+						<li>
+							<a href="<?php echo site_url('start/logout');?>"<?php if($active == 'logout'){ echo 'class="active"'; } ?>><i class="fa fa-table nav_icon"></i>Logout</a>
+						</li>
 
 					</ul>
 
@@ -64,8 +67,10 @@
 						<h1>AdminPanel</h1>
 						<span style="font-size:4pt">Universal Attendance Management System</span>
 			</a>
-			</div>
 
+
+			</div>
+			
 	 </div>
 
 

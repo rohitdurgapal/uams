@@ -25,4 +25,65 @@ class My_model extends CI_Model{
 
 	return $bool_;
 	}
+
+
+	function insert(){
+		$username_ = $this->input->post('username');
+		$createpwd_ = $this->input->post('createpwd');
+		$status_=$this->input->post('sta_');
+		$type_=$this->input->post('type');
+
+		$this->db->where('USERNAME_', $username_);
+		$rs = $this->db->get('login');	
+
+		if($rs->num_rows() != 0){
+			$bool = false;
+		} else {
+			$bool = true; 
+			
+			$data = array(
+				'USERNAME_' => $username_,
+				'PASSWORD_' => $createpwd_,
+				'STATUS'=>$status_,
+				'USER_UPLINE'=>$username_,
+				'TYPE_ID'=>$type_
+			);
+			$bool_ = $this->db->insert('login', $data);
+			
+		}	
+		return $bool;
+	}
+
+
+
+
+
+
+	
+	function fetchtype($type='1'){
+		if($type != ''){
+			$this->db->where('TYPEID',$type);
+		}
+		$query = $this->db->get('user_type');
+		return $query->result();
+	}
+
+
+	function fetchcountry($country=''){
+		if ($country != ''){
+			$this->db->where('COUNTRYID',$country);
+		}
+		$query=$this->db->get('country');
+		return $query->result();
+		}
+	
+
+	function fetchstate($state=''){
+		if ($state != ''){
+			$this->db->where('STATEID',$state);
+		}
+		$query=$this->db->get('state');
+		return $query->result();
+		}
+
 }

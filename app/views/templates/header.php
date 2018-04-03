@@ -64,8 +64,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="<?php echo base_url('js/underscore-min.js');?>"></script>
 <script src="<?php echo base_url('js/validator.min.js');?>"></script>
 <script src="<?php echo base_url('js/wow.min.js');?>"></script>
-
-
+<script src="<?php echo base_url('js/myscript.js');?>"></script>
 
 </head> 
 <body class="cbp-spmenu-push">

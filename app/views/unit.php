@@ -16,12 +16,10 @@
                                 
                 <div class="form-group">
                         <label for="country">Country</label>
-                            <select  id="country" class="form-control">
-                                    <option selected>INDIA</option>
-                                    <option>AMERICA</option>
-                                    <option>JAPAN</option>
-                                    <option>ENGLAND</option>
-                                    <option>PAKISTAN</option>
+                            <select  id="country" name="country" class="form-control">
+                                <?php foreach($country as $item){?>
+                                    <option selected value="<?php echo $item->COUNTRYID; ?>"<?php echo $item->COUNTRY; ?></option>
+                                <?php }?>   
                             </select>
                                 
                 </div> 
@@ -29,12 +27,10 @@
 
                 <div class="form-group">
                          <label for="state">State</label>
-                             <select  id="state" class="form-control">
-                                    <option selected>UTTRAKHAND</option>
-                                    <option>PUNJAB</option>
-                                    <option>HARYANA</option>
-                                    <option>UTTAR PRADESH</option>
-                                    <option>GUJRAT</option>
+                             <select  id="state" name="state" class="form-control">
+                                  <?php foreach($state as $item){?>
+                                    <option selected value="<?php echo $item->STATEID; ?>"<?php echo $item->STATE; ?></option>
+                                   <?php }?> 
                             </select>
                                 
                                 </div> 

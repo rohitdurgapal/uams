@@ -8,7 +8,7 @@ class Start extends CI_Controller {
 	}
 
 	function index(){
-		$this->check_login();
+		//$this->check_login();
 		$data['active'] = 'dashboard';
 		$this->load->view('templates/header');
 		$this->load->view('dashboard', $data);
@@ -23,14 +23,16 @@ class Start extends CI_Controller {
 
 
 	function registration(){
-		$this->check_login();
+		$data['type'] = $this->mm->fetchtype();
 		$this->load->view('templates1/header1');
-		$this->load->view('registration');
+		$this->load->view('registration', $data);
 		$this->load->view('templates1/footer1');	
 	}
 
 	function unit(){
-		$this->check_login();
+		//$this->check_login();
+		$data['country'] = $this->mm->fetchcountry();
+		$data['state'] = $this->mm->fetchstate();
 		$data['active'] = 'unit';
 		$this->load->view('templates/header');
 		$this->load->view('unit', $data);
@@ -38,7 +40,7 @@ class Start extends CI_Controller {
 	}
 
 	function category(){
-		$this->check_login();
+		//$this->check_login();
 		$data['active'] = 'category';
 		$this->load->view('templates/header');
 		$this->load->view('category',$data);
@@ -46,7 +48,7 @@ class Start extends CI_Controller {
 	}	
 
 	function addcan(){
-		$this->check_login();
+		//$this->check_login();
 		$data['active'] = 'addcan';
 		$this->load->view('templates/header');
 		$this->load->view('addcan',$data);
@@ -55,7 +57,7 @@ class Start extends CI_Controller {
 
 
 	function addadditional(){
-		$this->check_login();
+		//$this->check_login();
 		$data['active'] = 'addadditional';
 		$this->load->view('templates/header');
 		$this->load->view('addadditional', $data);
@@ -63,7 +65,7 @@ class Start extends CI_Controller {
 	}
 
 	function attendance(){
-		$this->check_login();
+		//$this->check_login();
 		$data['active'] = 'attendance';
 		$this->load->view('templates/header');
 		$this->load->view('attendance',$data);
@@ -85,7 +87,25 @@ class Start extends CI_Controller {
 	}
 
 	function logout(){
+		//$this->check_login();
 		$this->session->unset_userdata('user_');
 		redirect('start');
 	}
+
+	function submitRegistration(){
+		$this->load->model('universal', 'mm');
+		$res = $this->mm->insert();
+
+		if($res == true){
+			$this->session->set_flashdata('msg_', "Successfully submited.");
+			redirect('start/login');
+		} else {
+			$this->session->set_flashdata('msg_', "User Already Exists. Please try again");
+			redirect('start/registration');
+		}
+	}
+
+	
+	
+
 }
