@@ -23,7 +23,7 @@ class Start extends CI_Controller {
 
 
 	function registration(){
-		$data['type'] = $this->mm->fetchtype();
+		$data['type_'] = $this->mm->fetchtype();
 		$this->load->view('templates1/header1');
 		$this->load->view('registration', $data);
 		$this->load->view('templates1/footer1');	
@@ -31,8 +31,8 @@ class Start extends CI_Controller {
 
 	function unit(){
 		//$this->check_login();
-		$data['country'] = $this->mm->fetchcountry();
-		$data['state'] = $this->mm->fetchstate();
+		$data['country_'] = $this->mm->fetchcountry();
+		$data['state_'] = $this->mm->fetchstate();
 		$data['active'] = 'unit';
 		$this->load->view('templates/header');
 		$this->load->view('unit', $data);

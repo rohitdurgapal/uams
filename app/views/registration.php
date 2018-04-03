@@ -18,7 +18,7 @@
 				<div class="col-sm-16">
 				<label for="usertype">Select User Type</label>
 					 <select  id="usertype" name="type" class="login-mail" style="width:220px">
-					 <?php foreach($type as $item){?>
+					 <?php foreach($type_ as $item){?>
 					 <option selected value="<?php echo $item->TYPEID; ?>"><?php echo $item->TYPE; ?></option>
 					 <?php } ?>
 					 </select>
