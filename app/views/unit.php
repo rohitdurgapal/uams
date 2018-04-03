@@ -17,23 +17,26 @@
                 <div class="form-group">
                         <label for="country">Country</label>
                             <select  id="country" name="country" class="form-control">
-                                <?php foreach($country_ as $item){?>
-                                    <option selected value="<?php echo $item->COUNTRYID; ?>"<?php echo $item->COUNTRY; ?></option>
-                                <?php }?>   
-                            </select>
-                                
-                </div> 
+                                <option selected value="">Select Country</option>
+                           <?php foreach($country_ as $item){?>
+                                <option value="<?php echo $item->COUNTRYID; ?>"><?php echo $item->COUNTRY; ?></option>
+                           <?php }?>
+           
+                            </select>        
+                 </div> 
 
 
                 <div class="form-group">
                          <label for="state">State</label>
-                             <select  id="state" name="state" class="form-control">
-                                  <?php foreach($state_ as $item){?>
-                                    <option selected value="<?php echo $item->STATEID; ?>"<?php echo $item->STATE; ?></option>
-                                   <?php }?> 
+                             <select  id="state" name="state" class="form-control" disabled="">
+                                <option selected value="">Select State</option>
+                            <?php foreach($state_ as $item){?>
+                                <option value="<?php echo $item->STATEID; ?>"><?php echo $item->STATE; ?></option>
+                            <?php }?> 
+                            
                             </select>
                                 
-                                </div> 
+                </div> 
 
 
                                 
