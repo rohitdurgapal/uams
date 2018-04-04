@@ -19,7 +19,7 @@
                             <select  id="country" name="country" class="form-control">
                                 <option selected value="">Select Country</option>
                            <?php foreach($country_ as $item){?>
-                                <option value="<?php echo $item->COUNTRYID; ?>"><?php echo $item->COUNTRY; ?></option>
+                                <option  value="<?php echo $item->COUNTRYID; ?>"><?php echo $item->COUNTRY; ?></option>
                            <?php }?>
            
                             </select>        

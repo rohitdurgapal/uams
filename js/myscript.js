@@ -17,16 +17,25 @@ $(function(){
 	});
 });
 
+
+
+
+
+
+
+
+
+
 $(document).ready(function(){
 	$('#country').on('change',function(){
 		var COUNTRYID = $(this).val();
 		if(COUNTRYID =='')
 		{
-			$('#state').prop('disabled',true);
+			$('#state').prop('disabled', true);
 		}
 		else
 		{
-			$('state').prop('disabled',false);
+			$('#state').prop('disabled', false);
 		}
 	});
 });

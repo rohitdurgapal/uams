@@ -10,15 +10,17 @@
             <div class="form-body">
                 <div class="form-group">
                     <label for="selectunit">Select Unit</label>
-                        <select  id="selectunit" class="form-control">
-                            <option >AMRAPALI</option>
-                            <option selected>DURGAPAL'S</option>
-                            <option>FESTIVAL</option>
+                        <select  id="selectunit" name="unit" class="form-control">
+                            <option selected value="">Select Unit</option>
+                            <?php foreach ($unit_ as $item){?>
+                            <option value="<?php echo $item->UNITID; ?>"><?php echo $item->UNITNAME; ?></option>
+                            <?php }?>
                         </select>
                                 
                 </div> 
-                             
-                                
+                            
+
+
 
                     <div class="form-group"> 
                         <label for="categoryname">Category Name</label> 

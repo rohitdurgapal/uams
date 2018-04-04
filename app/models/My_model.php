@@ -86,4 +86,12 @@ class My_model extends CI_Model{
 		return $query->result();
 		}
 
+	function fetchunit($unit=''){
+		if ($unit !=''){
+			$this->db->where ('UNITID',$unit);
+		}
+		$query=$this->db->get('unit');
+		return $query->result();
+	}
+
 }
