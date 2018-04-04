@@ -38,7 +38,7 @@
 
         <div class="form-group"> 
             <label for="mobno1">Mobile No</label> 
-            <input type="text" class="form-control" id="mobno" namme ="mobno" placeholder="Mobile No"> 
+            <input type="text" class="form-control" id="mobno" name ="mobno" placeholder="Mobile No"> 
         </div> 
 
 

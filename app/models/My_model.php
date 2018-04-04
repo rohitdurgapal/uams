@@ -132,11 +132,12 @@ return $bool;
 		$firstname_ = $this->input->post('firstname');
 		$lastname_ = $this->input->post('lastname');
 		$gender_=$this->input->post('gender');
-		$mobileno_ = $this->input->post('mobnumber');
+		$mobileno_ = $this->input->post('mobno');
 		$mobilever_ = $this->input->post('mobver');
 		$email_ = $this->input->post('email');
 		$emailVer_ = $this->input->post('emailver');
 		$user_ = $this->session->userdata('user_');
+		
 		$data=array(
 			'FNAME'=>$firstname_,
 			'LNAME'=>$lastname_,
