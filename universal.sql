@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 03, 2018 at 12:46 AM
+-- Generation Time: Apr 05, 2018 at 02:34 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -53,21 +53,25 @@ CREATE TABLE IF NOT EXISTS `attendance` (
 --
 
 CREATE TABLE IF NOT EXISTS `candidate` (
-  `CANDIDATEID` int(5) NOT NULL,
+  `CANDIDATEID` int(5) NOT NULL AUTO_INCREMENT,
   `CANDIDATENAME` varchar(20) NOT NULL,
-  `GENDER` varchar(7) NOT NULL,
+  `GENDERID` int(5) NOT NULL,
   `MOBILENO` varchar(13) NOT NULL,
   `DOB` varchar(15) DEFAULT NULL,
   `EMAIL` varchar(30) NOT NULL,
   `CATEGORYID` int(5) NOT NULL,
   PRIMARY KEY (`CANDIDATEID`),
-  KEY `CATEGORYID` (`CATEGORYID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `CATEGORYID` (`CATEGORYID`),
+  KEY `GENDERID` (`GENDERID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `candidate`
 --
 
+INSERT INTO `candidate` (`CANDIDATEID`, `CANDIDATENAME`, `GENDERID`, `MOBILENO`, `DOB`, `EMAIL`, `CATEGORYID`) VALUES
+(1, 'Mayank Durgapal', 1, '8745784784', '1996-12-12', 'mayankdurgapal@gmail.com', 1),
+(2, 'Manish Durgapal', 1, '8745784578', '1996-12-12', 'manish@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -76,18 +80,20 @@ CREATE TABLE IF NOT EXISTS `candidate` (
 --
 
 CREATE TABLE IF NOT EXISTS `category` (
-  `CATEGORYID` int(5) NOT NULL,
+  `CATEGORYID` int(5) NOT NULL AUTO_INCREMENT,
   `CATEGORYNAME` varchar(20) NOT NULL,
   `PURPOSE` varchar(50) NOT NULL,
   `USERNAME_` varchar(15) NOT NULL,
   PRIMARY KEY (`CATEGORYID`),
   KEY `USERNAME_` (`USERNAME_`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `category`
 --
 
+INSERT INTO `category` (`CATEGORYID`, `CATEGORYNAME`, `PURPOSE`, `USERNAME_`) VALUES
+(1, 'BCA I', 'Record the attendance of BCA 1st semester', 'rohit');
 
 -- --------------------------------------------------------
 
@@ -106,9 +112,29 @@ CREATE TABLE IF NOT EXISTS `country` (
 --
 
 INSERT INTO `country` (`COUNTRYID`, `COUNTRY`) VALUES
-(1, 'INDIA'),
-(2, 'AMERICA'),
-(3, 'ENGLAND');
+(1, 'INDIA');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gender`
+--
+
+CREATE TABLE IF NOT EXISTS `gender` (
+  `GENDERID` int(5) NOT NULL,
+  `GENDER` varchar(7) NOT NULL,
+  PRIMARY KEY (`GENDERID`),
+  KEY `GENDERID` (`GENDERID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `gender`
+--
+
+INSERT INTO `gender` (`GENDERID`, `GENDER`) VALUES
+(1, 'MALE'),
+(2, 'FEMALE'),
+(3, 'OTHERS');
 
 -- --------------------------------------------------------
 
@@ -154,6 +180,7 @@ CREATE TABLE IF NOT EXISTS `login` (
 --
 
 INSERT INTO `login` (`USERNAME_`, `PASSWORD_`, `STATUS`, `USER_UPLINE`, `TYPE_ID`) VALUES
+('priyanka', '123', '1', 'priyanka', 1),
 ('raj', '12345', '1', 'raj', 1),
 ('ravi', '12345', '1', 'ravi', 1),
 ('rohit', '123', '1', 'rohit', 1),
@@ -213,12 +240,12 @@ CREATE TABLE IF NOT EXISTS `sharingcandidate` (
 --
 
 CREATE TABLE IF NOT EXISTS `state` (
-  `STATEID` int(5) NOT NULL,
+  `STATEID` int(5) NOT NULL AUTO_INCREMENT,
   `STATE` varchar(15) NOT NULL,
   `COUNTRYID` int(5) NOT NULL,
   PRIMARY KEY (`STATEID`),
   KEY `COUNTRYID` (`COUNTRYID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `state`
@@ -226,7 +253,9 @@ CREATE TABLE IF NOT EXISTS `state` (
 
 INSERT INTO `state` (`STATEID`, `STATE`, `COUNTRYID`) VALUES
 (1, 'UTTRAKHAND', 1),
-(2, 'PUNJAB', 1);
+(2, 'PUNJAB', 1),
+(3, 'HARYANA', 1),
+(4, 'GUJRAT', 1);
 
 -- --------------------------------------------------------
 
@@ -235,19 +264,23 @@ INSERT INTO `state` (`STATEID`, `STATE`, `COUNTRYID`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `unit` (
-  `UNITID` int(5) NOT NULL,
+  `UNITID` int(5) NOT NULL AUTO_INCREMENT,
   `UNITNAME` varchar(20) NOT NULL,
   `USERNAME_` varchar(15) NOT NULL,
-  `COUNTRYID` int(5) NOT NULL,
+  `STATEID` int(5) NOT NULL,
   PRIMARY KEY (`UNITID`),
   KEY `USERNAME_` (`USERNAME_`),
-  KEY `COUNTRYID` (`COUNTRYID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `STATEID` (`STATEID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `unit`
 --
 
+INSERT INTO `unit` (`UNITID`, `UNITNAME`, `USERNAME_`, `STATEID`) VALUES
+(1, 'Amrapali', 'rohit', 1),
+(2, 'Amrapali', 'priyanka', 1),
+(3, 'Amrapali', 'rohit', 1);
 
 -- --------------------------------------------------------
 
@@ -287,7 +320,8 @@ ALTER TABLE `attendance`
 -- Constraints for table `candidate`
 --
 ALTER TABLE `candidate`
-  ADD CONSTRAINT `candidate_ibfk_1` FOREIGN KEY (`CATEGORYID`) REFERENCES `category` (`CATEGORYID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `candidate_ibfk_1` FOREIGN KEY (`CATEGORYID`) REFERENCES `category` (`CATEGORYID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `candidate_ibfk_2` FOREIGN KEY (`GENDERID`) REFERENCES `gender` (`GENDERID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `category`
@@ -330,5 +364,5 @@ ALTER TABLE `state`
 -- Constraints for table `unit`
 --
 ALTER TABLE `unit`
-  ADD CONSTRAINT `unit_ibfk_2` FOREIGN KEY (`COUNTRYID`) REFERENCES `country` (`COUNTRYID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `unit_ibfk_2` FOREIGN KEY (`STATEID`) REFERENCES `state` (`STATEID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `unit_ibfk_1` FOREIGN KEY (`USERNAME_`) REFERENCES `login` (`USERNAME_`) ON DELETE CASCADE ON UPDATE CASCADE;
