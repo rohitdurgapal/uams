@@ -36,10 +36,18 @@
        
 
 
+<<<<<<< HEAD
                         <div class="form-group"> 
             <label for="mobnumber">Mobile No</label> 
             <input type="text" class="form-control" id="mobnumber" name= "mobnumber" placeholder="Mobile No"> 
         </div>
+=======
+        <div class="form-group"> 
+            <label for="mobno1">Mobile No</label> 
+            <input type="text" class="form-control" id="mobno" name ="mobno" placeholder="Mobile No"> 
+        </div> 
+
+>>>>>>> cd64dd7e9efe5e3dd46f4b1e81758b07b159e0dc
 
         <div class="form-group"> 
             <label for="mobver">Mobile Verificcation</label> 
