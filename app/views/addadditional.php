@@ -36,11 +36,10 @@
        
 
 
-        <div class="form-group"> 
-            <label for="mobno1">Mobile No</label> 
-            <input type="text" class="form-control" id="mobno" namme ="mobno" placeholder="Mobile No"> 
-        </div> 
-
+                        <div class="form-group"> 
+            <label for="mobnumber">Mobile No</label> 
+            <input type="text" class="form-control" id="mobnumber" name= "mobnumber" placeholder="Mobile No"> 
+        </div>
 
         <div class="form-group"> 
             <label for="mobver">Mobile Verificcation</label> 
