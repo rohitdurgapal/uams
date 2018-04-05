@@ -6,68 +6,83 @@
         </div>
                         
 
+<form name="frmcan" id="frmCan" action="<?php echo site_url('start/submitcandidate');?>" method="post">
 
-                        <div class="form-body">
-                             
-                                <div class="form-group">
-                                    <label for="selectunit">Select Unit</label>
-                                    <select  id="selectunit" class="form-control">
-                                    <option >AMRAPALI</option>
-                                    <option selected>DURGAPAL'S</option>
-                                    <option>FESTIVAL</option>
-                                    </select>
+                         <div class="form-body">
+                <div class="form-group">
+                    <label for="unit">Select Unit</label>
+                        <select  id="unit" name="unit" class="form-control">
+                            <option selected value="">Select Unit</option>
+                            <?php foreach ($unit_ as $item){?>
+                            <option value="<?php echo $item->UNITID; ?>"><?php echo $item->UNITNAME; ?></option>
+                            <?php }?>
+                        </select>
                                 
-                                </div> 
+                </div>  
 
+
+
+
+
+
+                                    <div class="form-group">
+                    <label for="category">Select Category</label>
+                        <select  id="category" name="category" class="form-control">
+                            <option selected value="">Select Category</option>
+                            <?php foreach ($category_ as $item){?>
+                            <option value="<?php echo $item->CATEGORYID; ?>"><?php echo $item->CATEGORYNAME; ?></option>
+                            <?php }?>
+                        </select>
+                                
+                </div>  
 
 								
 
 
-								<div class="form-group">
-                                    <label for="selectcategory">Select Category</label>
-                                    <select  id="selectcategory" class="form-control">
-                                    <option >BCAVI</option>
-                                    <option selected>BCAI</option>
-                                    <option>BCAIV</option>
-                                    </select>
-                                
-                                </div>                                
 
                                 <div class="form-group"> 
                                     <label for="canname">Candidate Name</label> 
-                                    <input type="text" class="form-control" id="canname" placeholder="Candidate Name"> 
+                                    <input type="text" class="form-control" id="canname" name= "canname" placeholder="Candidate Name"> 
                                 </div> 
 
-                                <div class="form-group">
-                                    <label for="gender">Gender</label>
-                                    <select  id="gender" class="form-control">
-                                    <option selected>MALE</option>
-                                    <option >FEMALE</option>
-                                    <option>OTHER</option>
-                                    </select>
-                                </div>
+                                 
+                            <div class="form-group">
+                            <label for="gender">Gender</label>
+                        <select  id="gender" name="gender" class="form-control">
+                            <option selected value="">Select Gender</option>
+                            <?php foreach ($gender_ as $item){?>
+                            <option value="<?php echo $item->GENDERID; ?>"><?php echo $item->GENDER; ?></option>
+                            <?php }?>
+                        </select>
+                                
+                            </div> 
 
-                                 <div class="form-group"> 
+
+
+
+
+
+                               <div class="form-group"> 
                                     <label for="mobno">Mobile No</label> 
-                                    <input type="text" class="form-control" id="mobno" placeholder="Mobile No"> 
+                                    <input type="text" class="form-control" id="mobno" name="mobno" placeholder="Mobile No"> 
                                 </div> 
 
                                  <div class="form-group"> 
                                     <label for="dob">Date Of Birth</label> 
-                                    <input type="date" class="form-control" id="dob"> 
+                                    <input type="date" class="form-control" id="dob" name="dob"> 
                                 </div> 
 
 
                                   <div class="form-group"> 
                                     <label for="email">Email</label> 
-                                    <input type="email" class="form-control" id="email" placeholder="Email Id"> 
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Id"> 
                                 </div> 
                                 
                                 
                                 
                                 <button type="submit" class="btn btn-default">Add</button> 
 
-                         
+</form>
                         </div>
                 </div>
 

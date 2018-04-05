@@ -25,30 +25,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="<?php echo base_url('css1/swipebox.css');?> " rel='stylesheet' type='text/css' />
 
 
-<script src="<?php echo base_url('js1/bootstrap.min.js');?>"></script>
 <script src="<?php echo base_url('js1/jquery.min.js');?>"></script>
-<script src="<?php echo base_url('js1/jquery.nicescroll.js');?>"></script>
-<script src="<?php echo base_url('js1/scripts.js');?>"></script>
-<script src="<?php echo base_url('js1/Chart.js');?>"></script>
-<script src="<?php echo base_url('js1/clndr.js');?>"></script>
-<script src="<?php echo base_url('js1/custom.js');?>"></script>
-<script src="<?php echo base_url('js1/data.js');?>"></script>
-<script src="<?php echo base_url('js1/gmaps.js');?>"></script>
-<script src="<?php echo base_url('js1/jquery.calendario.js');?>"></script>
-<script src="<?php echo base_url('js1/jquery.flot.js');?>"></script>
-<script src="<?php echo base_url('js1/jquery.flot.pie.js');?>"></script>
-<script src="<?php echo base_url('js1/jquery.flot.selection.js');?>"></script>
-<script src="<?php echo base_url('js1/jquery.flot.stack.js');?>"></script>
-<script src="<?php echo base_url('js1/jquery.metisMenu.js');?>"></script>
-<script src="<?php echo base_url('js1/jquery.slimscroll.min.js');?>"></script>
-<script src="<?php echo base_url('js1/jquery.swipebox.min.js');?>"></script>
-<script src="<?php echo base_url('js1/moment-2.2.1.js');?>"></script>
-<script src="<?php echo base_url('js1/owl.carousel.js');?>"></script>
-<script src="<?php echo base_url('js1/pie-chart.js');?>"></script>
-<script src="<?php echo base_url('js1/screenfull.js');?>"></script>
-<script src="<?php echo base_url('js1/site.js');?>"></script>
-<script src="<?php echo base_url('js1/skycons.js');?>"></script>
-<script src="<?php echo base_url('js1/underscore-min.js');?>"></script>
+<script src="<?php echo base_url('js1/bootstrap.min.js');?>"></script>
 <script src="<?php echo base_url('js/myscript.js');?>"></script>
 
 

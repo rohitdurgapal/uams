@@ -8,7 +8,7 @@ class Start extends CI_Controller {
 	}
 
 	function index(){
-		//$this->check_login();
+		$this->check_login();
 		$data['active'] = 'dashboard';
 		$this->load->view('templates/header');
 		$this->load->view('dashboard', $data);
@@ -30,7 +30,7 @@ class Start extends CI_Controller {
 	}
 
 	function unit(){
-		//$this->check_login();
+		$this->check_login();
 		$data['country_'] = $this->mm->fetchcountry();
 		$data['state_'] = $this->mm->fetchstate();
 		$data['active'] = 'unit';
@@ -40,7 +40,8 @@ class Start extends CI_Controller {
 	}
 
 	function category(){
-		//$this->check_login();
+		$this->check_login();
+		$data['unit_']=$this->mm->fetchunit();
 		$data['active'] = 'category';
 		$this->load->view('templates/header');
 		$this->load->view('category',$data);
@@ -48,8 +49,11 @@ class Start extends CI_Controller {
 	}	
 
 	function addcan(){
-		//$this->check_login();
+		$this->check_login();
 		$data['active'] = 'addcan';
+		$data['unit_']=$this->mm->fetchunit();
+		$data['category_']=$this->mm->fetchcategory();
+		$data['gender_']=$this->mm->fetchgender();
 		$this->load->view('templates/header');
 		$this->load->view('addcan',$data);
 		$this->load->view('templates/footer');
@@ -57,15 +61,16 @@ class Start extends CI_Controller {
 
 
 	function addadditional(){
-		//$this->check_login();
+		$this->check_login();
 		$data['active'] = 'addadditional';
+		$data['gender_']=$this->mm->fetchgender();
 		$this->load->view('templates/header');
 		$this->load->view('addadditional', $data);
 		$this->load->view('templates/footer');
 	}
 
 	function attendance(){
-		//$this->check_login();
+		$this->check_login();
 		$data['active'] = 'attendance';
 		$this->load->view('templates/header');
 		$this->load->view('attendance',$data);
@@ -94,7 +99,7 @@ class Start extends CI_Controller {
 
 	function submitRegistration(){
 		$this->load->model('universal', 'mm');
-		$res = $this->mm->insert();
+		$res = $this->mm->insertlogin();
 
 		if($res == true){
 			$this->session->set_flashdata('msg_', "Successfully submited.");
@@ -105,7 +110,59 @@ class Start extends CI_Controller {
 		}
 	}
 
-	
-	
 
+	function submitunit(){
+
+		$this->load->model('universal', 'mm');
+		$res = $this->mm->insertunit();
+
+		if($res == true){
+			$this->session->set_flashdata('msg_', "Successfully submited.");
+			redirect('start/category');
+		} else {
+			$this->session->set_flashdata('msg_', "Unit Already Exists. Please try again");
+			redirect('start/unit');
+		}	
+	}
+
+	function submitcategory(){
+	$this->load->model('universal', 'mm');
+		$res = $this->mm->insertcategory();
+
+		if($res == true){
+			$this->session->set_flashdata('msg_', "Successfully submited.");
+			redirect('start/addcan');
+		} else {
+			$this->session->set_flashdata('msg_', "Unit Already Exists. Please try again");
+			redirect('start/category');
+		}	
+	}	
+	
+	function submitcandidate(){
+		$this->load->model('universal', 'mm');
+		$res = $this->mm->insertcandidate();
+
+		if($res == true){
+			$this->session->set_flashdata('msg_', "Successfully submited.");
+			redirect('start/addcan');
+		} else {
+			$this->session->set_flashdata('msg_', "Unit Already Exists. Please try again");
+			redirect('start/addcan');
+		}
+	}
+
+
+
+	function addadditional1(){
+		$this->load->model('universal', 'mm');
+		$res = $this->mm->insertadditional();
+
+		if($res == true){
+			$this->session->set_flashdata('msg_', "Successfully submited.");
+			redirect('start');
+		} else {
+			$this->session->set_flashdata('msg_', "Unit Already Exists. Please try again");
+			redirect('start/addcan');
+		}	
+	}
 }

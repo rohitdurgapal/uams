@@ -1,16 +1,18 @@
 <?php $this->load->view('mainpage')?>
-<<div id="page-wrapper">
+<div id="page-wrapper">
         <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
             <div class="form-title">
                 <h2>Create Unit</h2>
             </div>
+
                         
 
+<form name="frmUnit" id="frmUnit" action="<?php echo site_url('start/submitunit');?>" method="post">
 
             <div class="form-body">
                 <div class="form-group"> 
                     <label for="unitname">Unit Name</label> 
-                    <input type="text" class="form-control" id="unitname" placeholder="Unit Name"> 
+                    <input type="text" class="form-control" id="unitname" name="unitname" placeholder="Unit Name"> 
                 </div> 
 
                                 
@@ -21,7 +23,6 @@
                            <?php foreach($country_ as $item){?>
                                 <option  value="<?php echo $item->COUNTRYID; ?>"><?php echo $item->COUNTRY; ?></option>
                            <?php }?>
-           
                             </select>        
                  </div> 
 
@@ -41,7 +42,7 @@
 
                                 
                                 <button type="submit" class="btn btn-default">Create</button> 
-
+</form>
                          
                         </div>
                 </div>

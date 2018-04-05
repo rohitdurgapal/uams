@@ -15,27 +15,24 @@ $(function(){
 		}
 		return $bool;
 	});
-});
 
-
-
-
-
-
-
-
-
-
-$(document).ready(function(){
-	$('#country').on('change',function(){
-		var COUNTRYID = $(this).val();
-		if(COUNTRYID =='')
-		{
+	$('#country').change(function(){
+		if($(this).val() == ''){
 			$('#state').prop('disabled', true);
-		}
-		else
-		{
+		} else {
 			$('#state').prop('disabled', false);
 		}
 	});
+
+
+	$('#unit').change(function(){
+		if($(this).val()==''){
+			$('#categoryname').prop('disabled', true);
+
+		}else{
+			$('#categoryname').prop('disabled', false);
+		}
+	});
+
 });
+

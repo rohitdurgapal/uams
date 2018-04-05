@@ -45,25 +45,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 
 <!-- js-->
+<script src="<?php echo base_url('js1/jquery.min.js');?>"></script>
 <script src="<?php echo base_url('js/bootstrap.js');?>"></script>
-<script src="<?php echo base_url('js/Chart.js');?>"></script>
-<script src="<?php echo base_url('js/clndr.js');?>"></script>
-<script src="<?php echo base_url('js/custom.js');?>"></script>
-<script src="<?php echo base_url('js/jquery.circlechart.js');?>"></script>
-<script src="<?php echo base_url('js/jquery.nicescroll.js');?>"></script>
-<script src="<?php echo base_url('js/jquery.vmap.js');?>"></script>
-<script src="<?php echo base_url('js/jquery.vmap.sampledata.js');?>"></script>
-<script src="<?php echo base_url('js/jquery.vmap.world.js');?>"></script>
-<script src="<?php echo base_url('js/jquery-1.11.1.min.js');?>"></script>
-<script src="<?php echo base_url('js/metisMenu.min.js');?>"></script>
-<script src="<?php echo base_url('js/modernizr.custom.js');?>"></script>
-<script src="<?php echo base_url('js/moment-2.2.1.js');?>"></script>
-<script src="<?php echo base_url('js/scripts.js');?>"></script>
-<script src="<?php echo base_url('js/site.js');?>"></script>
-<script src="<?php echo base_url('js/skycons.js');?>"></script>
-<script src="<?php echo base_url('js/underscore-min.js');?>"></script>
-<script src="<?php echo base_url('js/validator.min.js');?>"></script>
-<script src="<?php echo base_url('js/wow.min.js');?>"></script>
 <script src="<?php echo base_url('js/myscript.js');?>"></script>
 
 </head> 
