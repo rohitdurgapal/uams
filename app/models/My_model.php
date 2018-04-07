@@ -219,8 +219,13 @@ function fetchtype($type='1'){
 
 //fetching of data from databse
 	function fetchunitdata(){
-		$query=$this->db->get("unit");
-		return $query;
+		$this->db->where('b.USERNAME_', $this->session->userdata('user_'));
+		$this->db->select('b.*, a.STATE, c.COUNTRY');
+		$this->db->from('state a');
+		$this->db->join('unit b', 'a.STATEID=b.STATEID');
+		$this->db->join('country c', 'c.COUNTRYID = a.COUNTRYID');
+		$query=$this->db->get();
+		return $query->result();
 	}
 
 

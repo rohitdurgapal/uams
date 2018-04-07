@@ -23,56 +23,56 @@
                  </div> 
 
                 <div class="form-group">
-                    <label for="state">State </span></label>
+                    <label for="state">State</label>
                         <select  id="state" name="state" class="form-control" disabled="">
                             <option selected value="">Select State </option>
                                 <?php foreach($state_ as $item){?>
                                 <option value="<?php echo $item->STATEID; ?>"><?php echo $item->STATE; ?></option>
                                 <?php }?> 
-                        </select>
-                                
+                        </select>      
                 </div> 
 
                     <input type="submit" class="btn btn-default" value="create"> 
     
 
-                     <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4"></div>
+                     <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4">
+                     </div>
     
-    </div>
-
-         </form>
+        </div>
+    </form>
    
   </div>
-</div>  
-
-                      <div class="table-responsive">
-                        <table class="table table-bodered">
-                            <tr>
-                                <th>Unit ID</th>
-                                <th>Unit Name</th>
-                                <th>Country</th>
-                                <th>City</th>
-                            </tr>
-                            
-                            <?php 
-                            if($fetch_unit->num->rows() > 0)
-                            {
-                                foreach($fetch_unit->results() as $items)
-                                {
-                            ?>  
-                                        <tr>    
-                                            <td><?php echo $items->UNITID; ?></td>
-                                            <td><?php echo $items->UNITNAME; ?></td>
-                                            <td><?php echo $items->COUNTRY; ?></td>
-                                            <td><?php echo $items->STATE; ?></td>
-                                        </tr>
-                                }
-                            }
-                            else{ <tr>
-                                    <td colspan="4">No Unit Found</td>
-                                  </tr>
-                                }
-                        </table>
-                      </div>                 
+  <div class="table-responsive">
+    <table class="table table-bodered">
+        <tr>
+            <th>Unit ID</th>
+            <th>Unit Name</th>
+            <th>Country</th>
+            <th>City</th>
+        </tr>
+        
+        <?php 
+        if(count($fetch_unit) != 0)
+        {
+            foreach($fetch_unit as $items)
+            {
+        ?>  
+                    <tr>    
+                        <td><?php echo $items->UNITID; ?></td>
+                        <td><?php echo $items->UNITNAME; ?></td>
+                        <td><?php echo $items->COUNTRY; ?></td>
+                        <td><?php echo $items->STATE; ?></td>
+                    </tr>
+        <?php
+            }
+        }
+        else{ ?>
+            <tr>
+                <td colspan="4">No Unit Found</td>
+              </tr>
+        <?php } ?>
+    </table>
+  </div> 
+</div>                  
                         
                    
