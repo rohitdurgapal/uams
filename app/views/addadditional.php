@@ -14,7 +14,7 @@
 <form name="add" id="add" action="<?php echo site_url('start/addadditional1');?>" method="post">
                    <div class="form-body">
         <div class="form-group"> 
-            <label for="firstname">First Name</label> 
+            <label for="firstname">First Name <span style="font-size:13px;color:red">*Required</span></label> 
             <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name"> 
         </div> 
 
@@ -35,11 +35,11 @@
                             </div>
        
 
-
         <div class="form-group"> 
-            <label for="mobno1">Mobile No</label> 
+            <label for="mobno1">Mobile No <span style="font-size:13px;color:red">*Required</span></label> 
             <input type="text" class="form-control" id="mobno" name ="mobno" placeholder="Mobile No"> 
         </div> 
+
 
 
         <div class="form-group"> 
@@ -49,7 +49,7 @@
 
 
 		<div class="form-group"> 
-            <label for="email1">Email</label> 
+            <label for="email1">Email <span style="font-size:13px;color:red">*Required</span></label> 
             <input type="email" class="form-control" id="email" name= "email" placeholder="Email Id"> 
         </div>
 
@@ -64,6 +64,7 @@
         <button type="submit" class="btn btn-default">Add</button> 
 
  </form>                        
+   <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4"></div>
         </div>
  </div>
 

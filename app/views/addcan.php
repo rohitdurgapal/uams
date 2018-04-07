@@ -10,7 +10,7 @@
 
                          <div class="form-body">
                 <div class="form-group">
-                    <label for="unit">Select Unit</label>
+                    <label for="unit">Select Unit <span style="font-size:13px;color:red">*Required</span></label>
                         <select  id="unit" name="unit" class="form-control">
                             <option selected value="">Select Unit</option>
                             <?php foreach ($unit_ as $item){?>
@@ -26,8 +26,8 @@
 
 
                                     <div class="form-group">
-                    <label for="category">Select Category</label>
-                        <select  id="category" name="category" class="form-control">
+                    <label for="category">Select Category <span style="font-size:13px;color:red">*Required</span></label>
+                        <select  id="category" name="category" class="form-control" disabled="">
                             <option selected value="">Select Category</option>
                             <?php foreach ($category_ as $item){?>
                             <option value="<?php echo $item->CATEGORYID; ?>"><?php echo $item->CATEGORYNAME; ?></option>
@@ -41,13 +41,13 @@
 
 
                                 <div class="form-group"> 
-                                    <label for="canname">Candidate Name</label> 
+                                    <label for="canname">Candidate Name <span style="font-size:13px;color:red">*Required</span></label> 
                                     <input type="text" class="form-control" id="canname" name= "canname" placeholder="Candidate Name"> 
                                 </div> 
 
                                  
                             <div class="form-group">
-                            <label for="gender">Gender</label>
+                            <label for="gender">Gender  <span style="font-size:13px;color:red">*Required</span></label>
                         <select  id="gender" name="gender" class="form-control">
                             <option selected value="">Select Gender</option>
                             <?php foreach ($gender_ as $item){?>
@@ -83,6 +83,9 @@
                                 <button type="submit" class="btn btn-default">Add</button> 
 
 </form>
+
+                     <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4"></div>
+
                         </div>
                 </div>
 
