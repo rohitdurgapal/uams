@@ -62,7 +62,7 @@ class My_model extends CI_Model{
 		$this->db->where('USERNAME_',$user_);
 		$this->db->where('UNITNAME',$unitname_);
 		$rs = $this->db->get('unit');	
-		if ($rs->num_rows !=0){
+		if ($rs->num_rows() !=0){
 			$bool=false;
 		}else {
 		$data=array(
@@ -86,7 +86,7 @@ class My_model extends CI_Model{
 		$this->db->where('USERNAME_',$user_);
 		$this->db->where('CATEGORYNAME',$categoryname_);
 		$rs = $this->db->get('category');	
-		if ($rs->num_rows !=0){
+		if ($rs->num_rows() !=0){
 			$bool=false;
 		}else {
 		$data=array(
@@ -111,14 +111,15 @@ return $bool;
 		$mobileno_ = $this->input->post('mobno');
 		$dob_ = $this->input->post('dob');
 		$email_ = $this->input->post('email');
+		$user_ = $this->session->userdata('user_');
 		$data=array(
 			'CANDIDATENAME'=>$candidatename_,
 			'GENDERID'=>$gender_,
 			'MOBILENO'=>$mobileno_,
 			'DOB'=>$dob_,
 			'EMAIL'=>$email_,
-			'CATEGORYID'=>$category_
-
+			'CATEGORYID'=>$category_,
+			'USERNAME_'=>$user_
 	);
 		$bool=$this->db->insert('candidate', $data);
 
@@ -141,7 +142,7 @@ return $bool;
 		$data=array(
 			'FNAME'=>$firstname_,
 			'LNAME'=>$lastname_,
-			'GENDER'=>$gender_,
+			'GENDERID'=>$gender_,
 			'MOBILE_NO'=>$mobileno_,
 			'MOBILE_VERIFICATION'=>$mobilever_,
 			'EMAIL'=>$email_,
@@ -214,5 +215,12 @@ function fetchtype($type='1'){
 		$query=$this->db->get('gender');
 		return $query->result();	
 	}
+
+//fetching of data from databse
+	function fetchunitdata(){
+		$query=$this->db->get("unit");
+		return $query;
+	}
+
 
 }

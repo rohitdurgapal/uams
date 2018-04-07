@@ -9,7 +9,7 @@
 
             <div class="form-body">
                 <div class="form-group">
-                    <label for="selectunit">Select Unit</label>
+                    <label for="selectunit">Select Unit <span style="font-size:13px;color:red">*Required</span></label>
                         <select  id="unit" name="unit" class="form-control">
                             <option selected value="">Select Unit</option>
                             <?php foreach ($unit_ as $item){?>
@@ -23,7 +23,7 @@
 
 
                     <div class="form-group"> 
-                        <label for="categoryname">Category Name</label> 
+                        <label for="categoryname">Category Name <span style="font-size:13px;color:red">*Required</span></label> 
                         <input type="text" class="form-control" id="categoryname" name="categoryname" placeholder="Category Name" disabled=""> 
                     </div> 
 
@@ -37,6 +37,8 @@
                             
                     <button type="submit" class="btn btn-default">Create</button> 
 </form>
+<div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4"></div>
+                     
                          
             </div>
         </div>

@@ -31,6 +31,7 @@ class Start extends CI_Controller {
 
 	function unit(){
 		$this->check_login();
+		$data['fetch_unit']=$this->mm->fetchunitdata();
 		$data['country_'] = $this->mm->fetchcountry();
 		$data['state_'] = $this->mm->fetchstate();
 		$data['active'] = 'unit';
@@ -92,7 +93,7 @@ class Start extends CI_Controller {
 	}
 
 	function logout(){
-		//$this->check_login();
+		$this->check_login();
 		$this->session->unset_userdata('user_');
 		redirect('start');
 	}
