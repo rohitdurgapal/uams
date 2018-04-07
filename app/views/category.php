@@ -19,9 +19,6 @@
                                 
                 </div> 
                             
-
-
-
                     <div class="form-group"> 
                         <label for="categoryname">Category Name</label> 
                         <input type="text" class="form-control" id="categoryname" name="categoryname" placeholder="Category Name" disabled=""> 

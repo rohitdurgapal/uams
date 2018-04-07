@@ -72,6 +72,7 @@ class Start extends CI_Controller {
 	function attendance(){
 		$this->check_login();
 		$data['active'] = 'attendance';
+		$data['unit_']=$this->mm->fetchunit();
 		$this->load->view('templates/header');
 		$this->load->view('attendance',$data);
 		$this->load->view('templates/footer');

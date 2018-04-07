@@ -193,6 +193,7 @@ function fetchtype($type='1'){
 		if ($unit !=''){
 			$this->db->where ('UNITID',$unit);
 		}
+		$this->db->where ('USERNAME_',$this->session->userdata('user_'));
 		$query=$this->db->get('unit');
 		return $query->result();
 	}
