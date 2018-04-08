@@ -48,7 +48,7 @@
             <th>Unit ID</th>
             <th>Unit Name</th>
             <th>Country</th>
-            <th>City</th>
+            <th>State</th>
         </tr>
         
         <?php 

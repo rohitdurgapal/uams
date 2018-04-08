@@ -5,7 +5,7 @@
                     <h2>Create Category</h2>
                 </div>
                         
-<form name="frmCategory" id="frmCategory" action="<?php echo site_url('start/submitcategory');?>" method="post">
+    <form name="frmCategory" id="frmCategory" action="<?php echo site_url('start/submitcategory');?>" method="post">
 
             <div class="form-body">
                 <div class="form-group">
@@ -32,13 +32,46 @@
                     </div> 
 
                             
-                    <button type="submit" class="btn btn-default">Create</button> 
+                    <input type="submit" class="btn btn-default" value="create">
+
+                    <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4">
+                     </div>
+    </div>               
 </form>
-<div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4"></div>
-                     
-                         
-            </div>
-        </div>
+</div>
+    <div class="table-responsive">
+    <table class="table table-bodered">
+        <tr>
+            <th>Unit Name</th>
+            <th>Category ID</th>
+            <th>Category Name</th>
+            <th>Purpose</th>
+            
+        </tr>
+        
+        <?php 
+        if(count($fetch_category) != 0)
+        {
+            foreach($fetch_category as $items)
+            {
+        ?>  
+                    <tr>    
+                        <td><?php echo $items->UNITNAME; ?></td>
+                        <td><?php echo $items->CATEGORYID; ?></td>
+                        <td><?php echo $items->CATEGORYNAME; ?></td>
+                        <td><?php echo $items->PURPOSE; ?></td>
+                    </tr>
+        <?php
+            }
+        }
+        else{ ?>
+            <tr>
+                <td colspan="4">No Category Found</td>
+              </tr>
+        <?php } ?>
+    </table>
+  </div>
 </div>
 
-        
+                     
+     

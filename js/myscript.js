@@ -90,6 +90,43 @@ $(function(){
 		return $bool;
 	});
 
+//for attendance form
+	$('#frmAttendance').submit(function(){
+		if($.trim($('#unit').val()) == ''){
+			$('#msg_').html('&nbsp;X:Please!..Select Unit ');
+			$('#unit').val('');
+			$('#unit').focus();
+			$bool = false;
+			}else if($.trim($('#category').val()) == ''){
+			$('#msg_').html('&nbsp;X:Please!..Select Category ');
+			$('#category').val('');
+			$('#category').focus();
+			$bool = false;
+			}else if($.trim($('#date').val()) == ''){
+			$('#msg_').html('&nbsp;X:Please!..Enter Date ');
+			$('#date').val('');
+			$('#date').focus();
+			$bool = false;
+			}else if($.trim($('#dob').val()) == ''){
+			$('#msg_').html('&nbsp;X:Please!..Enter Time ');
+			$('#dob').val('');
+			$('#dob').focus();
+			$bool = false;
+			} else {
+			$bool = true;
+		}
+
+		return $bool;
+	});
+
+
+
+
+
+
+
+
+
 
 
 //for add additional information

@@ -11,7 +11,7 @@ class My_model extends CI_Model{
 		$this->db->where('PASSWORD_', $pwd);
 		$this->db->select('a.USERNAME_, b.TYPE');
 		$this->db->from('login a');
-		$this->db->join('user_type b', 'b.TYPEID=a.TYPE_ID');
+		$this->db->join('user_type b', 'b.TYPEID=a.TYPEID');
 		$query = $this->db->get();
 		
 		if($query->num_rows() != 0){
@@ -44,7 +44,7 @@ class My_model extends CI_Model{
 				'PASSWORD_' => $createpwd_,
 				'STATUS'=>$status_,
 				'USER_UPLINE'=>$username_,
-				'TYPE_ID'=>$type_
+				'TYPEID'=>$type_
 			);
 			$bool = $this->db->insert('login', $data);
 			
@@ -121,11 +121,10 @@ return $bool;
 			'CATEGORYID'=>$category_,
 			'USERNAME_'=>$user_
 	);
-		$bool=$this->db->insert('candidate', $data);
-
-	
-return $bool;	
+		$bool=$this->db->insert('candidate', $data);	
+		return $bool;		
 	}
+
 
 
 
@@ -150,14 +149,15 @@ return $bool;
 			'USERNAME_'=>$user_
 	);
 		$bool=$this->db->insert('registration', $data);
-
-
-
-
-
-
 		return $bool;
 	}
+
+
+
+
+	//function insertattendance(){
+
+	//}
 
 
 
@@ -204,6 +204,7 @@ function fetchtype($type='1'){
 		if ($category !=''){
 			$this->db->where ('CATEGORYID',$category);
 		}
+		$this->db->where ('USERNAME_',$this->session->userdata('user_'));
 		$query=$this->db->get('category');
 		return $query->result();	
 	}
@@ -217,7 +218,11 @@ function fetchtype($type='1'){
 		return $query->result();	
 	}
 
-//fetching of data from databse
+
+
+
+
+//fetching of unit data from databse
 	function fetchunitdata(){
 		$this->db->where('b.USERNAME_', $this->session->userdata('user_'));
 		$this->db->select('b.*, a.STATE, c.COUNTRY');
@@ -228,5 +233,42 @@ function fetchtype($type='1'){
 		return $query->result();
 	}
 
+	//function fetchcategorydata(){
+	//	$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
+	//	$this->db->where('b.USERNAME_', $this->session->userdata('user_'));
+	//	$this->db->select( 'a.* ,b.UNITNAME');
+	//	$this->db->from('category a');
+	//	$this->db->from('unit b');
+	//	$query=$this->db->get();
+	//	return $query->result();
+	//}
+
+
+
+//fetching of candidate data from candidate table
+	//function fetchcandidatedata(){
+	//	$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
+	//	$this->db->select('a.UNITNAME');
+	//	$this->db->from('unit a');
+
+	//	$this->db->where('b.USERNAME_', $this->session->userdata('user_'));
+	//	$this->db->select('b.*, c.GENDER,d.CATEGORYNAME');
+	//	$this->db->from('gender c');
+	//	$this->db->join('candidate b', 'c.GENDERID=b.GENDERID' and 'd.CATEGORYID=b.CATEGORYID');
+	//	$query=$this->db->get();
+	//	return $query->result();	
+	//}
+
+
+
+//fetch mainpage data
+	function fetchmainpagedata(){
+		$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
+		$this->db->select('a.*, b.TYPE');
+		$this->db->from('user_type b');
+		$this->db->join('login a', 'a.TYPEID=b.TYPEID');
+		$query=$this->db->get();
+		return $query->result();
+	}	
 
 }

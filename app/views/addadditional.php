@@ -1,18 +1,15 @@
-<?php $this->load->view('mainpage');?>
+<?php $this->load->view('mainpage')?>
 <div id="page-wrapper">
+     
+
     <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
         <div class="form-title">
             <h2>Add Additional Information</h2>
         </div>
-                    
-<h3 style="color:red">User Name</h3>   
-<h3 style="color:red">Password</h3>
-<h3 style="color:red">Status</h3>
-<h3 style="color:red">User Type</h3>
-<br>
+                
 
 <form name="add" id="add" action="<?php echo site_url('start/addadditional1');?>" method="post">
-                   <div class="form-body">
+    <div class="form-body">
         <div class="form-group"> 
             <label for="firstname">First Name <span style="font-size:13px;color:red">*Required</span></label> 
             <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name"> 
@@ -32,7 +29,7 @@
                             <?php }?>
                         </select>
                                 
-                            </div>
+            </div>
        
 
         <div class="form-group"> 
@@ -61,11 +58,11 @@
 
 
                             
-        <button type="submit" class="btn btn-default">Add</button> 
+        <input type="submit" class="btn btn-default" value="add">
 
+        <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4">
+    </div>
+</div>
  </form>                        
-   <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4"></div>
-        </div>
- </div>
-
+</div>
 </div>

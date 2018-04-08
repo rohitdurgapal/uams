@@ -10,6 +10,7 @@ class Start extends CI_Controller {
 	function index(){
 		$this->check_login();
 		$data['active'] = 'dashboard';
+		$data['fetch_info']=$this->mm->fetchmainpagedata();
 		$this->load->view('templates/header');
 		$this->load->view('dashboard', $data);
 		$this->load->view('templates/footer');	
@@ -31,6 +32,7 @@ class Start extends CI_Controller {
 
 	function unit(){
 		$this->check_login();
+		$data['fetch_info']=$this->mm->fetchmainpagedata();
 		$data['fetch_unit']=$this->mm->fetchunitdata();
 		$data['country_'] = $this->mm->fetchcountry();
 		$data['state_'] = $this->mm->fetchstate();
@@ -42,6 +44,8 @@ class Start extends CI_Controller {
 
 	function category(){
 		$this->check_login();
+		$data['fetch_info']=$this->mm->fetchmainpagedata();
+		//$data['fetch_category']=$this->mm->fetchcategorydata();
 		$data['unit_']=$this->mm->fetchunit();
 		$data['active'] = 'category';
 		$this->load->view('templates/header');
@@ -51,7 +55,9 @@ class Start extends CI_Controller {
 
 	function addcan(){
 		$this->check_login();
+		//$data['fetch_candidate']=$this->mm->fetchcandidatedata();
 		$data['active'] = 'addcan';
+		$data['fetch_info']=$this->mm->fetchmainpagedata();
 		$data['unit_']=$this->mm->fetchunit();
 		$data['category_']=$this->mm->fetchcategory();
 		$data['gender_']=$this->mm->fetchgender();
@@ -63,6 +69,8 @@ class Start extends CI_Controller {
 
 	function addadditional(){
 		$this->check_login();
+		$data['fetch_info']=$this->mm->fetchmainpagedata();
+		//$data['fetch_add']=$this->mm->fetch_additional();
 		$data['active'] = 'addadditional';
 		$data['gender_']=$this->mm->fetchgender();
 		$this->load->view('templates/header');
@@ -72,8 +80,10 @@ class Start extends CI_Controller {
 
 	function attendance(){
 		$this->check_login();
+		$data['fetch_info']=$this->mm->fetchmainpagedata();
 		$data['active'] = 'attendance';
 		$data['unit_']=$this->mm->fetchunit();
+		$data['category_']=$this->mm->fetchcategory();
 		$this->load->view('templates/header');
 		$this->load->view('attendance',$data);
 		$this->load->view('templates/footer');
@@ -167,4 +177,28 @@ class Start extends CI_Controller {
 			redirect('start/addcan');
 		}	
 	}
+
+	//function submitattendance(){
+	//	$this->load->model('universal', 'mm');
+	//	$res = $this->mm->insertattendance();
+
+	//	if($res == true){
+	//		$this->session->set_flashdata('msg_', "Successfully submited.");
+	//		redirect('start');
+	//	} else {
+	//		$this->session->set_flashdata('msg_', "Unit Already Exists. Please try again");
+	//		redirect('start/addcan');
+	//	}
+
+
+
+
+	//}
+
+
+
+
+
+
+
 }

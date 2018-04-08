@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 05, 2018 at 02:34 AM
+-- Generation Time: Apr 08, 2018 at 05:44 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -57,21 +57,37 @@ CREATE TABLE IF NOT EXISTS `candidate` (
   `CANDIDATENAME` varchar(20) NOT NULL,
   `GENDERID` int(5) NOT NULL,
   `MOBILENO` varchar(13) NOT NULL,
-  `DOB` varchar(15) DEFAULT NULL,
+  `DOB` varchar(15) NOT NULL,
   `EMAIL` varchar(30) NOT NULL,
   `CATEGORYID` int(5) NOT NULL,
+  `USERNAME_` varchar(15) NOT NULL,
   PRIMARY KEY (`CANDIDATEID`),
   KEY `CATEGORYID` (`CATEGORYID`),
-  KEY `GENDERID` (`GENDERID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  KEY `GENDERID` (`GENDERID`),
+  KEY `USERNAME_` (`USERNAME_`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `candidate`
 --
 
-INSERT INTO `candidate` (`CANDIDATEID`, `CANDIDATENAME`, `GENDERID`, `MOBILENO`, `DOB`, `EMAIL`, `CATEGORYID`) VALUES
-(1, 'Mayank Durgapal', 1, '8745784784', '1996-12-12', 'mayankdurgapal@gmail.com', 1),
-(2, 'Manish Durgapal', 1, '8745784578', '1996-12-12', 'manish@gmail.com', 1);
+INSERT INTO `candidate` (`CANDIDATEID`, `CANDIDATENAME`, `GENDERID`, `MOBILENO`, `DOB`, `EMAIL`, `CATEGORYID`, `USERNAME_`) VALUES
+(11, 'Mayank', 1, '', '', '', 4, 'RohitDurgapal'),
+(12, 'Manish', 1, '', '', '', 4, 'RohitDurgapal'),
+(13, 'Anju', 2, '', '', '', 4, 'RohitDurgapal'),
+(14, 'Priyanka', 2, '', '', '', 4, 'RohitDurgapal'),
+(15, 'Pooja', 2, '', '', '', 4, 'RohitDurgapal'),
+(16, 'Manoj', 1, '', '', '', 4, 'RohitDurgapal'),
+(17, 'Nitin', 1, '', '', '', 4, 'RohitDurgapal'),
+(18, 'Saurav', 1, '', '', '', 4, 'RohitDurgapal'),
+(19, 'Shruti', 2, '', '', '', 4, 'RohitDurgapal'),
+(20, 'Kiran', 2, '', '', '', 4, 'RohitDurgapal'),
+(21, 'Kamal', 1, '', '', '', 4, 'RohitDurgapal'),
+(22, 'Rohit Durgapal', 1, '', '', '', 5, 'NitinDeepak'),
+(23, 'Rohit Singh Bisht', 1, '', '', '', 5, 'NitinDeepak'),
+(24, 'Sachin Raikwal', 1, '', '', '', 5, 'NitinDeepak'),
+(25, 'Shakshi', 2, '', '', '', 5, 'NitinDeepak'),
+(26, 'Sandeep', 1, '', '', '', 5, 'NitinDeepak');
 
 -- --------------------------------------------------------
 
@@ -86,14 +102,16 @@ CREATE TABLE IF NOT EXISTS `category` (
   `USERNAME_` varchar(15) NOT NULL,
   PRIMARY KEY (`CATEGORYID`),
   KEY `USERNAME_` (`USERNAME_`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`CATEGORYID`, `CATEGORYNAME`, `PURPOSE`, `USERNAME_`) VALUES
-(1, 'BCA I', 'Record the attendance of BCA 1st semester', 'rohit');
+(4, 'BCA I', 'For taking attendance', 'RohitDurgapal'),
+(5, 'Lab Time', '', 'NitinDeepak'),
+(6, 'B.TECH I', 'For taking attendance', 'RohitDurgapal');
 
 -- --------------------------------------------------------
 
@@ -169,23 +187,19 @@ CREATE TABLE IF NOT EXISTS `login` (
   `PASSWORD_` varchar(20) NOT NULL,
   `STATUS` varchar(1) NOT NULL,
   `USER_UPLINE` varchar(15) NOT NULL,
-  `TYPE_ID` int(5) NOT NULL,
+  `TYPEID` int(5) NOT NULL,
   PRIMARY KEY (`USERNAME_`),
-  KEY `TYPE_ID` (`TYPE_ID`),
-  KEY `TYPE_ID_2` (`TYPE_ID`)
+  KEY `TYPE_ID` (`TYPEID`),
+  KEY `TYPEID` (`TYPEID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`USERNAME_`, `PASSWORD_`, `STATUS`, `USER_UPLINE`, `TYPE_ID`) VALUES
-('priyanka', '123', '1', 'priyanka', 1),
-('raj', '12345', '1', 'raj', 1),
-('ravi', '12345', '1', 'ravi', 1),
-('rohit', '123', '1', 'rohit', 1),
-('sandeep', '12345', '1', 'sandeep', 1),
-('sd', '123', '1', 'sd', 1);
+INSERT INTO `login` (`USERNAME_`, `PASSWORD_`, `STATUS`, `USER_UPLINE`, `TYPEID`) VALUES
+('NitinDeepak', '12345', '1', 'NitinDeepak', 1),
+('RohitDurgapal', '12345', '1', 'RohitDurgapal', 1);
 
 -- --------------------------------------------------------
 
@@ -196,21 +210,25 @@ INSERT INTO `login` (`USERNAME_`, `PASSWORD_`, `STATUS`, `USER_UPLINE`, `TYPE_ID
 CREATE TABLE IF NOT EXISTS `registration` (
   `REGID` int(5) NOT NULL AUTO_INCREMENT,
   `FNAME` varchar(15) NOT NULL,
-  `LNAME` varchar(15) DEFAULT NULL,
-  `GENDER` varchar(7) NOT NULL,
+  `LNAME` varchar(15) NOT NULL,
+  `GENDERID` int(5) NOT NULL,
   `MOBILE_NO` varchar(13) NOT NULL,
   `MOBILE_VERIFICATION` varchar(5) NOT NULL DEFAULT 'TRUE',
   `EMAIL` varchar(30) NOT NULL,
   `EMAIL_VERIFICATION` varchar(5) NOT NULL DEFAULT 'TRUE',
   `USERNAME_` varchar(15) NOT NULL,
   PRIMARY KEY (`REGID`),
-  KEY `USERNAME_` (`USERNAME_`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `USERNAME_` (`USERNAME_`),
+  KEY `GENDERID` (`GENDERID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `registration`
 --
 
+INSERT INTO `registration` (`REGID`, `FNAME`, `LNAME`, `GENDERID`, `MOBILE_NO`, `MOBILE_VERIFICATION`, `EMAIL`, `EMAIL_VERIFICATION`, `USERNAME_`) VALUES
+(1, 'Nitin', 'Mathur', 1, '9874578457', '', 'nitin@gmail.com', '', 'NitinDeepak'),
+(2, 'Rohit', 'Durgapal', 1, '9675537951', '', 'rohitdurgapal18@gmail.com', '', 'RohitDurgapal');
 
 -- --------------------------------------------------------
 
@@ -245,17 +263,42 @@ CREATE TABLE IF NOT EXISTS `state` (
   `COUNTRYID` int(5) NOT NULL,
   PRIMARY KEY (`STATEID`),
   KEY `COUNTRYID` (`COUNTRYID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=46 ;
 
 --
 -- Dumping data for table `state`
 --
 
 INSERT INTO `state` (`STATEID`, `STATE`, `COUNTRYID`) VALUES
-(1, 'UTTRAKHAND', 1),
-(2, 'PUNJAB', 1),
-(3, 'HARYANA', 1),
-(4, 'GUJRAT', 1);
+(16, 'Andhra Pradesh', 1),
+(17, 'Arunachal Prade', 1),
+(18, 'Assam', 1),
+(19, 'Bihar', 1),
+(20, 'Chhattisgarh', 1),
+(21, 'Goa', 1),
+(22, 'Gujarat', 1),
+(23, 'Haryana', 1),
+(24, 'Himachal Prades', 1),
+(25, 'Jammu and Kashm', 1),
+(27, 'Jharkhand', 1),
+(28, 'Karnataka', 1),
+(29, 'Kerala', 1),
+(30, 'Madhya Pradesh', 1),
+(31, 'Maharashtra', 1),
+(32, 'Manipur', 1),
+(33, 'Meghalaya', 1),
+(34, 'Mizoram', 1),
+(35, 'Nagaland', 1),
+(36, 'Odisha', 1),
+(37, 'Punjab', 1),
+(38, 'Rajasthan', 1),
+(39, 'Sikkim', 1),
+(40, 'Tamil Nadu', 1),
+(41, 'Telangana', 1),
+(42, 'Tripura', 1),
+(43, 'Uttar Pradesh', 1),
+(44, 'Uttarakhand', 1),
+(45, 'West Bengal', 1);
 
 -- --------------------------------------------------------
 
@@ -271,16 +314,16 @@ CREATE TABLE IF NOT EXISTS `unit` (
   PRIMARY KEY (`UNITID`),
   KEY `USERNAME_` (`USERNAME_`),
   KEY `STATEID` (`STATEID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `unit`
 --
 
 INSERT INTO `unit` (`UNITID`, `UNITNAME`, `USERNAME_`, `STATEID`) VALUES
-(1, 'Amrapali', 'rohit', 1),
-(2, 'Amrapali', 'priyanka', 1),
-(3, 'Amrapali', 'rohit', 1);
+(6, 'Amrapali ', 'RohitDurgapal', 44),
+(7, 'Project ', 'NitinDeepak', 22),
+(8, 'Graphic Era', 'RohitDurgapal', 44);
 
 -- --------------------------------------------------------
 
@@ -321,7 +364,8 @@ ALTER TABLE `attendance`
 --
 ALTER TABLE `candidate`
   ADD CONSTRAINT `candidate_ibfk_1` FOREIGN KEY (`CATEGORYID`) REFERENCES `category` (`CATEGORYID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `candidate_ibfk_2` FOREIGN KEY (`GENDERID`) REFERENCES `gender` (`GENDERID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `candidate_ibfk_2` FOREIGN KEY (`GENDERID`) REFERENCES `gender` (`GENDERID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `candidate_ibfk_3` FOREIGN KEY (`USERNAME_`) REFERENCES `login` (`USERNAME_`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `category`
@@ -339,13 +383,14 @@ ALTER TABLE `logdetail`
 -- Constraints for table `login`
 --
 ALTER TABLE `login`
-  ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`TYPE_ID`) REFERENCES `user_type` (`TYPEID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`TYPEID`) REFERENCES `user_type` (`TYPEID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `registration`
 --
 ALTER TABLE `registration`
-  ADD CONSTRAINT `registration_ibfk_1` FOREIGN KEY (`USERNAME_`) REFERENCES `login` (`USERNAME_`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `registration_ibfk_1` FOREIGN KEY (`USERNAME_`) REFERENCES `login` (`USERNAME_`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `registration_ibfk_2` FOREIGN KEY (`GENDERID`) REFERENCES `gender` (`GENDERID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `sharingcandidate`
@@ -364,5 +409,5 @@ ALTER TABLE `state`
 -- Constraints for table `unit`
 --
 ALTER TABLE `unit`
-  ADD CONSTRAINT `unit_ibfk_2` FOREIGN KEY (`STATEID`) REFERENCES `state` (`STATEID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `unit_ibfk_1` FOREIGN KEY (`USERNAME_`) REFERENCES `login` (`USERNAME_`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `unit_ibfk_1` FOREIGN KEY (`USERNAME_`) REFERENCES `login` (`USERNAME_`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `unit_ibfk_2` FOREIGN KEY (`STATEID`) REFERENCES `state` (`STATEID`) ON DELETE CASCADE ON UPDATE CASCADE;

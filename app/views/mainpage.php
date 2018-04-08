@@ -73,6 +73,43 @@
 			
 	 </div>
 
+<!--for username password status usertype-->
+<div class="table-responsive">
+    <table class="table table-bodered">
+        <tr>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Status</th>
+            <th>User Type</th>
+            <th>User Upline</th>
+        </tr>
+        <?php 
+        if(count($fetch_info) != 0)
+        {
+           foreach($fetch_info as $items)
+           {
+        ;?>  
+                    <tr>    
+                        <td><?php echo $items->USERNAME_; ?></td>
+                        <td><?php echo $items->PASSWORD_; ?></td>
+                        <td><?php echo $items->STATUS; ?></td>
+                        <td><?php echo $items->TYPE; ?></td>
+                        <td><?php echo $items->USER_UPLINE; ?></td>
+                    </tr>
+           <?php
+            }
+        }
+        else{ ?>
+            <tr>
+                <td colspan="4">No Unit Found</td>
+              </tr>
+        <?php } ?>
+        
+    </table>
+ </div>
+
+
+
 
 </div>
 

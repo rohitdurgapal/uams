@@ -8,7 +8,7 @@
 
 <form name="frmcan" id="frmCan" action="<?php echo site_url('start/submitcandidate');?>" method="post">
 
-                         <div class="form-body">
+        <div class="form-body">
                 <div class="form-group">
                     <label for="unit">Select Unit <span style="font-size:13px;color:red">*Required</span></label>
                         <select  id="unit" name="unit" class="form-control">
@@ -21,11 +21,8 @@
                 </div>  
 
 
-
-
-
-
-                                    <div class="form-group">
+                    
+                <div class="form-group">
                     <label for="category">Select Category <span style="font-size:13px;color:red">*Required</span></label>
                         <select  id="category" name="category" class="form-control" disabled="">
                             <option selected value="">Select Category</option>
@@ -37,16 +34,14 @@
                 </div>  
 
 								
-
-
-
-                                <div class="form-group"> 
-                                    <label for="canname">Candidate Name <span style="font-size:13px;color:red">*Required</span></label> 
-                                    <input type="text" class="form-control" id="canname" name= "canname" placeholder="Candidate Name"> 
-                                </div> 
+                <div class="form-group"> 
+                    <label for="canname">Candidate Name <span style="font-size:13px;color:red">*Required</span></label> 
+                    <input type="text" class="form-control" id="canname" name= "canname" placeholder="Candidate Name"> 
+                            
+                </div> 
 
                                  
-                            <div class="form-group">
+                 <div class="form-group">
                             <label for="gender">Gender  <span style="font-size:13px;color:red">*Required</span></label>
                         <select  id="gender" name="gender" class="form-control">
                             <option selected value="">Select Gender</option>
@@ -55,40 +50,70 @@
                             <?php }?>
                         </select>
                                 
-                            </div> 
+               </div> 
 
 
 
+                 <div class="form-group"> 
+                        <label for="mobno">Mobile No</label> 
+                        <input type="text" class="form-control" id="mobno" name="mobno" placeholder="Mobile No"> 
+                </div> 
+
+                 <div class="form-group"> 
+                        <label for="dob">Date Of Birth</label> 
+                      <input type="date" class="form-control" id="dob" name="dob"> 
+              </div> 
 
 
-
-                               <div class="form-group"> 
-                                    <label for="mobno">Mobile No</label> 
-                                    <input type="text" class="form-control" id="mobno" name="mobno" placeholder="Mobile No"> 
-                                </div> 
-
-                                 <div class="form-group"> 
-                                    <label for="dob">Date Of Birth</label> 
-                                    <input type="date" class="form-control" id="dob" name="dob"> 
-                                </div> 
-
-
-                                  <div class="form-group"> 
-                                    <label for="email">Email</label> 
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Id"> 
-                                </div> 
+                  <div class="form-group"> 
+                     <label for="email">Email</label> 
+                     <input type="email" class="form-control" id="email" name="email" placeholder="Email Id"> 
+                  </div> 
                                 
                                 
                                 
-                                <button type="submit" class="btn btn-default">Add</button> 
+                <input type="submit" class="btn btn-default" value="Add"> 
 
-</form>
-
-                     <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4"></div>
-
-                        </div>
+                <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4">
                 </div>
 
-
+</div>
+</form>
+</div>
+ <div class="table-responsive">
+    <table class="table table-bodered">
+        <tr>
+            <th>Unit Name</th>
+            <th>Category Name</th>
+            <th>Candidate Name</th>
+            <th>Gender</th>
+            <th>Mobile No</th>
+            <th>Date of Birth</th>
+            <th>Email</th>
+        </tr>
         
+        <?php 
+        if(count($fetch_candidate) != 0)
+        {
+            foreach($fetch_candidate as $items)
+            {
+        ?>  
+                    <tr>    
+                        <td><?php echo $items->UNITNAME; ?></td>
+                        <td><?php echo $items->CATEGORYNAME; ?></td>
+                        <td><?php echo $items->CANDIDATENAME; ?></td>
+                        <td><?php echo $items->GENDER; ?></td>
+                        <td><?php echo $items->DOB; ?></td>
+                        <td><?php echo $items->EMAIL; ?></td>
+                    </tr>
+        <?php
+            }
+        }
+        else{ ?>
+            <tr>
+                <td colspan="4">No Candidate Found</td>
+              </tr>
+        <?php } ?>
+    </table>
+  </div>
 </div>
