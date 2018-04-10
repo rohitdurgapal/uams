@@ -2,10 +2,41 @@ $(function(){
 
 
 //for attendance form
-	$('#TakeAttendance').submit(function(){
-			alert('hello');
-            $("#hidedata").css('display', 'none');
-        return false;
+	$('#showanother').click(function(){
+		if(validate_Form() == true){
+			$('#msg_').html('');
+			var data_ = $('#TakeAttendance').serialize();
+			var url_ = site_url_ + '/start/fetchCandidates';
+			$.ajax({
+				type: "POST",
+				url: url_,
+				data: data_,
+				success: function(data){
+					var obj = JSON.parse(data);
+					var str = '';
+					alert(data);
+					for(loop1=0; loop1< obj.candidates.length; loop1++){
+						str = str + "<tr>";
+						str = str + "<td>"+obj.cadidates[loop1].CANDIDATEID+"</td>";
+						str = str + "<td>"+obj.cadidates[loop1].CANDIDATENAME+"</td>";
+	                    str = str + '<td><input type="radio" checked value="Attend" name="atten">';
+	                    str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio"  value="0" name="Absense">&nbsp Absense</td>';
+	  					str = str + "</tr>";
+	  					str = str + "<tr>";
+						str = str + "<td colspan='4'>";
+						str = str + '<td colspan="4"><input type="submit" class="btn btn-success btn-sm"></td>';
+						str = str + "</tr>";
+					}
+					$('#candidates_here').html(str);
+				},
+				error: function(xhr, error, status){
+					alert(xhr.responseText);
+				}
+
+			});
+
+			$('#hidedata').css('display', 'block');
+		} 
     });
 
 
@@ -103,7 +134,7 @@ $(function(){
 	});
 
 //for attendance form
-	$('#frmAttendance').submit(function(){
+	function validate_Form(){
 		if($.trim($('#unit').val()) == ''){
 			$('#msg_').html('&nbsp;X:Please!..Select Unit ');
 			$('#unit').val('');
@@ -119,17 +150,12 @@ $(function(){
 			$('#date').val('');
 			$('#date').focus();
 			$bool = false;
-			}else if($.trim($('#dob').val()) == ''){
-			$('#msg_').html('&nbsp;X:Please!..Enter Time ');
-			$('#dob').val('');
-			$('#dob').focus();
-			$bool = false;
-			} else {
+			}else {
 			$bool = true;
 		}
 
 		return $bool;
-	});
+	}
 
 
 

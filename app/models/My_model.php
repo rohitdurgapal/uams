@@ -164,7 +164,6 @@ return $bool;
 		$time_=$this->input->post('time');
 		$unitid_ = $this->input->post('unit');
 		$category_ = $this->input->post('category');
-		//$canid_ = $this->input->post('category');
 		$user_ = $this->session->userdata('user_');
 		$data=array(
 			'ATTENDANCESTATUS'=>$attenstatus_,
@@ -265,6 +264,7 @@ function fetchtype($type='1'){
 		return $query->result();
 	}
 
+//fetching of category data from databse
 	function fetchcategorydata(){
 		$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
 		$this->db->select( 'a.* ,b.UNITNAME');
@@ -313,12 +313,12 @@ function fetchadditional(){
 
 
 //for attendance data
-//function fetchattendance(){
-//		$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
-//		$this->db->select('a.CANDIDATEID,a.CANDIDATENAME');
-//		$this->db->from('candidate b');
-//		$this->db->join('registration a','b.GENDERID=a.GENDERID');
-//		$query=$this->db->get();
-//		return $query->result();
-//	}	
+function fetch_candidates(){
+		$this->db->where('a.CATEGORYID', $this->input->post('category'));
+		$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
+		$this->db->select('a.CANDIDATEID,a.CANDIDATENAME');
+		$this->db->from('candidate a');
+		$query=$this->db->get();
+		return $query->result();
+	}	
 }

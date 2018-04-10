@@ -116,7 +116,7 @@ class Start extends CI_Controller {
 	}
 
 	function submitRegistration(){
-		$this->load->model('universal', 'mm');
+
 		$res = $this->mm->insertlogin();
 
 		if($res == true){
@@ -131,7 +131,6 @@ class Start extends CI_Controller {
 
 	function submitunit(){
 
-		$this->load->model('universal', 'mm');
 		$res = $this->mm->insertunit();
 
 		if($res == true){
@@ -144,7 +143,6 @@ class Start extends CI_Controller {
 	}
 
 	function submitcategory(){
-	$this->load->model('universal', 'mm');
 		$res = $this->mm->insertcategory();
 
 		if($res == true){
@@ -157,7 +155,6 @@ class Start extends CI_Controller {
 	}	
 	
 	function submitcandidate(){
-		$this->load->model('universal', 'mm');
 		$res = $this->mm->insertcandidate();
 
 		if($res == true){
@@ -172,7 +169,6 @@ class Start extends CI_Controller {
 
 
 	function addadditional1(){
-		$this->load->model('universal', 'mm');
 		$res = $this->mm->insertadditional();
 
 		if($res == true){
@@ -183,9 +179,12 @@ class Start extends CI_Controller {
 			redirect('start/addadditional');
 		}	
 	}
-
+	function fetchCandidates(){
+		$data['candidates'] = $this->mm->fetch_candidates();
+		echo json_encode($data);
+	}
 	function submitattendance(){
-		$this->load->model('universal', 'mm');
+		
 		$res = $this->mm->insertattendance();
 			if($res == true){
 		$this->session->set_flashdata('msg_', "Successfully submited.");

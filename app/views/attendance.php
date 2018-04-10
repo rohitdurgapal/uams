@@ -1,10 +1,10 @@
 <?php $this->load->view('mainpage')?>
-<div id="page-wrapper">
-    <form name="TakeAttendance" id="TakeAttendance" action="<?php echo site_url('start/submitattendance');?>" method="post">  
+<div id="page-wrapper">  
     <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
         <div class="form-title">
             <h2>Take Attendance</h2>
-        </div>                      
+        </div>         
+        <form name="TakeAttendance" id="TakeAttendance" action="<?php echo site_url('start/fetchCandidates');?>" method="post">             
         <div class="form-body">
            <div class="form-group">
                     <label for="selectunit">Select Unit <span style="font-size:13px;color:red">*Required</span></label>
@@ -41,14 +41,15 @@
             </div>
 
 
-                <input type="submit" id="showanother" name= "showanother"class="btn btn-default" value="Take Attendance"> 
-                    <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4">
+                <button type="button" id="showanother" name= "showanother" class="btn btn-default" >Take Attendance</button> 
+                <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4">
                 </div>
                          
         </div>
+    </form>
 </div>
 <!--another table-->
-<div class="row" id="hidedata">
+<div class="row" id="hidedata" style="display:none">
     <div class="col-sm-12">
         <div class="whitebox">
             <div class="panel panel-default">
@@ -61,20 +62,7 @@
                                 <th>Candidate Name</th>
                                 <th>Action</th>
                             </tr>
-                          <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                        <input type="radio" checked value="1" name="atten">&nbsp Attend &nbsp|&nbsp
-                                        <input type="radio"  value="0" name="atten">&nbsp Absense
-                                </td>
-                            </tr>       
-
-                            
-                            <tr>
-                                 <td colspan="4"><input type="submit" class="btn btn-success btn-sm"></td> 
-                            </tr>
+                          <tbody id="candidates_here">
                                 
                          </tbody>
                          </thead> 
@@ -84,7 +72,7 @@
         </div>
     </div>
 </div> 
-</form>    
+    
     
 </div>
 
