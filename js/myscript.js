@@ -14,19 +14,18 @@ $(function(){
 				success: function(data){
 					var obj = JSON.parse(data);
 					var str = '';
-					alert(data);
-					for(loop1=0; loop1< obj.candidates.length; loop1++){
+					for(loop1=0; loop1<obj.candidates.length; loop1++){
 						str = str + "<tr>";
-						str = str + "<td>"+obj.cadidates[loop1].CANDIDATEID+"</td>";
-						str = str + "<td>"+obj.cadidates[loop1].CANDIDATENAME+"</td>";
+						str = str + "<td>"+obj.candidates[loop1].CANDIDATEID+"</td>";
+						str = str + "<td>"+obj.candidates[loop1].CANDIDATENAME+"</td>";
 	                    str = str + '<td><input type="radio" checked value="Attend" name="atten">';
 	                    str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio"  value="0" name="Absense">&nbsp Absense</td>';
 	  					str = str + "</tr>";
-	  					str = str + "<tr>";
+					}
+					str = str + "<tr>";
 						str = str + "<td colspan='4'>";
 						str = str + '<td colspan="4"><input type="submit" class="btn btn-success btn-sm"></td>';
 						str = str + "</tr>";
-					}
 					$('#candidates_here').html(str);
 				},
 				error: function(xhr, error, status){
@@ -248,7 +247,7 @@ $(function(){
 				$('#category').html(str);
 			},
 			error: function(xhr, error, status){
-				alert(xhr.responseText);
+				$('#ho').html(xhr.responseText);
 			}
 		});
 	});

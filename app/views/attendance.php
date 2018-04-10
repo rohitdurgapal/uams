@@ -4,6 +4,7 @@
         <div class="form-title">
             <h2>Take Attendance</h2>
         </div>         
+        <div id="ho"></div>
         <form name="TakeAttendance" id="TakeAttendance" action="<?php echo site_url('start/fetchCandidates');?>" method="post">             
         <div class="form-body">
            <div class="form-group">
