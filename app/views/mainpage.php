@@ -63,7 +63,7 @@
 					<!--logo -->
 			
 			<div class="logo">
-			<a href="<?php echo site_url('start/dashboard');?>">
+			<a href="<?php echo site_url('start');?>">
 						<h1>AdminPanel</h1>
 						<span style="font-size:4pt">Universal Attendance Management System</span>
 			</a>
@@ -78,10 +78,6 @@
     <table class="table table-bodered">
         <tr>
             <th>User Name</th>
-            <th>Password</th>
-            <th>Status</th>
-            <th>User Type</th>
-            <th>User Upline</th>
         </tr>
         <?php 
         if(count($fetch_info) != 0)
@@ -91,17 +87,15 @@
         ;?>  
                     <tr>    
                         <td><?php echo $items->USERNAME_; ?></td>
-                        <td><?php echo $items->PASSWORD_; ?></td>
-                        <td><?php echo $items->STATUS; ?></td>
-                        <td><?php echo $items->TYPE; ?></td>
-                        <td><?php echo $items->USER_UPLINE; ?></td>
+                
+              
                     </tr>
            <?php
             }
         }
         else{ ?>
             <tr>
-                <td colspan="4">No Unit Found</td>
+                <td colspan="4">No Data Found</td>
               </tr>
         <?php } ?>
         

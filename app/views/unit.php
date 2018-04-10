@@ -49,6 +49,7 @@
             <th>Unit Name</th>
             <th>Country</th>
             <th>State</th>
+            <th>Action</th>
         </tr>
         
         <?php 
@@ -62,6 +63,7 @@
                         <td><?php echo $items->UNITNAME; ?></td>
                         <td><?php echo $items->COUNTRY; ?></td>
                         <td><?php echo $items->STATE; ?></td>
+                        <td>Edit | Delete</td>
                     </tr>
         <?php
             }

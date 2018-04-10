@@ -2,6 +2,10 @@
 <html>
 <head>
 <title>Universal Attendance Management System</title>
+<script>
+	var base_url_ = '<?php echo base_url();?>';
+	var site_url_ = '<?php echo site_url();?>';
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Novus Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -47,7 +51,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- js-->
 <script src="<?php echo base_url('js1/jquery.min.js');?>"></script>
 <script src="<?php echo base_url('js/bootstrap.js');?>"></script>
-<script src="<?php echo base_url('js/myscript.js');?>"></script>
+<script src="<?php echo base_url('js/myscript.js');?>?ver=1.0"></script>
 
 </head> 
 <body class="cbp-spmenu-push">

@@ -26,9 +26,6 @@
                     <label for="category">Select Category <span style="font-size:13px;color:red">*Required</span></label>
                         <select  id="category" name="category" class="form-control" disabled="">
                             <option selected value="">Select Category</option>
-                            <?php foreach ($category_ as $item){?>
-                            <option value="<?php echo $item->CATEGORYID; ?>"><?php echo $item->CATEGORYNAME; ?></option>
-                            <?php }?>
                         </select>
                                 
                 </div>  
@@ -90,6 +87,7 @@
             <th>Mobile No</th>
             <th>Date of Birth</th>
             <th>Email</th>
+            <th>Action</th>
         </tr>
         
         <?php 
@@ -103,8 +101,10 @@
                         <td><?php echo $items->CATEGORYNAME; ?></td>
                         <td><?php echo $items->CANDIDATENAME; ?></td>
                         <td><?php echo $items->GENDER; ?></td>
+                        <td><?php echo $items->MOBILENO; ?></td>
                         <td><?php echo $items->DOB; ?></td>
                         <td><?php echo $items->EMAIL; ?></td>
+                         <td>Edit | Delete</td>  
                     </tr>
         <?php
             }

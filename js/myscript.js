@@ -1,4 +1,16 @@
 $(function(){
+
+
+//for attendance form
+	$('#TakeAttendance').submit(function(){
+			alert('hello');
+            $("#hidedata").css('display', 'none');
+        return false;
+    });
+
+
+
+
 //for registration	
 	$('#frmRegistration').submit(function(){
 		if($.trim($('#username').val()) == ''){
@@ -136,17 +148,22 @@ $(function(){
 			$('#firstname').val('');
 			$('#firstname').focus();
 			$bool = false;
-		} else if($.trim($('#mobno').val()) == ''){
+		}else if($.trim($('#gender').val()) == ''){
+			$('#msg_').html('&nbsp;X:Please!..Select Gender');
+			$('#gender').val('');
+			$('#gender').focus();
+			$bool = false;
+		}else if($.trim($('#mobno').val()) == ''){
 			$('#msg_').html('&nbsp;X:Please!..Enter Mobile No');
 			$('#mobno').val('');
 			$('#mobno').focus();
 			$bool = false;
-		} else if($.trim($('#email').val()) == ''){
+		}else if($.trim($('#email').val()) == ''){
 			$('#msg_').html('&nbsp;X:Please!..Enter Email ID');
 			$('#email').val('');
 			$('#email').focus();
 			$bool = false;
-		} else {
+		}else {
 			$bool = true;
 		}
 		return $bool;
@@ -185,8 +202,32 @@ $(function(){
 		}
 	});
 
+//fetch Category via unit
+	$('#unit').change(function(){
+		var data_ = 'unit='+$('#unit').val();
+		var url_ = site_url_ + '/start/fetchcategory_via_ajax';
+		$.ajax({
+			type: "POST",
+			url: url_,
+			data: data_,
+			success:  function(data){
+				var obj = JSON.parse(data);
 
+				var str = '';
+				str = str + "<option value=''>Select Category</option>";
+				for(loop1=0; loop1< obj.category.length; loop1++){
+					str = str + "<option value='"+obj.category[loop1].CATEGORYID+"'>"+obj.category[loop1].CATEGORYNAME+"</option>";
+				}
+
+				$('#category').html(str);
+			},
+			error: function(xhr, error, status){
+				alert(xhr.responseText);
+			}
+		});
+	});
 
 
 });
+
 

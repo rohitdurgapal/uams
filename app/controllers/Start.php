@@ -45,7 +45,7 @@ class Start extends CI_Controller {
 	function category(){
 		$this->check_login();
 		$data['fetch_info']=$this->mm->fetchmainpagedata();
-		//$data['fetch_category']=$this->mm->fetchcategorydata();
+		$data['fetch_category']=$this->mm->fetchcategorydata();
 		$data['unit_']=$this->mm->fetchunit();
 		$data['active'] = 'category';
 		$this->load->view('templates/header');
@@ -53,9 +53,15 @@ class Start extends CI_Controller {
 		$this->load->view('templates/footer');
 	}	
 
+	function fetchcategory_via_ajax(){
+		$unit = $this->input->post('unit');
+		$data['category'] = $this->mm->fetchcategorybyunit($unit);
+		echo json_encode($data);
+
+	}
 	function addcan(){
 		$this->check_login();
-		//$data['fetch_candidate']=$this->mm->fetchcandidatedata();
+		$data['fetch_candidate']=$this->mm->fetchcandidatedata();
 		$data['active'] = 'addcan';
 		$data['fetch_info']=$this->mm->fetchmainpagedata();
 		$data['unit_']=$this->mm->fetchunit();
@@ -70,7 +76,7 @@ class Start extends CI_Controller {
 	function addadditional(){
 		$this->check_login();
 		$data['fetch_info']=$this->mm->fetchmainpagedata();
-		//$data['fetch_add']=$this->mm->fetch_additional();
+		$data['fetch_add']=$this->mm->fetchadditional();
 		$data['active'] = 'addadditional';
 		$data['gender_']=$this->mm->fetchgender();
 		$this->load->view('templates/header');
@@ -130,7 +136,7 @@ class Start extends CI_Controller {
 
 		if($res == true){
 			$this->session->set_flashdata('msg_', "Successfully submited.");
-			redirect('start/category');
+			redirect('start/unit');
 		} else {
 			$this->session->set_flashdata('msg_', "Unit Already Exists. Please try again");
 			redirect('start/unit');
@@ -143,9 +149,9 @@ class Start extends CI_Controller {
 
 		if($res == true){
 			$this->session->set_flashdata('msg_', "Successfully submited.");
-			redirect('start/addcan');
+			redirect('start/category');
 		} else {
-			$this->session->set_flashdata('msg_', "Unit Already Exists. Please try again");
+			$this->session->set_flashdata('msg_', "Category Already Exists. Please try again");
 			redirect('start/category');
 		}	
 	}	
@@ -158,7 +164,7 @@ class Start extends CI_Controller {
 			$this->session->set_flashdata('msg_', "Successfully submited.");
 			redirect('start/addcan');
 		} else {
-			$this->session->set_flashdata('msg_', "Unit Already Exists. Please try again");
+			$this->session->set_flashdata('msg_', "Candidate Already Exists. Please try again");
 			redirect('start/addcan');
 		}
 	}
@@ -171,29 +177,25 @@ class Start extends CI_Controller {
 
 		if($res == true){
 			$this->session->set_flashdata('msg_', "Successfully submited.");
-			redirect('start');
+			redirect('addadditional');
 		} else {
-			$this->session->set_flashdata('msg_', "Unit Already Exists. Please try again");
-			redirect('start/addcan');
+			$this->session->set_flashdata('msg_', "Information Already Exists. Please try again");
+			redirect('start/addadditional');
 		}	
 	}
 
-	//function submitattendance(){
-	//	$this->load->model('universal', 'mm');
-	//	$res = $this->mm->insertattendance();
+	function submitattendance(){
+		$this->load->model('universal', 'mm');
+		$res = $this->mm->insertattendance();
+			if($res == true){
+		$this->session->set_flashdata('msg_', "Successfully submited.");
+			redirect('start');
+		} else {
+			$this->session->set_flashdata('msg_', "Attendance can't Submit. Please try again");
+			redirect('start/attendance');
+		}
 
-	//	if($res == true){
-	//		$this->session->set_flashdata('msg_', "Successfully submited.");
-	//		redirect('start');
-	//	} else {
-	//		$this->session->set_flashdata('msg_', "Unit Already Exists. Please try again");
-	//		redirect('start/addcan');
-	//	}
-
-
-
-
-	//}
+	}
 
 
 

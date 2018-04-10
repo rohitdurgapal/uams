@@ -82,9 +82,11 @@ class My_model extends CI_Model{
 		$categoryname_ = $this->input->post('categoryname');
 		$purpose = $this->input->post('purpose');
 		$state = $this->input->post('state'); 
+		$unit_ = $this->input->post('unit');
 		$user_ = $this->session->userdata('user_');
 		$this->db->where('USERNAME_',$user_);
 		$this->db->where('CATEGORYNAME',$categoryname_);
+
 		$rs = $this->db->get('category');	
 		if ($rs->num_rows() !=0){
 			$bool=false;
@@ -92,7 +94,8 @@ class My_model extends CI_Model{
 		$data=array(
 			'CATEGORYNAME'=>$categoryname_,
 			'PURPOSE'=>$purpose,
-			'USERNAME_'=>$user_
+			'USERNAME_'=>$user_,
+			'UNITID'=>$unit_
 			
 	);
 		$bool=$this->db->insert('category', $data);
@@ -155,9 +158,30 @@ return $bool;
 
 
 
-	//function insertattendance(){
+	function insertattendance(){
+		$attenstatus_ = $this->input->post('atten');
+		$date_ = $this->input->post('date');
+		$time_=$this->input->post('time');
+		$unitid_ = $this->input->post('unit');
+		$category_ = $this->input->post('category');
+		//$canid_ = $this->input->post('category');
+		$user_ = $this->session->userdata('user_');
+		$data=array(
+			'ATTENDANCESTATUS'=>$attenstatus_,
+			'DATE'=>$date_,
+			'TIME'=>$time_,
+			'UNITID'=>$unitid_,
+			'CATEGORYID'=>$category_,
+			//'CANDIDATEID'=>$canid_,
+			'USERNAME_'=>$user_
+	);
+		$bool=$this->db->insert('attendance', $data);
+		return $bool;
 
-	//}
+
+
+
+	}
 
 
 
@@ -209,6 +233,14 @@ function fetchtype($type='1'){
 		return $query->result();	
 	}
 
+	function fetchcategorybyunit($unit){
+		$this->db->where ('UNITID',$unit);
+		$this->db->where ('USERNAME_',$this->session->userdata('user_'));
+
+		$query=$this->db->get('category');
+		return $query->result();	
+	}
+
 
 	function fetchgender($gender=''){
 		if ($gender !=''){
@@ -233,31 +265,28 @@ function fetchtype($type='1'){
 		return $query->result();
 	}
 
-	//function fetchcategorydata(){
-	//	$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
-	//	$this->db->where('b.USERNAME_', $this->session->userdata('user_'));
-	//	$this->db->select( 'a.* ,b.UNITNAME');
-	//	$this->db->from('category a');
-	//	$this->db->from('unit b');
-	//	$query=$this->db->get();
-	//	return $query->result();
-	//}
+	function fetchcategorydata(){
+		$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
+		$this->db->select( 'a.* ,b.UNITNAME');
+		$this->db->from('category a');
+		$this->db->join('unit b', 'a.UNITID=b.UNITID');
+		$query=$this->db->get();
+		return $query->result();
+	}
 
 
 
 //fetching of candidate data from candidate table
-	//function fetchcandidatedata(){
-	//	$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
-	//	$this->db->select('a.UNITNAME');
-	//	$this->db->from('unit a');
-
-	//	$this->db->where('b.USERNAME_', $this->session->userdata('user_'));
-	//	$this->db->select('b.*, c.GENDER,d.CATEGORYNAME');
-	//	$this->db->from('gender c');
-	//	$this->db->join('candidate b', 'c.GENDERID=b.GENDERID' and 'd.CATEGORYID=b.CATEGORYID');
-	//	$query=$this->db->get();
-	//	return $query->result();	
-	//}
+	function fetchcandidatedata(){
+		$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
+		$this->db->select('a.UNITNAME, b.*, c.GENDER,d.CATEGORYNAME');
+		$this->db->from('unit a');
+		$this->db->join('category d', 'a.UNITID=d.UNITID');
+		$this->db->join('candidate b', 'd.CATEGORYID=b.CATEGORYID');
+		$this->db->join('gender c', 'b.GENDERID=c.GENDERID');
+		$query=$this->db->get();
+		return $query->result();	
+	}
 
 
 
@@ -271,4 +300,25 @@ function fetchtype($type='1'){
 		return $query->result();
 	}	
 
+
+//fetch additinal data
+function fetchadditional(){
+		$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
+		$this->db->select('a.*,b.GENDER');
+		$this->db->from('gender b');
+		$this->db->join('registration a','b.GENDERID=a.GENDERID');
+		$query=$this->db->get();
+		return $query->result();
+	}	
+
+
+//for attendance data
+//function fetchattendance(){
+//		$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
+//		$this->db->select('a.CANDIDATEID,a.CANDIDATENAME');
+//		$this->db->from('candidate b');
+//		$this->db->join('registration a','b.GENDERID=a.GENDERID');
+//		$query=$this->db->get();
+//		return $query->result();
+//	}	
 }

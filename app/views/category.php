@@ -46,6 +46,7 @@
             <th>Category ID</th>
             <th>Category Name</th>
             <th>Purpose</th>
+            <th>Action</th>
             
         </tr>
         
@@ -60,6 +61,7 @@
                         <td><?php echo $items->CATEGORYID; ?></td>
                         <td><?php echo $items->CATEGORYNAME; ?></td>
                         <td><?php echo $items->PURPOSE; ?></td>
+                         <td>Edit | Delete</td>  
                     </tr>
         <?php
             }
