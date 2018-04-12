@@ -1,6 +1,7 @@
 <?php $this->load->view('mainpage')?>
 <div id="page-wrapper">
     <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
+            
             <div class="form-title">
                 <h2>Update Unit</h2>
             </div>
@@ -9,9 +10,10 @@
         <div class="form-body">
 
 
-                <div class="form-group"> 
-                    <input type="hidden" id="unitid" name="unitid" value="<?php echo $fetch_unit_single->UNITID;?>"> 
-                </div>
+            <div class="form-group">
+                <input type="hidden" id="unitid" name="unitid" value="<?php echo $fetch_unit_single->UNITID;?>"> 
+            </div>
+
 
                 <div class="form-group"> 
                     <label for="unitname">Unit Name <span style="font-size:13px;color:red">*Required</span></label> 
@@ -44,22 +46,19 @@
                                  <option  value="<?php echo $item->STATEID;?>"><?php echo $item->STATE;?></option>
                                 <?php }?>
                                 <?php }?>
+                        </select>
       
                 </div> 
+                   
 
 
+                   <input type="submit" class="btn btn-default" value="update">
 
-                    <input type="submit" class="btn btn-default" value="Update"> 
-    
-
-                     <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4">
-                     </div>
-    
-        </div>
+                    <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4">
+                    </div>
+         </div>           
     </form>
-   
-  </div>
-  
+   </div>
 </div>                  
                         
                    

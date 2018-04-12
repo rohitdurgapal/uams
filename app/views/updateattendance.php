@@ -32,17 +32,27 @@
              
              <div class="form-group" > 
                  <label for="date">Date <span style="font-size:13px;color:red">*Required</span></label> 
-                    <input type="date" class="form-control" id="date" name="date" value=""> 
+                    <input type="date" class="form-control" id="date" name="date" value="<?php echo date("Y-m-d") ;?>"> 
              </div> 
 
 
              <div class="form-group"> 
                  <label for="time">Time <span style="font-size:13px;color:red">*Required</span></label> 
-                    <input type="time" class="form-control" id="time" name="time" value=""> 
+               
+               <?php
+                    date_default_timezone_set('Asia/Kolkata');
+                    $currentTime = date ( 'h:i A', time () );
+                      $currentTime;
+                ?>
+              
+
+
+
+                    <input type="text" class="form-control" id="time" name="time" value="<?php echo $currentTime ; ?>" disabled="">
             </div>
 
 
-                <button type="button" id="showanother" name= "showanother" class="btn btn-default" >Edit Attendance</button> 
+                <button type="button" id="showanother" name= "showanother" class="btn btn-default" >Take Attendance</button> 
                 <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4">
                 </div>
                          
@@ -62,10 +72,12 @@
                                 <th>Candidate ID</th>
                                 <th>Candidate Name</th>
                                 <th>Status</th>
+                                                           
+                         
                             </tr>
                           <tbody id="candidates_here">
-                                
-                         </tbody>
+                          
+                          </tbody>
                          </thead> 
                         </table> 
                     </div>

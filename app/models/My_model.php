@@ -52,12 +52,12 @@ class My_model extends CI_Model{
 				$data=array(
 					'FNAME'=>'',
 					'LNAME'=>'',
-					'GENDERID'=>'',
+					'GENDERID'=>'1',
 					'MOBILE_NO'=>'',
-					'MOBILE_VERIFICATION'=>'no',
+					'MOBILE_VERIFICATION'=>'NO',
 					'EMAIL'=>'',
-					'EMAIL_VERIFICATION'=>'',
-					'USERNAME_'=>$user_
+					'EMAIL_VERIFICATION'=>'NO',
+					'USERNAME_'=>$username_
 				);
 				$bool=$this->db->insert('registration', $data);
 			}
@@ -210,7 +210,7 @@ return $bool;
 
 //update candidate table
 	function updatecandidate(){
-		$candidateid_ =$this->input->post('categoryid');
+		$candidateid_ =$this->input->post('candidateid');
 		$unitname_ = $this->input->post('unit');
 		$category_ = $this->input->post('category');
 		$candidatename_ = $this->input->post('canname');
@@ -306,7 +306,17 @@ function fetchtype($type='1'){
 		return $query->result();
 	}
 
-
+	function fetchwithcategory($categoryid){
+		$this->db->where('CATEGORYID', $categoryid);
+		$query = $this->db->get('category');
+		if($query->num_rowS() != 0){
+			$row = $query->row();
+			$unitid = $row->UNITID;
+		} else {
+			$unitid = 'x';
+		}
+		return $unitid;
+	}
 	function fetchcategory($category=''){
 		if ($category !=''){
 			$this->db->where ('CATEGORYID',$category);
@@ -384,6 +394,7 @@ function fetchtype($type='1'){
 		$this->db->join('category d', 'a.UNITID=d.UNITID');
 		$this->db->join('candidate b', 'd.CATEGORYID=b.CATEGORYID');
 		$this->db->join('gender c', 'b.GENDERID=c.GENDERID');
+		$query = $this->db->get();
 		if($candidateid !='x'){
 				return $query->row();
 		} else{

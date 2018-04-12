@@ -115,20 +115,18 @@
                             $items->MOBILENO,
                             $items->DOB,
                             $items->EMAIL,
-                            $items->CANDIDATEID
+                            $items->CANDIDATEID,
 
                         );
                         ?>
 
-                        <td><a href="<?php echo site_url('start/u_candidates/'.$items->CANDIDATEID)  ;?>"<?php if($active == 'candidates'){ echo 'class="active"'; } ?>>Edit</a> | <a href="">Delete</a></td>
+                        <td><a href="<?php echo site_url('start/u_candidates/'.$items->CANDIDATEID.'/'.$items->CATEGORYID)  ;?>"<?php if($active == 'candidates'){ echo 'class="active"'; } ?>>Edit</a> | <a href="">Delete</a></td>
                     </tr>
         <?php
             }
         }
         else{ ?>
-            <tr>
-                <td colspan="4">No Candidates Found</td>
-              </tr>
+           
         <?php } ?>
 
     </table>

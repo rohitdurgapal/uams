@@ -76,9 +76,7 @@
             }
         }
         else{ ?>
-            <tr>
-                <td colspan="4">No Category Found</td>
-              </tr>
+           
         <?php } ?>        
 
 

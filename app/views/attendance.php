@@ -38,7 +38,17 @@
 
              <div class="form-group"> 
                  <label for="time">Time <span style="font-size:13px;color:red">*Required</span></label> 
-                    <input type="time" class="form-control" id="time" name="time" value="<?php echo date('h:i A');?>">
+               
+               <?php
+                    date_default_timezone_set('Asia/Kolkata');
+                    $currentTime = date ( 'h:i A', time () );
+                      $currentTime;
+                ?>
+              
+
+
+
+                    <input type="text" class="form-control" id="time" name="time" value="<?php echo $currentTime ; ?>" disabled="">
             </div>
 
 
@@ -62,7 +72,7 @@
                                 <th>Candidate ID</th>
                                 <th>Candidate Name</th>
                                 <th>Status</th>
-                                    <td><a href="<?php echo site_url('start/u_attendance') ;?>"<?php if($active == 'unit'){ echo 'class="active"'; } ?>>Edit</a> | <a href="">Delete</a></td>                       
+                                    <td><a href="<?php echo site_url('start/u_attendance') ;?>"<?php if($active == 'attendance'){ echo 'class="active"'; } ?>>Edit</a> | <a href="">Delete</a></td>                       
                          
                             </tr>
                           <tbody id="candidates_here">

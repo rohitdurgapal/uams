@@ -79,9 +79,6 @@
             }
         }
         else{ ?>
-            <tr>
-                <td colspan="4">No Unit Found</td>
-              </tr>
         <?php } ?>
     </table>
   </div> 

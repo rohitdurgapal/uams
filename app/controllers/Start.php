@@ -286,13 +286,14 @@ class Start extends CI_Controller {
 	}
 		
 
-	function u_candidates($candidateid='x'){
+	function u_candidates($candidateid='x', $categid){
 		$this->check_login();
 		$data['fetch_candidate']=$this->mm->fetchcandidatedata();
 		$data['active'] = 'addcan';
 		$data['fetch_info']=$this->mm->fetchmainpagedata();
 		$data['fetch_candidate_single']=$this->mm->fetchcandidatedata($candidateid);
 		$data['unit_']=$this->mm->fetchunit();
+		$data['unitid']=$this->mm->fetchwithcategory($categid);
 		$data['category_']=$this->mm->fetchcategory();
 		$data['gender_']=$this->mm->fetchgender();
 		$this->load->view('templates/header');

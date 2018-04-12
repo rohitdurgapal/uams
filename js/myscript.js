@@ -18,25 +18,12 @@ $(function(){
 						str = str + "<tr>";
 						str = str + "<td>"+obj.candidates[loop1].CANDIDATEID+"</td>";
 						str = str + "<td>"+obj.candidates[loop1].CANDIDATENAME+"</td>";
-	                    //str = str + '<td><input type="radio" checked value="Attend" name="action" id="action">';
-	                    //str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio"  value="Absence" name="action" id ="action">&nbsp Absense</td>';
-	  					//str = str + "</tr>";
-					
+	                    str = str + '<td><input type="radio" checked value="Attend" name="action" id="action">';
+	                    str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio"  value="Absence" name="action" id ="action">&nbsp Absense</td>';
+	  					str = str + "</tr>";
+			
 
-
-						str = str + '<td><input type="radio" checked value="Attend" name="action" id="action">';
-	                    str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio" value="Absence" name="action" id ="action">';
-	  					str = str + '&nbsp Absense &nbsp|&nbsp<input type="radio"  value="Leave" name="action" id ="action">&nbsp Leave</td>';
-	   					str = str + "</tr>";
-					
-
-
-
-
-
-
-
-					}
+				}
 
 
 					str = str + "<tr>";

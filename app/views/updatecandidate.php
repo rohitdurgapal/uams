@@ -14,7 +14,7 @@
                         <select  id="unit" name="unit" class="form-control">
                             <option selected value="">Select Unit</option>
                                 <?php foreach($unit_ as $item){?>
-                                <?php if($fetch_candidate_single->UNITID == $item->UNITID){ ?>
+                                <?php if($item->UNITID == $unitid){ ?>
                                 <option  value="<?php echo $item->UNITID;?>" Selected="selected"><?php echo $item->UNITNAME;?></option>
                                  <?php } else { ?>
                                  <option  value="<?php echo $item->UNITID;?>"><?php echo $item->UNITNAME;?></option>
@@ -33,7 +33,7 @@
                             <option selected value="">Select Catrgory</option>
                                 <?php foreach($category_ as $item){?>
                                 <?php if($fetch_candidate_single->CATEGORYID == $item->CATEGORYID){ ?>
-                                <option  value="<?php echo $item->UNITID;?>" Selected="selected"><?php echo $item->UNITNAME;?></option>
+                                <option  value="<?php echo $item->CATEGORYID;?>" Selected="selected"><?php echo $item->CATEGORYNAME;?></option>
                                  <?php } else { ?>
                                  <option  value="<?php echo $item->CATEGORYID;?>"><?php echo $item->CATEGORYNAME;?></option>
                                 <?php }?>
@@ -45,9 +45,7 @@
 
 
                 <div class="form-group"> 
-                    <label for="candidateid">Candidate id <span style="font-size:13px;color:red">*Required</span></label> 
-                    <input type="text" class="form-control" id="candidateid" name= "candidateid" value="<?php echo $fetch_candidate_single->CANDIDATEID;?>"> 
-                            
+                      <input type="hidden" class="form-control" id="candidateid" name= "candidateid" value="<?php echo $fetch_candidate_single->CANDIDATEID;?>"> 
                 </div>
 
 								
@@ -71,7 +69,7 @@
                             <?php }?>
                         </select>
                                 
-            </div> 
+                 </div> 
 
 
 
