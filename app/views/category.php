@@ -50,7 +50,7 @@
             
         </tr>
         
-        <?php 
+ <?php 
         if(count($fetch_category) != 0)
         {
             foreach($fetch_category as $items)
@@ -61,7 +61,16 @@
                         <td><?php echo $items->CATEGORYID; ?></td>
                         <td><?php echo $items->CATEGORYNAME; ?></td>
                         <td><?php echo $items->PURPOSE; ?></td>
-                         <td>Edit | Delete</td>  
+                        <?php 
+                        $data=array(
+                            $items->UNITNAME,
+                            $items->CATEGORYID,
+                            $items->CATEGORYNAME,
+                            $items->PURPOSE
+                        );
+                        ?>
+
+                        <td><a href="<?php echo site_url('start/u_category/'.$items->CATEGORYID)  ;?>"<?php if($active == 'category'){ echo 'class="active"'; } ?>>Edit</a> | <a href="">Delete</a></td>
                     </tr>
         <?php
             }
@@ -70,7 +79,12 @@
             <tr>
                 <td colspan="4">No Category Found</td>
               </tr>
-        <?php } ?>
+        <?php } ?>        
+
+
+
+
+
     </table>
   </div>
 </div>

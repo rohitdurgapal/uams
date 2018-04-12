@@ -35,7 +35,7 @@
                     <input type="submit" class="btn btn-default" value="create"> 
     
 
-                     <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4">
+                     <div id="msg_" style="borders-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4">
                      </div>
     
         </div>
@@ -63,7 +63,17 @@
                         <td><?php echo $items->UNITNAME; ?></td>
                         <td><?php echo $items->COUNTRY; ?></td>
                         <td><?php echo $items->STATE; ?></td>
-                        <td>Edit | Delete</td>
+                        <?php 
+                        $data=array(
+                            $items->UNITID,
+                            $items->UNITNAME,
+                            $items->COUNTRY,
+                            $items->STATE
+
+                        );
+                        ?>
+
+                        <td><a href="<?php echo site_url('start/u_unit/'.$items->UNITID)  ;?>"<?php if($active == 'unit'){ echo 'class="active"'; } ?>>Edit</a> | <a href="">Delete</a></td>
                     </tr>
         <?php
             }

@@ -48,6 +48,19 @@ class My_model extends CI_Model{
 			);
 			$bool = $this->db->insert('login', $data);
 			
+			if($bool == true){
+				$data=array(
+					'FNAME'=>'',
+					'LNAME'=>'',
+					'GENDERID'=>'',
+					'MOBILE_NO'=>'',
+					'MOBILE_VERIFICATION'=>'no',
+					'EMAIL'=>'',
+					'EMAIL_VERIFICATION'=>'',
+					'USERNAME_'=>$user_
+				);
+				$bool=$this->db->insert('registration', $data);
+			}
 		}	
 		return $bool;
 	}
@@ -131,14 +144,15 @@ return $bool;
 
 
 
-	function insertadditional(){
+													//Updation of data
+	
+//update additional info
+	function updateadditional(){
 		$firstname_ = $this->input->post('firstname');
 		$lastname_ = $this->input->post('lastname');
 		$gender_=$this->input->post('gender');
 		$mobileno_ = $this->input->post('mobno');
-		$mobilever_ = $this->input->post('mobver');
 		$email_ = $this->input->post('email');
-		$emailVer_ = $this->input->post('emailver');
 		$user_ = $this->session->userdata('user_');
 		
 		$data=array(
@@ -146,14 +160,84 @@ return $bool;
 			'LNAME'=>$lastname_,
 			'GENDERID'=>$gender_,
 			'MOBILE_NO'=>$mobileno_,
-			'MOBILE_VERIFICATION'=>$mobilever_,
 			'EMAIL'=>$email_,
-			'EMAIL_VERIFICATION'=>$emailVer_,
-			'USERNAME_'=>$user_
 	);
-		$bool=$this->db->insert('registration', $data);
+		$this->db->where('USERNAME_', $this->session->userdata('user_'));
+		$bool=$this->db->update('registration', $data);
 		return $bool;
 	}
+
+
+//update unit table data
+	function updateunit(){
+		$unitid_	=$this->input->post('unitid');
+		$unitname_ = $this->input->post('unitname');
+		$country = $this->input->post('country');
+		$state = $this->input->post('state'); 
+		$user_ = $this->session->userdata('user_');
+		$data=array(
+			'UNITNAME'=>$unitname_,
+			'USERNAME_'=>$user_,
+			'STATEID'=>$state
+	);
+		$this->db->where('USERNAME_',$user_);
+		$this->db->where('UNITID',$unitid_);
+		$bool=$this->db->update('unit', $data);
+		return $bool;
+	}
+
+//update category table data
+	function updatecategory(){
+		$categoryid_	=$this->input->post('categoryid');
+		$unitname_ = $this->input->post('unit');
+		$categoryname_ = $this->input->post('categoryname');
+		$purpose = $this->input->post('purpose');
+		$state = $this->input->post('state'); 
+		$unit_ = $this->input->post('unit');
+		$user_ = $this->session->userdata('user_');
+			$data=array(
+			'CATEGORYNAME'=>$categoryname_,
+			'PURPOSE'=>$purpose,
+			'USERNAME_'=>$user_,
+			'UNITID'=>$unit_
+			
+	);
+		$this->db->where('USERNAME_',$user_);
+		$this->db->where('CATEGORYID',$categoryid_);
+		$bool=$this->db->update('category', $data);
+		return $bool;	
+	}
+
+//update candidate table
+	function updatecandidate(){
+		$candidateid_ =$this->input->post('categoryid');
+		$unitname_ = $this->input->post('unit');
+		$category_ = $this->input->post('category');
+		$candidatename_ = $this->input->post('canname');
+		$gender_ = $this->input->post('gender');
+		$mobileno_ = $this->input->post('mobno');
+		$dob_ = $this->input->post('dob');
+		$email_ = $this->input->post('email');
+		$user_ = $this->session->userdata('user_');
+		$data=array(
+			'CANDIDATENAME'=>$candidatename_,
+			'GENDERID'=>$gender_,
+			'MOBILENO'=>$mobileno_,
+			'DOB'=>$dob_,
+			'EMAIL'=>$email_,
+			'CATEGORYID'=>$category_,
+			'USERNAME_'=>$user_,
+			'CANDIDATEID'=>$candidateid_
+		);
+		$this->db->where('USERNAME_',$user_);
+		$this->db->where('CANDIDATEID',$candidateid_);
+		$bool=$this->db->update('candidate', $data);
+		return $bool;
+
+	}
+
+
+
 
 
 
@@ -254,40 +338,58 @@ function fetchtype($type='1'){
 
 
 //fetching of unit data from databse
-	function fetchunitdata(){
+	function fetchunitdata($unitid='x'){
+		if($unitid != 'x'){
+			$this->db->where('UNITID', $unitid);
+		}
 		$this->db->where('b.USERNAME_', $this->session->userdata('user_'));
-		$this->db->select('b.*, a.STATE, c.COUNTRY');
+		$this->db->select('b.*, a.STATE, c.COUNTRY, c.COUNTRYID');
 		$this->db->from('state a');
 		$this->db->join('unit b', 'a.STATEID=b.STATEID');
 		$this->db->join('country c', 'c.COUNTRYID = a.COUNTRYID');
 		$query=$this->db->get();
-		return $query->result();
+		if($unitid != 'x'){
+			return $query->row();
+		} else {
+			return $query->result();
+		}
 	}
 
 //fetching of category data from databse
-	function fetchcategorydata(){
+	function fetchcategorydata($categoryid='x'){
+		if($categoryid != 'x'){
+			$this->db->where('CATEGORYID',$categoryid);
+		}
 		$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
 		$this->db->select( 'a.* ,b.UNITNAME');
 		$this->db->from('category a');
 		$this->db->join('unit b', 'a.UNITID=b.UNITID');
 		$query=$this->db->get();
-		return $query->result();
+		if($categoryid !='x'){
+			return $query->row();
+		} else{
+			return $query->result();
+		}
 	}
 
 
-
 //fetching of candidate data from candidate table
-	function fetchcandidatedata(){
+	function fetchcandidatedata($candidateid='x'){
+		if($candidateid !='x'){
+			$this->db->where('CANDIDATEID',$candidateid);	
+		}
 		$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
 		$this->db->select('a.UNITNAME, b.*, c.GENDER,d.CATEGORYNAME');
 		$this->db->from('unit a');
 		$this->db->join('category d', 'a.UNITID=d.UNITID');
 		$this->db->join('candidate b', 'd.CATEGORYID=b.CATEGORYID');
 		$this->db->join('gender c', 'b.GENDERID=c.GENDERID');
-		$query=$this->db->get();
-		return $query->result();	
+		if($candidateid !='x'){
+				return $query->row();
+		} else{
+			return $query->result();	
+		}
 	}
-
 
 
 //fetch mainpage data
@@ -308,7 +410,7 @@ function fetchadditional(){
 		$this->db->from('gender b');
 		$this->db->join('registration a','b.GENDERID=a.GENDERID');
 		$query=$this->db->get();
-		return $query->result();
+		return $query->row();
 	}	
 
 

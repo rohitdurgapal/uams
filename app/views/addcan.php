@@ -90,9 +90,10 @@
             <th>Action</th>
         </tr>
         
+
         <?php 
-        if(count($fetch_candidate) != 0)
-        {
+            if(count($fetch_candidate) != 0)
+            {
             foreach($fetch_candidate as $items)
             {
         ?>  
@@ -104,16 +105,32 @@
                         <td><?php echo $items->MOBILENO; ?></td>
                         <td><?php echo $items->DOB; ?></td>
                         <td><?php echo $items->EMAIL; ?></td>
-                         <td>Edit | Delete</td>  
+                        <td><?php $items->CANDIDATEID; ?></td>
+                        <?php 
+                        $data=array(
+                            $items->UNITNAME,
+                            $items->CATEGORYNAME,
+                            $items->CANDIDATENAME,
+                            $items->GENDER,
+                            $items->MOBILENO,
+                            $items->DOB,
+                            $items->EMAIL,
+                            $items->CANDIDATEID
+
+                        );
+                        ?>
+
+                        <td><a href="<?php echo site_url('start/u_candidates/'.$items->CANDIDATEID)  ;?>"<?php if($active == 'candidates'){ echo 'class="active"'; } ?>>Edit</a> | <a href="">Delete</a></td>
                     </tr>
         <?php
             }
         }
         else{ ?>
             <tr>
-                <td colspan="4">No Candidate Found</td>
+                <td colspan="4">No Candidates Found</td>
               </tr>
         <?php } ?>
+
     </table>
   </div>
 </div>

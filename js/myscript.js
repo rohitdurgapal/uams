@@ -18,10 +18,27 @@ $(function(){
 						str = str + "<tr>";
 						str = str + "<td>"+obj.candidates[loop1].CANDIDATEID+"</td>";
 						str = str + "<td>"+obj.candidates[loop1].CANDIDATENAME+"</td>";
-	                    str = str + '<td><input type="radio" checked value="Attend" name="atten">';
-	                    str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio"  value="0" name="Absense">&nbsp Absense</td>';
-	  					str = str + "</tr>";
+	                    //str = str + '<td><input type="radio" checked value="Attend" name="action" id="action">';
+	                    //str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio"  value="Absence" name="action" id ="action">&nbsp Absense</td>';
+	  					//str = str + "</tr>";
+					
+
+
+						str = str + '<td><input type="radio" checked value="Attend" name="action" id="action">';
+	                    str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio" value="Absence" name="action" id ="action">';
+	  					str = str + '&nbsp Absense &nbsp|&nbsp<input type="radio"  value="Leave" name="action" id ="action">&nbsp Leave</td>';
+	   					str = str + "</tr>";
+					
+
+
+
+
+
+
+
 					}
+
+
 					str = str + "<tr>";
 						str = str + "<td colspan='4'>";
 						str = str + '<td colspan="4"><input type="submit" class="btn btn-success btn-sm"></td>';
@@ -145,9 +162,14 @@ $(function(){
 			$('#category').focus();
 			$bool = false;
 			}else if($.trim($('#date').val()) == ''){
-			$('#msg_').html('&nbsp;X:Please!..Enter Date ');
+			$('#msg_').html('&nbsp;X:Please!..Select Date ');
 			$('#date').val('');
 			$('#date').focus();
+			$bool = false;
+			}else if($.trim($('#time').val()) == ''){
+			$('#msg_').html('&nbsp;X:Please!..Select Time ');
+			$('#time').val('');
+			$('#time').focus();
 			$bool = false;
 			}else {
 			$bool = true;
