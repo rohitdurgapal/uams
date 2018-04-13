@@ -88,7 +88,17 @@ $(function(){
 			$('#unitname').val('');
 			$('#unitname').focus();
 			$bool = false;
-			} else {
+			} else if($.trim($('#country').val()) == ''){
+			$('#msg_').html('&nbsp;X:Please!..Select Country');
+			$('#country').val('');
+			$('#country').focus();
+			$bool = false;
+		} else if($.trim($('#state').val()) == ''){
+			$('#msg_').html('&nbsp;X:Please!..Select State');
+			$('#state').val('');
+			$('#state').focus();
+			$bool = false;
+		} else {
 			$bool = true;
 		}
 		return $bool;

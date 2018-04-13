@@ -13,7 +13,7 @@
                 </div> 
 
                 <div class="form-group">
-                    <label for="country">Country</label>
+                    <label for="country">Country <span style="font-size:13px;color:red">*Required</span></label>
                         <select  id="country" name="country" class="form-control">
                             <option selected value="">Select Country</option>
                                 <?php foreach($country_ as $item){?>
@@ -23,7 +23,7 @@
                  </div> 
 
                 <div class="form-group">
-                    <label for="state">State</label>
+                    <label for="state">State <span style="font-size:13px;color:red">*Required</span></label>
                         <select  id="state" name="state" class="form-control" disabled="">
                             <option selected value="">Select State </option>
                                 <?php foreach($state_ as $item){?>
@@ -73,7 +73,7 @@
                         );
                         ?>
 
-                        <td><a href="<?php echo site_url('start/u_unit/'.$items->UNITID)  ;?>"<?php if($active == 'unit'){ echo 'class="active"'; } ?>>Edit</a> | <a href="">Delete</a></td>
+                        <td><a href="<?php echo site_url('start/u_unit/'.$items->UNITID)  ;?>"<?php if($active == 'unit'){ echo 'class="active"'; } ?>>Edit</a> | <a href="<?php echo site_url('start/d_unit/'.$items->UNITID)  ;?>">Delete</a></td>
                     </tr>
         <?php
             }

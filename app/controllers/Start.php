@@ -329,4 +329,44 @@ class Start extends CI_Controller {
 
 
 
+
+
+
+						//delete data from database
+
+
+
+
+	public function d_unit($unitid){
+		$this->check_login();
+
+		$this->mm->deleteunit($unitid);
+
+		$data['fetch_info']=$this->mm->fetchmainpagedata();
+		$data['fetch_unit']=$this->mm->fetchunitdata();
+		$data['country_'] = $this->mm->fetchcountry();
+		$data['state_'] = $this->mm->fetchstate();
+		$data['active'] = 'unit';
+		$this->load->view('templates/header');
+		$this->load->view('unit', $data);
+		$this->load->view('templates/footer');
+		$this->mm->deleteunit($unitid);
+	}
+
+
+	public function d_category($categoryid){
+		$this->check_login();
+
+		$this->mm->deletecategory($categoryid);
+
+		$data['fetch_info']=$this->mm->fetchmainpagedata();
+		$data['fetch_category']=$this->mm->fetchcategorydata();
+		$data['unit_']=$this->mm->fetchunit();
+		$data['active'] = 'category';
+		$this->load->view('templates/header');
+		$this->load->view('category',$data);
+		$this->load->view('templates/footer');
+	}
+
+
 }

@@ -434,4 +434,26 @@ function fetch_candidates(){
 		$query=$this->db->get();
 		return $query->result();
 	}	
+
+
+						//delete data from database
+
+
+
+	//delete unit
+function deleteunit($unitid){
+	$this->load->database();
+	$this->db->where('UNITID',$unitid);
+	$this->db->delete('unit');
+	return true;
+	}
+	
+//delete category
+function deletecategory($categoryid){
+	$this->load->database();
+	$this->db->where('CATEGORYID',$categoryid);
+	$this->db->delete('category');
+	return true;
+	}
+
 }
