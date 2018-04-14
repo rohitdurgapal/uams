@@ -272,6 +272,13 @@ $(function(){
 	});
 
 
+	// Delete functions here
+
+	$('body').on('click','.unitDelete', function(){
+		var url_ = site_url_ + '/start/d_unit/'+this.id;
+		
+		if(confirm('Do you want to delete this unit?')){
+			$(location).attr('href',url_);
+		}
+	});
 });
-
-
