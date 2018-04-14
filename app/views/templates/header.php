@@ -42,7 +42,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- js-->
 <script src="<?php echo base_url('js1/jquery.min.js');?>"></script>
 <script src="<?php echo base_url('js/bootstrap.js');?>"></script>
-<script src="<?php echo base_url('js/myscript.js');?>?ver=1.1"></script>
+<script src="<?php echo base_url('js/myscript.js');?>?ver=1.2"></script>
 
 </head> 
 <body class="cbp-spmenu-push">

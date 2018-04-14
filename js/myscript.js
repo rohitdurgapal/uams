@@ -272,7 +272,10 @@ $(function(){
 	});
 
 
-	// Delete functions here
+
+
+
+	// Delete functions unit here
 
 	$('body').on('click','.unitDelete', function(){
 		var url_ = site_url_ + '/start/d_unit/'+this.id;
@@ -280,5 +283,31 @@ $(function(){
 		if(confirm('Do you want to delete this unit?')){
 			$(location).attr('href',url_);
 		}
+
 	});
+
+
+	// Delete functions category here
+
+	$('body').on('click','.categoryDelete', function(){
+		var url_ = site_url_ + '/start/d_category/'+this.id;
+		
+		if(confirm('Do you want to delete this category?')){
+			$(location).attr('href',url_);
+		}
+
+	});
+
+ // Delete functions candidate here
+
+	$('body').on('click','.candidateDelete', function(){
+		var url_ = site_url_ + '/start/d_candidate/'+this.id;
+		
+		if(confirm('Do you want to delete this candidate?')){
+			$(location).attr('href',url_);
+		}
+
+	});
+	
+
 });

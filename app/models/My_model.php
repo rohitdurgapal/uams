@@ -456,4 +456,14 @@ function deletecategory($categoryid){
 	return true;
 	}
 
+//delete candidates
+function deletecandidate($candidateid){
+	$this->load->database();
+	$this->db->where('CANDIDATEID',$candidateid);
+	$this->db->delete('candidate');
+	return true;
+	}
+
+
+
 }

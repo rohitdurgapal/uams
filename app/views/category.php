@@ -70,7 +70,10 @@
                         );
                         ?>
 
-                        <td><a href="<?php echo site_url('start/u_category/'.$items->CATEGORYID)  ;?>"<?php if($active == 'category'){ echo 'class="active"'; } ?>>Edit</a> | <a href="<?php echo site_url('start/d_category/'.$items->CATEGORYID)  ;?>">Delete</a></td>
+                        <td><a href="<?php echo site_url('start/u_category/'.$items->CATEGORYID)  ;?>"<?php if($active == 'category'){ echo 'class="active"'; } ?>>Edit</a> | 
+                            <a href="#" id="<?php echo $items->CATEGORYID;?>" class="categoryDelete">Delete</a>
+                        </td>
+                            
                     </tr>
         <?php
             }

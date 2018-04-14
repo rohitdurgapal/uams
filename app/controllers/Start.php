@@ -368,6 +368,29 @@ class Start extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('category',$data);
 		$this->load->view('templates/footer');
+		$this->mm->deletecategory($categoryid);
+		
+		redirect('start/category');
+	}
+
+
+	public function d_candidate($candidateid){
+		$this->check_login();
+
+		$this->mm->deletecandidate($candidateid);
+
+		$data['fetch_candidate']=$this->mm->fetchcandidatedata();
+		$data['active'] = 'addcan';
+		$data['fetch_info']=$this->mm->fetchmainpagedata();
+		$data['unit_']=$this->mm->fetchunit();
+		$data['category_']=$this->mm->fetchcategory();
+		$data['gender_']=$this->mm->fetchgender();
+		$this->load->view('templates/header');
+		$this->load->view('addcan',$data);
+		$this->load->view('templates/footer');
+		$this->mm->deletecandidate($candidateid);
+		
+			redirect('start/addcan');	
 	}
 
 
