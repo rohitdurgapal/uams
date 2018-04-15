@@ -54,7 +54,7 @@
 
 
 
-<div class="sticky-header header-section">
+<div class="sticky-header header-section" style="background:#FFE4C4;">
 	<div class="header-left">
 			<!--toggle button start-->
 				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
@@ -70,51 +70,61 @@
 
 
 			</div>
+
 			
-	 </div>
 
-<!--for username password status usertype-->
-<div class="table-responsive">
-    <table class="table table-bodered">
-        <tr>
-            <th>User Name</th>
-        </tr>
-        <?php 
-        if(count($fetch_info) != 0)
-        {
-           foreach($fetch_info as $items)
-           {
-        ;?>  
-                    <tr>    
-                        <td><?php echo $items->USERNAME_; ?></td>
-                
-              
-                    </tr>
-           <?php
-            }
-        }
-        else{ ?>
-            <tr>
-                <td colspan="4">No Data Found</td>
-              </tr>
-        <?php } ?>
-        
-    </table>
- </div>
+	
 
 
+	</div>
+			<div class="header-right">
+				<div class="profile_details_left"><!--notifications of menu start -->
+							<div class="clearfix"> </div>
+				</div>
+				<!--notification menu end -->
+				<div class="profile_details">		
+					<ul>
+						<li class="dropdown profile_details_drop">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<div class="profile_img">	
+									<span class="prfil-img"><img src="images/a.png" alt=""> </span> 
+									<div class="user-name">
+										<?php 
+        									if(count($fetch_info) != 0)
+        									{
+           								foreach($fetch_info as $items)
+           									{
+        								;?> 
+
+
+										<p style="font-size:28px;"><?php echo $items->USERNAME_; ?></p>
+										<span style="font-size:22px;">Administrator</span>
+										<?php
+            								}
+        									}
+        								else{ ?>
+        							
+
+        								<?php } ?>
+
+									</div>
+									<i class="fa fa-angle-down lnr"></i>
+									<i class="fa fa-angle-up lnr"></i>
+									<div class="clearfix"></div>	
+								</div>	
+							</a>
+							
+						</li>
+					</ul>
+				</div>
+								<div class="clearfix"> </div>				
+			 </div>
+			                    <div class="clearfix"> </div>	
 
 
 </div>
 
-
 </div>
-
-
-
-
-
-
 
 
 

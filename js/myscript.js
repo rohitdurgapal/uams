@@ -19,7 +19,7 @@ $(function(){
 						str = str + "<td>"+obj.candidates[loop1].CANDIDATEID+"</td>";
 						str = str + "<td>"+obj.candidates[loop1].CANDIDATENAME+"</td>";
 	                    str = str + '<td><input type="radio" checked value="Attend" name="action" id="action">';
-	                    str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio"  value="Absence" name="action" id ="action">&nbsp Absense</td>';
+	                    str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio"  value="Absent" name="action" id ="action">&nbsp Absent</td>';
 	  					str = str + "</tr>";
 			
 
@@ -41,6 +41,18 @@ $(function(){
 			$('#hidedata').css('display', 'block');
 		} 
     });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

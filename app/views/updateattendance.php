@@ -52,7 +52,7 @@
             </div>
 
 
-                <button type="button" id="showanother" name= "showanother" class="btn btn-default" >Take Attendance</button> 
+                <button type="button" id="showanother" name= "showanother" class="btn btn-default" >Edit Attendance</button> 
                 <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4">
                 </div>
                          

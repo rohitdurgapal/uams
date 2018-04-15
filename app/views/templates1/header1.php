@@ -34,11 +34,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <style media="screen">
 
-body {
-    background-color: #f0f0f0;
+body { 
     font: 100% / 162% verdana, arial, helvetica, sans-serif;
+	background-image: url('<?php echo base_url('images/login.jpg');?>'); 
  }
-
 
 </style>
 
@@ -47,7 +46,7 @@ body {
 
 
 </head>
-<body>
+<body  style="height:642px;">
 
 
 

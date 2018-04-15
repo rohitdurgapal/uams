@@ -142,6 +142,56 @@ return $bool;
 	}
 
 
+	//insert attendance
+	function insertattendance(){
+		$unitid_ = $this->input->post('unit');
+		$category_ = $this->input->post('category');
+		$user_ = $this->session->userdata('user_');
+		//$candidateid_ =
+
+		$date_ = $this->input->post('date');
+		$time_=$this->input->post('time');
+		$attenstatus_ = $this->input->post('action');
+		
+
+		
+		$data=array(
+			'UNITID'=>$unitid_,
+			'CATEGORYID'=>$category_,
+			//'CANDIDATEID'=>$canid_,
+			'USERNAME_'=>$user_,
+
+			'ATTENDANCESTATUS'=>$attenstatus_,
+			'DATE'=>$date_,
+			'TIME'=>$time_			
+	);
+		$bool=$this->db->insert('attendance', $data);
+		return $bool;
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 													//Updation of data
@@ -236,35 +286,6 @@ return $bool;
 
 	}
 
-
-
-
-
-
-
-	function insertattendance(){
-		$attenstatus_ = $this->input->post('atten');
-		$date_ = $this->input->post('date');
-		$time_=$this->input->post('time');
-		$unitid_ = $this->input->post('unit');
-		$category_ = $this->input->post('category');
-		$user_ = $this->session->userdata('user_');
-		$data=array(
-			'ATTENDANCESTATUS'=>$attenstatus_,
-			'DATE'=>$date_,
-			'TIME'=>$time_,
-			'UNITID'=>$unitid_,
-			'CATEGORYID'=>$category_,
-			//'CANDIDATEID'=>$canid_,
-			'USERNAME_'=>$user_
-	);
-		$bool=$this->db->insert('attendance', $data);
-		return $bool;
-
-
-
-
-	}
 
 
 

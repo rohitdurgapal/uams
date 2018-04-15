@@ -1,11 +1,15 @@
 <?php $this->load->view('mainpage')?>
 <div id="page-wrapper">  
+  <form name="submitattendance" id="submitattendance" action="<?php echo site_url('start/submitattendance');?>" method="post">
     <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
+      
         <div class="form-title">
             <h2>Take Attendance</h2>
-        </div>         
+        </div> 
+
         <div id="ho"></div>
-        <form name="TakeAttendance" id="TakeAttendance" action="<?php echo site_url('start/fetchCandidates');?>" method="post">             
+  <form name="TakeAttendance" id="TakeAttendance" action="<?php echo site_url('start/fetchCandidates');?>" method="post">             
+        
         <div class="form-body">
            <div class="form-group">
                     <label for="selectunit">Select Unit <span style="font-size:13px;color:red">*Required</span></label>
@@ -56,9 +60,13 @@
                 <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4">
                 </div>
                          
-        </div>
-    </form>
-</div>
+           </div>
+  </form>
+
+
+
+
+ </div>
 <!--another table-->
 <div class="row" id="hidedata" style="display:none">
     <div class="col-sm-12">
@@ -72,7 +80,10 @@
                                 <th>Candidate ID</th>
                                 <th>Candidate Name</th>
                                 <th>Status</th>
-                                    <td><a href="<?php echo site_url('start/u_attendance') ;?>"<?php if($active == 'attendance'){ echo 'class="active"'; } ?>>Edit</a> | <a href="">Delete</a></td>                       
+                                <th>Action</th>
+                                    <td><a href="<?php echo site_url('start/u_attendance') ;?>"<?php if($active == 'attendance'){ echo 'class="active"'; } ?>>Edit</a> | 
+                                      <!--<a href="#" id="<?php echo $items->UNITID;?>" class="unitDelete">Delete</a>-->
+                                    </td>                       
                          
                             </tr>
                           <tbody id="candidates_here">
@@ -85,7 +96,7 @@
         </div>
     </div>
 </div> 
-    
-    
+
+  </form>
 </div>
 

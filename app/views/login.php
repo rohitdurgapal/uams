@@ -1,6 +1,8 @@
-<div class="login" style="padding :1em 0 0">
+<div class="login" style="padding :1em 0 0;">
+
 	<h1 style="color:red">Login</h1>
-		<div class="login-bottom">
+		
+		<div class="login-bottom" style="background:linear-gradient(#ddd6f3,#faaca8)">
 			<form name="frmLogin" id="frmLogin" action="<?php echo site_url('start/signin');?>" method="post">
 				<div class="col-md-6">
 					<div class="col-sm-16">
@@ -34,5 +36,6 @@
 		</div>
 	
 </div>
+
 
 

@@ -36,13 +36,24 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 
 <!-- animate CSS -->
-<link href="<?php echo base_url('css/animate.css');?>" rel="stylesheet"> 
+<link href="<?php echo base_url('css/animate.css');?>" rel="stylesheet">   
 
 
 <!-- js-->
 <script src="<?php echo base_url('js1/jquery.min.js');?>"></script>
 <script src="<?php echo base_url('js/bootstrap.js');?>"></script>
 <script src="<?php echo base_url('js/myscript.js');?>?ver=1.2"></script>
+
+
+<style media="screen">
+
+body { 
+    font: 100% / 162% verdana, arial, helvetica, sans-serif; 
+ }
+
+</style>
+
+
 
 </head> 
 <body class="cbp-spmenu-push">

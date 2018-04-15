@@ -10,15 +10,22 @@ class Start extends CI_Controller {
 
 
 												//Showing pages
+
+
 //dashboard page
 	function index(){
+		$this->load->view('starting');	
+		}
+
+
+	function index1(){
 		$this->check_login();
 		$data['active'] = 'dashboard';
 		$data['fetch_info']=$this->mm->fetchmainpagedata();
 		$this->load->view('templates/header');
 		$this->load->view('dashboard', $data);
 		$this->load->view('templates/footer');	
-	}
+		}
 
 //login
 	function login(){
@@ -108,11 +115,15 @@ class Start extends CI_Controller {
 	function signin(){
 		$res_ = $this->mm->authenticate();
 		if($res_ == true){
-			redirect('start');
+			redirect('start/index1');
 		} else {
 			redirect('start/login');
 		}
 	}
+
+
+
+
 
 
 //check session	
@@ -122,13 +133,15 @@ class Start extends CI_Controller {
 		}
 	}
 
+	
+
 
 //logout function
 
 	function logout(){
 		$this->check_login();
 		$this->session->unset_userdata('user_');
-		redirect('start');
+		redirect('start/login');
 	}
 
 													//add data in database

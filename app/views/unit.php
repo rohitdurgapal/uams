@@ -1,6 +1,6 @@
 <?php $this->load->view('mainpage')?>
-<div id="page-wrapper">
-    <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
+<div id="page-wrapper" >
+    <div class="form-grids row widget-shadow" data-example-id="basic-forms" > 
             <div class="form-title">
                 <h2>Create Unit</h2>
             </div>
