@@ -133,6 +133,15 @@ class Start extends CI_Controller {
 		}
 	}
 
+
+	function check_login1(){
+		if(!$this->session->userdata('user_')){
+			redirect('start/login');
+		} else{
+			redirect ('start/index1');
+		}
+	}
+
 	
 
 
@@ -214,10 +223,13 @@ class Start extends CI_Controller {
 		$res = $this->mm->insertattendance();
 			if($res == true){
 		$this->session->set_flashdata('msg_', "Successfully submited.");
-			redirect('start');
+			redirect('start/attendance');
+		} else if($res == hello){
+			$this->session->set_flashdata('msg_', "Successfully Updated");
+			redirect('start/index1');
 		} else {
 			$this->session->set_flashdata('msg_', "Attendance can't Submit. Please try again");
-			redirect('start/attendance');
+			redirect('start/unit');
 		}
 
 	}

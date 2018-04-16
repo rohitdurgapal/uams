@@ -5,7 +5,7 @@ $(function(){
 	$('#showanother').click(function(){
 		if(validate_Form() == true){
 			$('#msg_').html('');
-			var data_ = $('#TakeAttendance').serialize();
+			var data_ = $('#submitattendance').serialize();
 			var url_ = site_url_ + '/start/fetchCandidates';
 			$.ajax({
 				type: "POST",
@@ -14,12 +14,13 @@ $(function(){
 				success: function(data){
 					var obj = JSON.parse(data);
 					var str = '';
+
 					for(loop1=0; loop1<obj.candidates.length; loop1++){
 						str = str + "<tr>";
 						str = str + "<td>"+obj.candidates[loop1].CANDIDATEID+"</td>";
 						str = str + "<td>"+obj.candidates[loop1].CANDIDATENAME+"</td>";
-	                    str = str + '<td><input type="radio" checked value="Attend" name="action" id="action">';
-	                    str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio"  value="Absent" name="action" id ="action">&nbsp Absent</td>';
+	                    str = str + '<td><input type="radio" class="candidate_attendance_P attendance_" value="1" name="'+obj.candidates[loop1].CANDIDATEID+'" id="'+obj.candidates[loop1].CANDIDATEID+'">';
+	                    str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio" class="candidate_attendance_A attendance_"  value="0" name="'+obj.candidates[loop1].CANDIDATEID+'" id ="'+obj.candidates[loop1].CANDIDATEID+'">&nbsp Absent</td>';
 	  					str = str + "</tr>";
 			
 
@@ -41,7 +42,13 @@ $(function(){
 			$('#hidedata').css('display', 'block');
 		} 
     });
-
+	$('body').on('click', '.check_uncheck', function(){
+		if($("#pa_").prop('checked') == true){
+			$('.candidate_attendance_P').prop('checked', true);
+		} else {
+			$('.candidate_attendance_A').prop('checked', true);
+		}
+	});
 
 
 
@@ -175,10 +182,10 @@ $(function(){
 			$('#date').val('');
 			$('#date').focus();
 			$bool = false;
-			}else if($.trim($('#time').val()) == ''){
+			}else if($.trim($('#time_').val()) == ''){
 			$('#msg_').html('&nbsp;X:Please!..Select Time ');
-			$('#time').val('');
-			$('#time').focus();
+			$('#time_').val('');
+			$('#time_').focus();
 			$bool = false;
 			}else {
 			$bool = true;

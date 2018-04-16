@@ -8,7 +8,7 @@
         </div> 
 
         <div id="ho"></div>
-  <form name="TakeAttendance" id="TakeAttendance" action="<?php echo site_url('start/fetchCandidates');?>" method="post">             
+       
         
         <div class="form-body">
            <div class="form-group">
@@ -41,31 +41,26 @@
 
 
              <div class="form-group"> 
-                 <label for="time">Time <span style="font-size:13px;color:red">*Required</span></label> 
+                 <label for="time">Time</label> 
                
                <?php
                     date_default_timezone_set('Asia/Kolkata');
                     $currentTime = date ( 'h:i A', time () );
-                      $currentTime;
+                    
                 ?>
               
 
 
 
-                    <input type="text" class="form-control" id="time" name="time" value="<?php echo $currentTime ; ?>" disabled="">
+                  <div style="border:#C0C0C0 solid 1px; padding: 3px"><?php echo $currentTime;?></div>  <input type="text" class="form-control" id="time_" name="time_" value="<?php echo $currentTime ; ?>">
             </div>
 
 
-                <button type="button" id="showanother" name= "showanother" class="btn btn-default" >Take Attendance</button> 
+                <input type="button" id="showanother" name= "showanother" class="btn btn-default" value="Take Attendance"> 
                 <div id="msg_" style="border-radius: 4px; font-size: 15px; color: blue; font-weight: bold; background:#ffE4C4">
                 </div>
                          
            </div>
-  </form>
-
-
-
-
  </div>
 <!--another table-->
 <div class="row" id="hidedata" style="display:none">
@@ -79,11 +74,18 @@
                             <tr>
                                 <th>Candidate ID</th>
                                 <th>Candidate Name</th>
-                                <th>Status</th>
                                 <th>Action</th>
-                                    <td><a href="<?php echo site_url('start/u_attendance') ;?>"<?php if($active == 'attendance'){ echo 'class="active"'; } ?>>Edit</a> | 
-                                      <!--<a href="#" id="<?php echo $items->UNITID;?>" class="unitDelete">Delete</a>-->
-                                    </td>                       
+                                <th>
+                                  <table border="0" style="width:100%">
+                                      <tr>
+                                        <td><input type="checkbox" name="p_a" id="pa_" class="check_uncheck"><span style="color:red">Check/ Uncheck All</span></td>
+                                      </tr>
+                                  </table>
+                                </th>
+                                
+                                    <!--<td><a href="<?php echo site_url('start/u_attendance') ;?>"<?php if($active == 'attendance'){ echo 'class="active"'; } ?>>Edit</a> | 
+                                      <a href="#" id="<?php echo $items->UNITID;?>" class="unitDelete">Delete</a>
+                                    </td>-->                     
                          
                             </tr>
                           <tbody id="candidates_here">

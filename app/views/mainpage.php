@@ -8,7 +8,7 @@
 						
 
 						<li>
-							<a href="<?php echo site_url('start');?>"<?php if($active == 'dashboard'){ echo 'class="active"'; } ?>><i class="fa fa-home nav_icon"></i>Dashboard</a>
+							<a href="<?php echo site_url('start/index1');?>"<?php if($active == 'dashboard'){ echo 'class="active"'; } ?>><i class="fa fa-home nav_icon"></i>Dashboard</a>
 						</li>
 						
 
@@ -63,7 +63,7 @@
 					<!--logo -->
 			
 			<div class="logo">
-			<a href="<?php echo site_url('start');?>">
+			<a href="<?php echo site_url('start/index1');?>">
 						<h1>AdminPanel</h1>
 						<span style="font-size:4pt">Universal Attendance Management System</span>
 			</a>

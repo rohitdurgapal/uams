@@ -38,7 +38,7 @@
 			<div class="col-md-6 login-do">
 				<label class="hvr-shutter-in-horizontal login-sub">
 					<input type="submit" value="Register" class="hvr-shutter-in-horizontal">
-					</label>
+				</label>
 					<p>Already register?</p>
 				<a href="<?php echo site_url('Start/login');?>" class="hvr-shutter-in-horizontal">Login</a>
 			</div>
