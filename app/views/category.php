@@ -41,7 +41,7 @@
 </div>
     <div class="table-responsive">
     <table class="table table-bodered">
-        <tr>
+        <tr class="danger">
             <th>Unit Name</th>
             <th>Category ID</th>
             <th>Category Name</th>
@@ -56,7 +56,7 @@
             foreach($fetch_category as $items)
             {
         ?>  
-                    <tr>    
+                    <tr class="success">    
                         <td><?php echo $items->UNITNAME; ?></td>
                         <td><?php echo $items->CATEGORYID; ?></td>
                         <td><?php echo $items->CATEGORYNAME; ?></td>

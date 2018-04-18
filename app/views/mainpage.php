@@ -108,8 +108,6 @@
         								<?php } ?>
 
 									</div>
-									<i class="fa fa-angle-down lnr"></i>
-									<i class="fa fa-angle-up lnr"></i>
 									<div class="clearfix"></div>	
 								</div>	
 							</a>
@@ -117,9 +115,9 @@
 						</li>
 					</ul>
 				</div>
-								<div class="clearfix"> </div>				
+												
 			 </div>
-			                    <div class="clearfix"> </div>	
+			                    	
 
 
 </div>

@@ -12,6 +12,7 @@ $(function(){
 				url: url_,
 				data: data_,
 				success: function(data){
+					
 					var obj = JSON.parse(data);
 					var str = '';
 
@@ -19,17 +20,31 @@ $(function(){
 						str = str + "<tr>";
 						str = str + "<td>"+obj.candidates[loop1].CANDIDATEID+"</td>";
 						str = str + "<td>"+obj.candidates[loop1].CANDIDATENAME+"</td>";
-	                    str = str + '<td><input type="radio" class="candidate_attendance_P attendance_" value="1" name="'+obj.candidates[loop1].CANDIDATEID+'" id="'+obj.candidates[loop1].CANDIDATEID+'">';
-	                    str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio" class="candidate_attendance_A attendance_"  value="0" name="'+obj.candidates[loop1].CANDIDATEID+'" id ="'+obj.candidates[loop1].CANDIDATEID+'">&nbsp Absent</td>';
+						if(obj.cols == 3){
+							
+							if(obj.candidates[loop1].ATTENDANCESTATUS == 1){
+								str = str + '<td><input type="radio" class="candidate_attendance_P attendance_" value="1" checked name="'+obj.candidates[loop1].CANDIDATEID+'" id="'+obj.candidates[loop1].CANDIDATEID+'~">';
+	                    		str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio" class="candidate_attendance_A attendance_"  value="0" name="'+obj.candidates[loop1].CANDIDATEID+'" id ="'+obj.candidates[loop1].CANDIDATEID+'">&nbsp Absent</td>';
+							} else {
+								str = str + '<td><input type="radio" class="candidate_attendance_P attendance_" value="1"  name="'+obj.candidates[loop1].CANDIDATEID+'" id="'+obj.candidates[loop1].CANDIDATEID+'~">';
+	                    		str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio" class="candidate_attendance_A attendance_"  value="0" checked name="'+obj.candidates[loop1].CANDIDATEID+'" id ="'+obj.candidates[loop1].CANDIDATEID+'">&nbsp Absent</td>';
+							}
+						} else {
+							str = str + '<td><input type="radio" class="candidate_attendance_P attendance_" value="1" name="'+obj.candidates[loop1].CANDIDATEID+'" id="'+obj.candidates[loop1].CANDIDATEID+'~">';
+	                    	str = str + '&nbsp Attend &nbsp|&nbsp<input type="radio" class="candidate_attendance_A attendance_"  value="0" name="'+obj.candidates[loop1].CANDIDATEID+'" id ="'+obj.candidates[loop1].CANDIDATEID+'">&nbsp Absent</td>';
+						}
+	                    
 	  					str = str + "</tr>";
-			
-
 				}
-
-
-					str = str + "<tr>";
+						str = str + "<tr>";
 						str = str + "<td colspan='4'>";
-						str = str + '<td colspan="4"><input type="submit" class="btn btn-success btn-sm"></td>';
+						if(obj.cols == 3){
+							
+							str = str + '<td colspan="4"><input type="submit" class="btn btn-danger btn-sm" value="Update"></td>';
+
+						} else {
+							str = str + '<td colspan="4"><input type="submit" class="btn btn-danger btn-sm" value="Submit"></td>';
+						}
 						str = str + "</tr>";
 					$('#candidates_here').html(str);
 				},
@@ -42,6 +57,39 @@ $(function(){
 			$('#hidedata').css('display', 'block');
 		} 
     });
+
+
+//for showing candidates
+$('#showcan').click(function(){
+			$('#msg_').html('');
+			var url_ = site_url_ + '/start/fetchCandidates1';
+			$.ajax({
+				type: "POST",
+				url: url_,
+
+				success: function(){
+					var str = '';
+
+					for(loop1=0; loop1<obj.candidates1.length; loop1++){
+						str = str + "<tr>";
+						str = str + "<td>"+obj.candidates[loop1].CANDIDATEID+"</td>";
+						str = str + "<td>"+obj.candidates[loop1].CANDIDATENAME+"</td>";
+						str = str + "<td>"+obj.candidates[loop1].DOB+"</td>";
+						str = str + "<td>"+obj.candidates[loop1].MOBILENO+"</td>";
+						str = str + "<td>"+obj.candidates[loop1].EMAIL+"</td>";
+					    $('#candidateshere').html(str);
+				},
+				error: function(xhr, error, status){
+					alert(xhr.responseText);
+				}
+
+			});
+
+			$('#hidedata1').css('display', 'block');
+    });
+	
+
+
 	$('body').on('click', '.check_uncheck', function(){
 		if($("#pa_").prop('checked') == true){
 			$('.candidate_attendance_P').prop('checked', true);
@@ -192,7 +240,8 @@ $(function(){
 		}
 
 		return $bool;
-	}
+	
+	});
 
 
 

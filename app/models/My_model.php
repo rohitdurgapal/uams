@@ -149,19 +149,25 @@ return $bool;
 		$user_ = $this->session->userdata('user_');
 		$candidate = $this->fetch_candidates_internal($category_);
 		$date_ = $this->input->post('date');
-		$time__='"'.$this->input->post('time_')."'";
+		//$time__='"'.$this->input->post('time_')."'";
+		$time__=$this->input->post('time_');
 
-				$this->db->where('USERNAME_',$user_);
-				$this->db->where('CATEGORYID',$categoryid_);
+				$this->db->where('USERNAME_', $this->session->userdata('user_'));
+				$this->db->where('CATEGORYID',$category_);
 				$this->db->where('UNITID',$unitid_);
 				$this->db->where('DATE',$date_);
 				$this->db->where('TIME',$time__);
-						$rs = $this->db->get('attendance');	
+				$rs = $this->db->get('attendance');	
 				
-				if($rs->num_rows() != 0){
-					$bool=hello;
+
+				if($rs->num_rows() !=0){
 					foreach ($candidate as $item) {
-					$data=array(
+							$this->db->where('USERNAME_', $this->session->userdata('user_'));
+							$this->db->where('CATEGORYID',$category_);
+							$this->db->where('UNITID',$unitid_);
+							$this->db->where('DATE',$date_);
+							$this->db->where('TIME',$time__);
+				$data=array(
 						'UNITID'=>$unitid_,
 						'CATEGORYID'=>$category_,
 						'CANDIDATEID'=>$item->CANDIDATEID,
@@ -170,11 +176,13 @@ return $bool;
 						'DATE'=>$date_,
 						'TIME'=>$time__		
 						);
+							
 							$bool=$this->db->update('attendance', $data); 
-		 				}
-		 			} 
+					  }	
+					  $this->session->set_flashdata('msg_', "Successfully Updated.");
+					}
+ 
 		 			else{
-		 				$bool=true;
 
 					foreach ($candidate as $item) {
 					$data=array(
@@ -188,8 +196,10 @@ return $bool;
 						);
 							$bool=$this->db->insert('attendance', $data); 
 					  }	
+					  $this->session->set_flashdata('msg_', "Successfully submited.");
 					}
-					return $bool;
+
+		return $bool;
 		}
 
 
@@ -364,6 +374,36 @@ function fetchtype($type='1'){
 	}
 
 
+//showing reports
+
+
+
+	function fetchunitcategorydata(){
+
+		$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
+		$this->db->select( 'a.* ,b.UNITID,b.UNITNAME');
+		$this->db->from('category a');
+		$this->db->join('unit b', 'a.UNITID=b.UNITID');
+		$query=$this->db->get();
+		return $query->result();
+	}
+	function fetchcan(){
+		$unitid_ = $this->input->post('unit');
+		$category_ = $this->input->post('category');
+		$user_ = $this->session->userdata('user_');
+		$this->db->where('USERNAME_', $this->session->userdata('user_'));
+		$this->db->where('CATEGORYID',$category_);
+		$this->db->where('UNITID',$unitid_);
+		$this->db->select('a.CANDIDATEID,a.CANDIDATENAME,a.DOB,a.MOBILENO,a.EMAIL');
+		$this->db->from('candidate a');
+		$query = $this->db->get();
+	}
+
+
+
+
+
+
 
 
 
@@ -445,14 +485,50 @@ function fetchadditional(){
 	}	
 
 
+
 //for attendance data
 function fetch_candidates(){
+		$unitid_ = $this->input->post('unit');
+		$category_ = $this->input->post('category');
+		$user_ = $this->session->userdata('user_');
+		$candidate = $this->fetch_candidates_internal($category_);
+		$date_ = $this->input->post('date');
+		$time__=$this->input->post('time_');
+		//$time__='"'.$this->input->post('time_').'"';
+		
+		$this->db->where('USERNAME_',$user_);
+		$this->db->where('CATEGORYID',$category_);
+		$this->db->where('UNITID',$unitid_);
+		$this->db->where('DATE',$date_);
+		$this->db->where('TIME',$time__);
+		$rs = $this->db->get('attendance');
+		if($rs->num_rows() !=0){
+
+
+			$this->db->where('b.USERNAME_',$user_);
+			$this->db->where('b.CATEGORYID',$category_);
+			$this->db->where('b.UNITID',$unitid_);
+			$this->db->where('b.DATE',$date_);
+			$this->db->where('b.TIME',$time__);
+
+			$this->db->select('a.CANDIDATEID,a.CANDIDATENAME, b.ATTENDANCESTATUS');
+			$this->db->from('candidate a');
+			$this->db->join('attendance b', 'a.CANDIDATEID = b.CANDIDATEID');
+			$query = $this->db->get();
+			$cnt = 3;
+
+
+			} else {
 			$this->db->where('a.CATEGORYID', $this->input->post('category'));
-		$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
-		$this->db->select('a.CANDIDATEID,a.CANDIDATENAME');
-		$this->db->from('candidate a');
-		$query=$this->db->get();
-		return $query->result();
+			$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
+			$this->db->select('a.CANDIDATEID,a.CANDIDATENAME');
+			$this->db->from('candidate a');
+			$query=$this->db->get();	
+			$cnt = 2;
+		}
+		$data['resultant'] = $query->result();
+		$data['cols'] = $cnt;
+		return $data;
 	}	
 
 function fetch_candidates_internal($categ){

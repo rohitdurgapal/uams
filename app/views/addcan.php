@@ -58,7 +58,7 @@
 
                  <div class="form-group"> 
                         <label for="dob">Date Of Birth</label> 
-                      <input type="date" class="form-control" id="dob" name="dob"> 
+                      <input type="date" class="form-control" id="dob" name="dob" value="<?php echo date("Y-m-d") ;?>"> 
               </div> 
 
 
@@ -79,7 +79,7 @@
 </div>
  <div class="table-responsive">
     <table class="table table-bodered">
-        <tr>
+        <tr class="danger" style="font-size:15px;">
             <th>Unit Name</th>
             <th>Category Name</th>
             <th>Candidate Name</th>
@@ -87,6 +87,7 @@
             <th>Mobile No</th>
             <th>Date of Birth</th>
             <th>Email</th>
+            <th></th>
             <th>Action</th>
         </tr>
         
@@ -97,7 +98,7 @@
             foreach($fetch_candidate as $items)
             {
         ?>  
-                    <tr>    
+                    <tr class="success" style="font-size:12px;">    
                         <td><?php echo $items->UNITNAME; ?></td>
                         <td><?php echo $items->CATEGORYNAME; ?></td>
                         <td><?php echo $items->CANDIDATENAME; ?></td>
@@ -123,7 +124,30 @@
                         <td><a href="<?php echo site_url('start/u_candidates/'.$items->CANDIDATEID.'/'.$items->CATEGORYID)  ;?>"<?php if($active == 'candidates'){ echo 'class="active"'; } ?>>Edit</a> | 
                             <a href="#" id="<?php echo $items->CANDIDATEID;?>" class="candidateDelete">Delete</a>
                         </td>
+
+
                     </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <?php
             }
         }

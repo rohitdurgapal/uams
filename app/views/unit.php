@@ -42,7 +42,7 @@
   </div>
   <div class="table-responsive">
     <table class="table table-bodered">
-        <tr>
+        <tr class="danger">
             <th>Unit ID</th>
             <th>Unit Name</th>
             <th>Country</th>
@@ -56,7 +56,7 @@
             foreach($fetch_unit as $items)
             {
         ?>  
-                <tr>    
+                <tr class="success">    
                     <td><?php echo $items->UNITID; ?></td>
                     <td><?php echo $items->UNITNAME; ?></td>
                     <td><?php echo $items->COUNTRY; ?></td>

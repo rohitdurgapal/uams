@@ -1,5 +1,7 @@
 <?php $this->load->view('mainpage')?>
+
 <div id="page-wrapper">  
+  <div style="color: #ff0000; font-size:25px ;text-align: center;"><?php echo $this->session->flashdata('msg_'); ?></div>
   <form name="submitattendance" id="submitattendance" action="<?php echo site_url('start/submitattendance');?>" method="post">
     <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
       
@@ -12,7 +14,7 @@
         
         <div class="form-body">
            <div class="form-group">
-                    <label for="selectunit">Select Unit <span style="font-size:13px;color:red">*Required</span></label>
+                    <label for="unit">Select Unit <span style="font-size:13px;color:red">*Required</span></label>
                         <select  id="unit" name="unit" class="form-control">
                             <option selected value="">Select Unit</option>
                             <?php foreach ($unit_ as $item){?>
@@ -52,7 +54,7 @@
 
 
 
-                  <div style="border:#C0C0C0 solid 1px; padding: 3px"><?php echo $currentTime;?></div>  <input type="text" class="form-control" id="time_" name="time_" value="<?php echo $currentTime ; ?>">
+                 <div style="border:#C0C0C0 solid 1px; padding: 3px"><?php echo $currentTime;?></div>  <input type="hidden" class="form-control" id="time_" name="time_" value="<?php echo $currentTime ; ?>">
             </div>
 
 
@@ -71,7 +73,7 @@
                     <div class="panel-body">
                         <table class="table table-bodered table-responsive">
                           <thead>
-                            <tr>
+                            <tr class="danger">
                                 <th>Candidate ID</th>
                                 <th>Candidate Name</th>
                                 <th>Action</th>
@@ -81,12 +83,7 @@
                                         <td><input type="checkbox" name="p_a" id="pa_" class="check_uncheck"><span style="color:red">Check/ Uncheck All</span></td>
                                       </tr>
                                   </table>
-                                </th>
-                                
-                                    <!--<td><a href="<?php echo site_url('start/u_attendance') ;?>"<?php if($active == 'attendance'){ echo 'class="active"'; } ?>>Edit</a> | 
-                                      <a href="#" id="<?php echo $items->UNITID;?>" class="unitDelete">Delete</a>
-                                    </td>-->                     
-                         
+                                </th>                
                             </tr>
                           <tbody id="candidates_here">
                           

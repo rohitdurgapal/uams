@@ -222,14 +222,10 @@ class Start extends CI_Controller {
 		
 		$res = $this->mm->insertattendance();
 			if($res == true){
-		$this->session->set_flashdata('msg_', "Successfully submited.");
 			redirect('start/attendance');
-		} else if($res == hello){
-			$this->session->set_flashdata('msg_', "Successfully Updated");
-			redirect('start/index1');
 		} else {
 			$this->session->set_flashdata('msg_', "Attendance can't Submit. Please try again");
-			redirect('start/unit');
+			redirect('start/attendance');
 		}
 
 	}
@@ -272,10 +268,21 @@ class Start extends CI_Controller {
 											//fetch data in combo box dynamically
 	
 	function fetchCandidates(){
-		$data['candidates'] = $this->mm->fetch_candidates();
+		$x = $this->mm->fetch_candidates();
+		$data['candidates'] = $x['resultant'];
+		$data['cols'] = $x['cols'];
 		echo json_encode($data);
+
 	}
-	
+//SHOW REPORTS FOR CHECK
+	function fetchCandidates1(){
+		$this->mm->fetchcan();
+		echo json_encode();
+
+	}	
+
+
+
 
 
 
@@ -417,6 +424,47 @@ class Start extends CI_Controller {
 		
 			redirect('start/addcan');	
 	}
+
+
+
+
+
+
+	//showing data for report
+	function showunitcategory(){
+		$this->check_login();
+		$data['fetch_unitcategory']=$this->mm->fetchunitcategorydata();
+		$data['fetch_info']=$this->mm->fetchmainpagedata();
+		$data['active'] = 'dashboard';
+		$this->load->view('templates/header');
+		$this->load->view('showunitandcategory', $data);
+		$this->load->view('templates/footer');
+	}
+
+	//function showcan(){
+	//	$this->check_login();
+	//	$data['can_']=$this->mm->fetchcan();
+	//	$data['fetch_info']=$this->mm->fetchmainpagedata();
+	//	$data['active'] = 'dashboard';
+	//	$this->load->view('templates/header');
+	//	$this->load->view('showcan', $data);
+	//	$this->load->view('templates/footer');
+	//}
+
+	function submitunitandcategory(){
+		$this->check_login();
+		//$data['can_']=$this->mm->fetchcan();
+		$data['unit_']=$this->mm->fetchunit();
+		$data['category_']=$this->mm->fetchcategory();
+		$data['fetch_info']=$this->mm->fetchmainpagedata();
+		$data['active'] = 'dashboard';
+		$this->load->view('templates/header');
+		$this->load->view('can', $data);
+		$this->load->view('templates/footer');
+
+	}
+
+
 
 
 }
