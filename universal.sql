@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 19, 2018 at 09:39 AM
+-- Generation Time: Apr 19, 2018 at 11:25 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `attendance` (
   KEY `USERNAME_` (`USERNAME_`),
   KEY `CATEGORYID` (`CATEGORYID`),
   KEY `CANDIDATEID` (`CANDIDATEID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `attendance`
@@ -54,7 +54,8 @@ INSERT INTO `attendance` (`ATTENDANCEID`, `ATTENDANCESTATUS`, `DATE`, `TIME`, `U
 (15, '1', '2018-04-18', '02:15 PM', 2, 7, 19, 'RohitDurgapal'),
 (16, '1', '2018-04-18', '02:15 PM', 2, 7, 20, 'RohitDurgapal'),
 (17, '1', '2018-04-18', '02:15 PM', 2, 7, 21, 'RohitDurgapal'),
-(18, '1', '2018-04-18', '02:15 PM', 2, 7, 22, 'RohitDurgapal');
+(18, '1', '2018-04-18', '02:15 PM', 2, 7, 22, 'RohitDurgapal'),
+(19, '1', '2018-04-19', '03:26 PM', 9, 11, 23, 'MukulJoshi');
 
 -- --------------------------------------------------------
 
@@ -75,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `candidate` (
   KEY `CATEGORYID` (`CATEGORYID`),
   KEY `GENDERID` (`GENDERID`),
   KEY `USERNAME_` (`USERNAME_`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `candidate`
@@ -90,7 +91,8 @@ INSERT INTO `candidate` (`CANDIDATEID`, `CANDIDATENAME`, `GENDERID`, `MOBILENO`,
 (19, 'Raj', 1, '', '2018-04-17', '', 7, 'RohitDurgapal'),
 (20, 'Rakesh', 1, '', '2018-04-17', '', 7, 'RohitDurgapal'),
 (21, 'Harshita', 2, '', '2018-04-17', '', 7, 'RohitDurgapal'),
-(22, 'Priyanka', 2, '', '2018-04-17', '', 7, 'RohitDurgapal');
+(22, 'Priyanka', 2, '', '2018-04-17', '', 7, 'RohitDurgapal'),
+(23, 'Rohit', 1, '', '2018-04-19', '', 11, 'MukulJoshi');
 
 -- --------------------------------------------------------
 
@@ -107,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   PRIMARY KEY (`CATEGORYID`),
   KEY `USERNAME_` (`USERNAME_`),
   KEY `UNITID` (`UNITID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `category`
@@ -117,7 +119,12 @@ INSERT INTO `category` (`CATEGORYID`, `CATEGORYNAME`, `PURPOSE`, `USERNAME_`, `U
 (7, 'Lab Schedule', '', 'RohitDurgapal', 2),
 (8, 'Viva', '', 'RohitDurgapal', 2),
 (9, 'BCA', '', 'RohitDurgapal', 2),
-(10, 'MCA', '', 'RohitDurgapal', 2);
+(10, 'MCA', '', 'RohitDurgapal', 2),
+(11, 'Football', '', 'MukulJoshi', 9),
+(12, 'Cricket', '', 'MukulJoshi', 9),
+(13, 'Lab Work', '', 'MukulJoshi', 10),
+(14, 'Day 1', '', 'MukulJoshi', 11),
+(15, 'Lab Work 1', '', 'MukulJoshi', 10);
 
 -- --------------------------------------------------------
 
@@ -203,6 +210,7 @@ CREATE TABLE IF NOT EXISTS `login` (
 --
 
 INSERT INTO `login` (`USERNAME_`, `PASSWORD_`, `STATUS`, `USER_UPLINE`, `TYPEID`) VALUES
+('MukulJoshi', '12345', '1', 'MukulJoshi', 1),
 ('NitinDeepak', '12345', '1', 'NitinDeepak', 1),
 ('RohitBisht', '12345', '1', 'RohitBisht', 1),
 ('RohitDurgapal', '12345', '1', 'RohitDurgapal', 1),
@@ -229,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `registration` (
   PRIMARY KEY (`REGID`),
   KEY `USERNAME_` (`USERNAME_`),
   KEY `GENDERID` (`GENDERID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `registration`
@@ -241,7 +249,8 @@ INSERT INTO `registration` (`REGID`, `FNAME`, `LNAME`, `GENDERID`, `MOBILE_NO`, 
 (4, 'Rohit Singh', 'Bisht', 1, '9874578457', 'NO', 'rohit@gmail.com', 'NO', 'RohitBisht'),
 (5, 'Sachin', 'Raikwal', 1, '8745784124', 'NO', 'sachinraikwal@gmail.com', 'NO', 'SachinRaikwal'),
 (6, 'Sandeep Kumar', 'Singh', 1, '8745784124', 'NO', 'sandeep1111@gmail.com', 'NO', 'SandeepKSingh'),
-(7, 'Shakshi', 'Kharkwal', 2, '9874514785', 'NO', 'shakshi123@gmail.com', 'NO', 'ShakshiKharkwal');
+(7, 'Shakshi', 'Kharkwal', 2, '9874514785', 'NO', 'shakshi123@gmail.com', 'NO', 'ShakshiKharkwal'),
+(8, 'Mukul', 'Joshi', 1, '8457451245', 'NO', 'mukul@gmail.com', 'NO', 'MukulJoshi');
 
 -- --------------------------------------------------------
 
@@ -327,20 +336,23 @@ CREATE TABLE IF NOT EXISTS `unit` (
   PRIMARY KEY (`UNITID`),
   KEY `USERNAME_` (`USERNAME_`),
   KEY `STATEID` (`STATEID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `unit`
 --
 
 INSERT INTO `unit` (`UNITID`, `UNITNAME`, `USERNAME_`, `STATEID`) VALUES
-(2, 'Project', 'RohitDurgapal', 16),
+(2, 'ProjectWork', 'RohitDurgapal', 16),
 (3, 'Amrapali Institutes', 'RohitDurgapal', 44),
 (4, 'Dolphin', 'RohitDurgapal', 35),
 (5, 'BFIT', 'RohitDurgapal', 33),
 (6, 'SSJ ', 'RohitDurgapal', 31),
 (7, 'DSB', 'RohitDurgapal', 33),
-(8, 'MBPG', 'RohitDurgapal', 34);
+(8, 'MBPG', 'RohitDurgapal', 34),
+(9, 'Sports', 'MukulJoshi', 22),
+(10, 'project', 'MukulJoshi', 27),
+(11, 'Marriage', 'MukulJoshi', 27);
 
 -- --------------------------------------------------------
 

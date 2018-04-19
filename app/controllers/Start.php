@@ -441,19 +441,8 @@ class Start extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	//function showcan(){
-	//	$this->check_login();
-	//	$data['can_']=$this->mm->fetchcan();
-	//	$data['fetch_info']=$this->mm->fetchmainpagedata();
-	//	$data['active'] = 'dashboard';
-	//	$this->load->view('templates/header');
-	//	$this->load->view('showcan', $data);
-	//	$this->load->view('templates/footer');
-	//}
-
 	function submitunitandcategory(){
 		$this->check_login();
-		//$data['can_']=$this->mm->fetchcan();
 		$data['unit_']=$this->mm->fetchunit();
 		$data['category_']=$this->mm->fetchcategory();
 		$data['fetch_info']=$this->mm->fetchmainpagedata();
