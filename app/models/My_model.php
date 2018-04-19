@@ -379,7 +379,6 @@ function fetchtype($type='1'){
 
 
 	function fetchunitcategorydata(){
-
 		$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
 		$this->db->select( 'a.* ,b.UNITID,b.UNITNAME');
 		$this->db->from('category a');
@@ -387,6 +386,9 @@ function fetchtype($type='1'){
 		$query=$this->db->get();
 		return $query->result();
 	}
+
+
+
 	function fetchcan(){
 		$category_ = $this->input->post('category');
 		$user_ = $this->session->userdata('user_');
@@ -400,6 +402,24 @@ function fetchtype($type='1'){
 
 
 
+
+	function fetchattedance(){
+		$unitid_ = $this->input->post('unit');
+		$category_ = $this->input->post('category');
+		$user_ = $this->session->userdata('user_');
+		$candidate = $this->fetch_candidates_internal($category_);
+		$date_ = $this->input->post('date');
+		$this->db->where('b.USERNAME_',$user_);
+		$this->db->where('b.CATEGORYID',$category_);
+		$this->db->where('b.UNITID',$unitid_);
+		$this->db->where('b.DATE',$date_);
+		$this->db->select('a.CANDIDATEID,a.CANDIDATENAME,b.TIME,b.ATTENDANCESTATUS');
+		$this->db->from('candidate a');
+		$this->db->join('attendance b', 'a.CANDIDATEID = b.CANDIDATEID');
+		$query = $this->db->get();
+		return $query->result();
+			
+}
 
 
 

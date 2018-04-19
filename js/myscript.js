@@ -57,6 +57,13 @@ $(function(){
     });
 
 
+
+
+
+
+
+
+
 //for showing candidates
 $('#showcan').click(function(){
 			$('#msg_').html('');
@@ -92,6 +99,53 @@ $('#showcan').click(function(){
 	
 
 
+
+
+//showing candidates attendnace date wise
+
+$('#showatten').click(function(){
+			$('#msg_').html('');
+			var url_ = site_url_ + '/start/fetchCandidates2';
+			var data_ = $('#frmShowCatt').serialize();
+			$.ajax({
+				type: "POST",
+				url: url_,
+				data: data_,
+				success: function(data){
+					var obj = JSON.parse(data);
+					var str = '';
+
+					for(loop1=0; loop1<obj.candidates2.length; loop1++){
+						str = str + "<tr>";
+						str = str + "<td>"+obj.candidates2[loop1].CANDIDATEID+"</td>";
+						str = str + "<td>"+obj.candidates2[loop1].CANDIDATENAME+"</td>";
+						str = str + "<td>"+obj.candidates2[loop1].TIME+"</td>";
+						str = str + "<td>"+obj.candidates2[loop1].ATTENDANCESTATUS+"</td>";
+						str = str + "</tr>";
+					}
+					    $('#attendancehere').html(str);
+				},
+				error: function(xhr, error, status){
+					$('#attendancehere').html(xhr.responseText);
+				}
+
+			});
+
+			$('#hidedata2').css('display', 'block');
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+//check all and uncheck all
 	$('body').on('click', '.check_uncheck', function(){
 		if($("#pa_").prop('checked') == true){
 			$('.candidate_attendance_P').prop('checked', true);
@@ -99,6 +153,9 @@ $('#showcan').click(function(){
 			$('.candidate_attendance_A').prop('checked', true);
 		}
 	});
+
+
+
 
 
 

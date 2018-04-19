@@ -25,6 +25,8 @@
 								
 								</div>
 							</a>
+
+
 							
 
 							<a href="<?php echo site_url('start/submitunitandcategory') ;?>">
@@ -43,12 +45,14 @@
 
 
 
-							<a href="<?php echo site_url('start/unit');?>">
+
+
+							<a href="<?php echo site_url('start/showattendance');?>">
 							<div class="col-md-4 widget states-last">
 								<div style="background:linear-gradient(#ddd6f3,#faaca8") class="stats-left">
 									<h5 style="font-size:21px;color:blue;">All</h5>
 									<h5 style="font-size:22px;color:white;font-weight:bold">CANDIDATES</h5>
-									<h5 style="font-size:20px;color:red;">ATTENDANCE INFORMATION</h5>
+									<h5 style="font-size:20px;color:red;">DATE WISE ATTENDANCE</h5>
 								</div>
 
 								<div class="stats-right" style="background:blue;">
@@ -56,6 +60,12 @@
 								</div>	
 							</div>	
 							</a>
+
+							
+							
+
+					
+					
 
 						</div>
 

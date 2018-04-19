@@ -282,6 +282,13 @@ class Start extends CI_Controller {
 	}	
 
 
+//show report day wise
+	function fetchCandidates2(){
+		$data['candidates2'] = $this->mm->fetchattedance();
+		echo json_encode($data);
+
+	}
+
 
 
 
@@ -451,6 +458,19 @@ class Start extends CI_Controller {
 		$this->load->view('can', $data);
 		$this->load->view('templates/footer');
 	}
+
+	function showattendance(){
+		$this->check_login();
+		$data['unit_']=$this->mm->fetchunit();
+		$data['category_']=$this->mm->fetchcategory();
+		$data['fetch_info']=$this->mm->fetchmainpagedata();
+		$data['active'] = 'dashboard';
+		$this->load->view('templates/header');
+		$this->load->view('showattendance', $data);
+		$this->load->view('templates/footer');
+	}
+
+
 
 
 
