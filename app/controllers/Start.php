@@ -276,8 +276,8 @@ class Start extends CI_Controller {
 	}
 //SHOW REPORTS FOR CHECK
 	function fetchCandidates1(){
-		$this->mm->fetchcan();
-		echo json_encode();
+		$data['candidates1'] = $this->mm->fetchcan();
+		echo json_encode($data);
 
 	}	
 
@@ -461,7 +461,6 @@ class Start extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('can', $data);
 		$this->load->view('templates/footer');
-
 	}
 
 

@@ -1,6 +1,7 @@
 <?php $this->load->view('dashboard')?>
 <?php $this->load->view('mainpage')?>
 <div id="page-wrapper">
+    <form name="frmShowCan" id="frmShowCan">
     <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
         <div class="form-title">
             <h2>Select Unit And Category</h2>
@@ -39,7 +40,7 @@
 
 	</div>
  </div>
- 
+ </form>
 
  <div class="table-responsive" id="hidedata1" style="display:none">
     <table class="table table-bodered">
@@ -51,11 +52,8 @@
             <th>Email</th>            
         </tr>
         
-
-     
-                    <tr class="success" style="font-size:12px;" id="candidateshere">    
-                                              
-                    </tr>
+        <tbody class="success" style="background:linear-gradient(#a1c4fd,#c2e9fb)" id="candidateshere">
+        </tbody>
 
          </table>
   </div>

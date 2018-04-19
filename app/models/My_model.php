@@ -388,15 +388,14 @@ function fetchtype($type='1'){
 		return $query->result();
 	}
 	function fetchcan(){
-		$unitid_ = $this->input->post('unit');
 		$category_ = $this->input->post('category');
 		$user_ = $this->session->userdata('user_');
 		$this->db->where('USERNAME_', $this->session->userdata('user_'));
 		$this->db->where('CATEGORYID',$category_);
-		$this->db->where('UNITID',$unitid_);
 		$this->db->select('a.CANDIDATEID,a.CANDIDATENAME,a.DOB,a.MOBILENO,a.EMAIL');
 		$this->db->from('candidate a');
 		$query = $this->db->get();
+		return $query->result();
 	}
 
 

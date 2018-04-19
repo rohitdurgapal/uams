@@ -1,6 +1,4 @@
 $(function(){
-
-
 //for attendance form
 	$('#showanother').click(function(){
 		if(validate_Form() == true){
@@ -63,24 +61,28 @@ $(function(){
 $('#showcan').click(function(){
 			$('#msg_').html('');
 			var url_ = site_url_ + '/start/fetchCandidates1';
+			var data_ = $('#frmShowCan').serialize();
 			$.ajax({
 				type: "POST",
 				url: url_,
-
-				success: function(){
+				data: data_,
+				success: function(data){
+					var obj = JSON.parse(data);
 					var str = '';
 
 					for(loop1=0; loop1<obj.candidates1.length; loop1++){
 						str = str + "<tr>";
-						str = str + "<td>"+obj.candidates[loop1].CANDIDATEID+"</td>";
-						str = str + "<td>"+obj.candidates[loop1].CANDIDATENAME+"</td>";
-						str = str + "<td>"+obj.candidates[loop1].DOB+"</td>";
-						str = str + "<td>"+obj.candidates[loop1].MOBILENO+"</td>";
-						str = str + "<td>"+obj.candidates[loop1].EMAIL+"</td>";
+						str = str + "<td>"+obj.candidates1[loop1].CANDIDATEID+"</td>";
+						str = str + "<td>"+obj.candidates1[loop1].CANDIDATENAME+"</td>";
+						str = str + "<td>"+obj.candidates1[loop1].DOB+"</td>";
+						str = str + "<td>"+obj.candidates1[loop1].MOBILENO+"</td>";
+						str = str + "<td>"+obj.candidates1[loop1].EMAIL+"</td>";
+						str = str + "</tr>";
+					}
 					    $('#candidateshere').html(str);
 				},
 				error: function(xhr, error, status){
-					alert(xhr.responseText);
+					$('#candidateshere').html(xhr.responseText);
 				}
 
 			});
@@ -240,20 +242,10 @@ $('#showcan').click(function(){
 		}
 
 		return $bool;
-	
-	});
+	}
 
 
-
-
-
-
-
-
-
-
-
-//for add additional information
+	//for add additional information
 	$('#add').submit(function(){
 		if($.trim($('#firstname').val()) == ''){
 			$('#msg_').html('&nbsp;X:Please!..Enter First Name');
@@ -376,6 +368,4 @@ $('#showcan').click(function(){
 		}
 
 	});
-	
-
 });
