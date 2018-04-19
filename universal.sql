@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 14, 2018 at 09:14 AM
+-- Generation Time: Apr 19, 2018 at 09:39 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -39,12 +39,22 @@ CREATE TABLE IF NOT EXISTS `attendance` (
   KEY `USERNAME_` (`USERNAME_`),
   KEY `CATEGORYID` (`CATEGORYID`),
   KEY `CANDIDATEID` (`CANDIDATEID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `attendance`
 --
 
+INSERT INTO `attendance` (`ATTENDANCEID`, `ATTENDANCESTATUS`, `DATE`, `TIME`, `UNITID`, `CATEGORYID`, `CANDIDATEID`, `USERNAME_`) VALUES
+(10, '1', '2018-04-18', '02:15 PM', 2, 7, 14, 'RohitDurgapal'),
+(11, '1', '2018-04-18', '02:15 PM', 2, 7, 15, 'RohitDurgapal'),
+(12, '1', '2018-04-18', '02:15 PM', 2, 7, 16, 'RohitDurgapal'),
+(13, '1', '2018-04-18', '02:15 PM', 2, 7, 17, 'RohitDurgapal'),
+(14, '1', '2018-04-18', '02:15 PM', 2, 7, 18, 'RohitDurgapal'),
+(15, '1', '2018-04-18', '02:15 PM', 2, 7, 19, 'RohitDurgapal'),
+(16, '1', '2018-04-18', '02:15 PM', 2, 7, 20, 'RohitDurgapal'),
+(17, '1', '2018-04-18', '02:15 PM', 2, 7, 21, 'RohitDurgapal'),
+(18, '1', '2018-04-18', '02:15 PM', 2, 7, 22, 'RohitDurgapal');
 
 -- --------------------------------------------------------
 
@@ -65,12 +75,22 @@ CREATE TABLE IF NOT EXISTS `candidate` (
   KEY `CATEGORYID` (`CATEGORYID`),
   KEY `GENDERID` (`GENDERID`),
   KEY `USERNAME_` (`USERNAME_`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `candidate`
 --
 
+INSERT INTO `candidate` (`CANDIDATEID`, `CANDIDATENAME`, `GENDERID`, `MOBILENO`, `DOB`, `EMAIL`, `CATEGORYID`, `USERNAME_`) VALUES
+(14, 'Rohit', 1, '9547845124', '1998-08-27', '', 7, 'RohitDurgapal'),
+(15, 'Rohit Bisht', 1, '', '1996-12-12', '', 7, 'RohitDurgapal'),
+(16, 'Sachin', 1, '', '2018-04-17', '', 7, 'RohitDurgapal'),
+(17, 'Sandeep', 1, '', '2018-04-17', '', 7, 'RohitDurgapal'),
+(18, 'Shakshi', 2, '', '2018-04-17', '', 7, 'RohitDurgapal'),
+(19, 'Raj', 1, '', '2018-04-17', '', 7, 'RohitDurgapal'),
+(20, 'Rakesh', 1, '', '2018-04-17', '', 7, 'RohitDurgapal'),
+(21, 'Harshita', 2, '', '2018-04-17', '', 7, 'RohitDurgapal'),
+(22, 'Priyanka', 2, '', '2018-04-17', '', 7, 'RohitDurgapal');
 
 -- --------------------------------------------------------
 
@@ -87,12 +107,17 @@ CREATE TABLE IF NOT EXISTS `category` (
   PRIMARY KEY (`CATEGORYID`),
   KEY `USERNAME_` (`USERNAME_`),
   KEY `UNITID` (`UNITID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `category`
 --
 
+INSERT INTO `category` (`CATEGORYID`, `CATEGORYNAME`, `PURPOSE`, `USERNAME_`, `UNITID`) VALUES
+(7, 'Lab Schedule', '', 'RohitDurgapal', 2),
+(8, 'Viva', '', 'RohitDurgapal', 2),
+(9, 'BCA', '', 'RohitDurgapal', 2),
+(10, 'MCA', '', 'RohitDurgapal', 2);
 
 -- --------------------------------------------------------
 
@@ -302,12 +327,20 @@ CREATE TABLE IF NOT EXISTS `unit` (
   PRIMARY KEY (`UNITID`),
   KEY `USERNAME_` (`USERNAME_`),
   KEY `STATEID` (`STATEID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `unit`
 --
 
+INSERT INTO `unit` (`UNITID`, `UNITNAME`, `USERNAME_`, `STATEID`) VALUES
+(2, 'Project', 'RohitDurgapal', 16),
+(3, 'Amrapali Institutes', 'RohitDurgapal', 44),
+(4, 'Dolphin', 'RohitDurgapal', 35),
+(5, 'BFIT', 'RohitDurgapal', 33),
+(6, 'SSJ ', 'RohitDurgapal', 31),
+(7, 'DSB', 'RohitDurgapal', 33),
+(8, 'MBPG', 'RohitDurgapal', 34);
 
 -- --------------------------------------------------------
 
@@ -338,10 +371,10 @@ INSERT INTO `user_type` (`TYPEID`, `TYPE`) VALUES
 -- Constraints for table `attendance`
 --
 ALTER TABLE `attendance`
-  ADD CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`CANDIDATEID`) REFERENCES `candidate` (`CANDIDATEID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `attendance_ibfk_2` FOREIGN KEY (`UNITID`) REFERENCES `unit` (`UNITID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `attendance_ibfk_3` FOREIGN KEY (`CATEGORYID`) REFERENCES `sharingcandidate` (`CATEGORYID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `attendance_ibfk_4` FOREIGN KEY (`USERNAME_`) REFERENCES `login` (`USERNAME_`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `attendance_ibfk_4` FOREIGN KEY (`USERNAME_`) REFERENCES `login` (`USERNAME_`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `attendance_ibfk_7` FOREIGN KEY (`CATEGORYID`) REFERENCES `category` (`CATEGORYID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `attendance_ibfk_8` FOREIGN KEY (`CANDIDATEID`) REFERENCES `candidate` (`CANDIDATEID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `candidate`
