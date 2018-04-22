@@ -6,7 +6,7 @@
 
     <script>setTimeout(function()
 			{
-			window.location.href="<?php echo site_url('start/check_login1')  ;?>"},3000);
+			window.location.href="<?php echo site_url('start/check_login1')  ;?>"},5000);
     </script>
 
     <style> 

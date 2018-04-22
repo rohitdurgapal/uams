@@ -1,5 +1,5 @@
 <div class="login" style="padding :1em 0 0">
-	<h1 style="color:red">Registration</h1>
+	<h1 style="background-repeat:no-repeat;color:#FF5733;font-size:46px;height:30px;">Registration Here</h1>
 		<div class="login-bottom" style="background:linear-gradient(#ddd6f3,#faaca8)">
 			<form name="frmRegistration" id="frmRegistration" action="<?php echo site_url('start/submitRegistration');?>" method="post">
 			<div class="col-md-6">

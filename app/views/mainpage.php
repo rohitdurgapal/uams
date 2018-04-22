@@ -40,8 +40,14 @@
 						</li>
 
 						<li>
+							<a href="<?php echo site_url('start/createuser');?>"<?php if($active == 'createuser'){ echo 'class="active"'; } ?>><i class="fa fa-table nav_icon"></i>Craete New User</a>
+						</li>
+
+						<li>
 							<a href="<?php echo site_url('start/logout');?>"<?php if($active == 'logout'){ echo 'class="active"'; } ?>><i class="fa fa-table nav_icon"></i>Logout</a>
 						</li>
+
+						
 
 					</ul>
 

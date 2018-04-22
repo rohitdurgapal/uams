@@ -2,7 +2,7 @@
 <?php $this->load->view('mainpage')?>
 <div id="page-wrapper">
     <form name="frmShowCatt" id="frmShowCatt">
-    <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
+    <div class="form-grids row widget-shadow" data-example-id="basic-forms" style="margin-top:-90px;"> 
         <div class="form-title">
             <h2>Attendance Date Wise</h2>
         </div>

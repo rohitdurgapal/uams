@@ -98,7 +98,7 @@
             foreach($fetch_candidate as $items)
             {
         ?>  
-                    <tr class="success" style="font-size:12px;">    
+                    <tr class="success" style="font-size:14px;">    
                         <td><?php echo $items->UNITNAME; ?></td>
                         <td><?php echo $items->CATEGORYNAME; ?></td>
                         <td><?php echo $items->CANDIDATENAME; ?></td>

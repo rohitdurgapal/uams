@@ -475,4 +475,24 @@ class Start extends CI_Controller {
 
 
 
+
+	//user management
+	function createuser(){
+		$this->check_login();
+		$data['fetch_info']=$this->mm->fetchmainpagedata();
+		$data['active'] = 'createuser';
+		$this->load->view('templates/header');
+		$this->load->view('createuser', $data);
+		$this->load->view('templates/footer');
+
+	}
+	function submituser(){
+		
+	}
+
+
+
+
+
+
 }

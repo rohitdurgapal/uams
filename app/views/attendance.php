@@ -85,7 +85,7 @@
                                   </table>
                                 </th>                
                             </tr>
-                          <tbody id="candidates_here" style="background:linear-gradient(#3D7EAA,#ffe47a)">
+                          <tbody id="candidates_here" style="background:#D3D3D3;">
                           
                           </tbody>
                          </thead> 
