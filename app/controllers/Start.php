@@ -372,7 +372,11 @@ class Start extends CI_Controller {
 
 
 						//delete data from database
-
+	public function d_user($uname){
+		$this->check_login();
+		$this->mm->deleteuser($uname);
+		redirect('start/createuser');
+	}
 
 
 

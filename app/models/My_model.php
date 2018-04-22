@@ -89,6 +89,19 @@ class My_model extends CI_Model{
 				'USER_UPLINE'=>$user_
 			);
 			$bool = $this->db->insert('login', $data);
+			if($bool == true){
+				$data=array(
+					'FNAME'=>'',
+					'LNAME'=>'',
+					'GENDERID'=>'1',
+					'MOBILE_NO'=>'',
+					'MOBILE_VERIFICATION'=>'NO',
+					'EMAIL'=>'',
+					'EMAIL_VERIFICATION'=>'NO',
+					'USERNAME_'=>$username_
+				);
+				$bool=$this->db->insert('registration', $data);
+			}
 			}	
 		return $bool;
 	}
@@ -623,6 +636,16 @@ function fetch_candidates_internal($categ){
 	}	
 
 						//delete data from database
+
+
+
+//delete user management
+	function deleteuser($uname){
+		$this->load->database();
+		$this->db->where('USERNAME_',$uname);
+		$this->db->delete('login');
+		return true;
+	}
 
 
 

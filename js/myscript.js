@@ -422,6 +422,24 @@ $('#frmuser').submit(function(){
 	});
 
 
+
+	//delete user management
+	$('body').on('click','.userdelete', function(){
+		var url_ = site_url_ + '/start/d_user/'+this.id;
+		
+		if(confirm('Do you want to delete this user?')){
+			$(location).attr('href',url_);
+		}
+
+	});
+
+
+
+
+
+
+
+
 	// Delete functions category here
 
 	$('body').on('click','.categoryDelete', function(){
