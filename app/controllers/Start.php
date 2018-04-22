@@ -479,7 +479,9 @@ class Start extends CI_Controller {
 	//user management
 	function createuser(){
 		$this->check_login();
+		$data['type_'] = $this->mm->fetch_type();
 		$data['fetch_info']=$this->mm->fetchmainpagedata();
+		$data['fetch_us']=$this->mm->fetchuserdata();
 		$data['active'] = 'createuser';
 		$this->load->view('templates/header');
 		$this->load->view('createuser', $data);
@@ -487,12 +489,22 @@ class Start extends CI_Controller {
 
 	}
 	function submituser(){
+		$res = $this->mm->submit_user();
+
+		if($res == true){
+			$this->session->set_flashdata('msg_', "Successfully submited.");
+			redirect('start/createuser');
+		} else {
+			$this->session->set_flashdata('msg_', "User name Already Exists. Please try again");
+			redirect('start/createuser');
+		}
 		
 	}
 
+	//delete users
 
 
-
+	
 
 
 }

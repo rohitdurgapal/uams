@@ -164,14 +164,32 @@ $('#showatten').click(function(){
 
 
 
+////for user creation user management
+$('#frmuser').submit(function(){
+		if($.trim($('#uname').val()) == ''){
+			$('#msg_').html('&nbsp;X:Please!..Enter User Name');
+			$('#uname').val('');
+			$('#uname').focus();
+			$bool = false;
+		} else if($.trim($('#cpass').val()) == ''){
+			$('#msg_').html('&nbsp;X:Please!..Enter Password');
+			$('#cpass').val('');
+			$('#cpass').focus();
+			$bool = false;
+		} else {
+			$bool = true;
+		}
+		return $bool;
+	});
 
 
 
 
 
 
+//for registration
 
-//for registration	
+
 	$('#frmRegistration').submit(function(){
 		if($.trim($('#username').val()) == ''){
 			$('#msg_').html('&nbsp;X:Please!..Enter User Name');

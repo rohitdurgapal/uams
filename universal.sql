@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 19, 2018 at 06:02 PM
+-- Generation Time: Apr 22, 2018 at 02:28 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `attendance` (
   KEY `USERNAME_` (`USERNAME_`),
   KEY `CATEGORYID` (`CATEGORYID`),
   KEY `CANDIDATEID` (`CANDIDATEID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=47 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=56 ;
 
 --
 -- Dumping data for table `attendance`
@@ -82,7 +82,16 @@ INSERT INTO `attendance` (`ATTENDANCEID`, `ATTENDANCESTATUS`, `DATE`, `TIME`, `U
 (43, '1', '2018-04-19', '11:27 PM', 2, 7, 19, 'RohitDurgapal'),
 (44, '1', '2018-04-19', '11:27 PM', 2, 7, 20, 'RohitDurgapal'),
 (45, '1', '2018-04-19', '11:27 PM', 2, 7, 21, 'RohitDurgapal'),
-(46, '1', '2018-04-19', '11:27 PM', 2, 7, 22, 'RohitDurgapal');
+(46, '1', '2018-04-19', '11:27 PM', 2, 7, 22, 'RohitDurgapal'),
+(47, '1', '2018-04-20', '09:53 PM', 2, 7, 14, 'RohitDurgapal'),
+(48, '0', '2018-04-20', '09:53 PM', 2, 7, 15, 'RohitDurgapal'),
+(49, '1', '2018-04-20', '09:53 PM', 2, 7, 16, 'RohitDurgapal'),
+(50, '0', '2018-04-20', '09:53 PM', 2, 7, 17, 'RohitDurgapal'),
+(51, '1', '2018-04-20', '09:53 PM', 2, 7, 18, 'RohitDurgapal'),
+(52, '0', '2018-04-20', '09:53 PM', 2, 7, 19, 'RohitDurgapal'),
+(53, '1', '2018-04-20', '09:53 PM', 2, 7, 20, 'RohitDurgapal'),
+(54, '1', '2018-04-20', '09:53 PM', 2, 7, 21, 'RohitDurgapal'),
+(55, '1', '2018-04-20', '09:53 PM', 2, 7, 22, 'RohitDurgapal');
 
 -- --------------------------------------------------------
 
@@ -238,8 +247,13 @@ CREATE TABLE IF NOT EXISTS `login` (
 
 INSERT INTO `login` (`USERNAME_`, `PASSWORD_`, `STATUS`, `USER_UPLINE`, `TYPEID`) VALUES
 ('Harshita', '12345', '1', 'HarshitaDurgapa', 1),
+('Himanshu', '12345', '1', 'RohitDurgapal', 2),
+('Kamika', '12345', '1', 'RohitDurgapal', 2),
+('Kritika', '12345', '1', 'RohitDurgapal', 2),
+('MukeshBadhani', '12345', '1', 'MukeshBadhani', 1),
 ('MukulJoshi', '12345', '1', 'MukulJoshi', 1),
 ('NitinDeepak', '12345', '1', 'NitinDeepak', 1),
+('PawanPandey', '12345', '1', 'PawanPandey', 1),
 ('RohitBisht', '12345', '1', 'RohitBisht', 1),
 ('RohitDurgapal', '12345', '1', 'RohitDurgapal', 1),
 ('SachinRaikwal', '12345', '1', 'SachinRaikwal', 1),
@@ -265,7 +279,7 @@ CREATE TABLE IF NOT EXISTS `registration` (
   PRIMARY KEY (`REGID`),
   KEY `USERNAME_` (`USERNAME_`),
   KEY `GENDERID` (`GENDERID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `registration`
@@ -273,13 +287,15 @@ CREATE TABLE IF NOT EXISTS `registration` (
 
 INSERT INTO `registration` (`REGID`, `FNAME`, `LNAME`, `GENDERID`, `MOBILE_NO`, `MOBILE_VERIFICATION`, `EMAIL`, `EMAIL_VERIFICATION`, `USERNAME_`) VALUES
 (1, 'Nitin', 'Mathur', 1, '9874578457', 'NO', 'nitin@gmail.com', 'NO', 'NitinDeepak'),
-(2, 'Rinku', 'Durgapal', 1, '9675537951', 'NO', 'rohitdurgapal18@gmail.com', 'NO', 'RohitDurgapal'),
+(2, 'Rohit', 'Durgapal', 1, '9675537951', 'NO', 'rohitdurgapal18@gmail.com', 'NO', 'RohitDurgapal'),
 (4, 'Rohit Singh', 'Bisht', 1, '9874578457', 'NO', 'rohit@gmail.com', 'NO', 'RohitBisht'),
 (5, 'Sachin', 'Raikwal', 1, '8745784124', 'NO', 'sachinraikwal@gmail.com', 'NO', 'SachinRaikwal'),
 (6, 'Sandeep Kumar', 'Singh', 1, '8745784124', 'NO', 'sandeep1111@gmail.com', 'NO', 'SandeepKSingh'),
 (7, 'Shakshi', 'Kharkwal', 2, '9874514785', 'NO', 'shakshi123@gmail.com', 'NO', 'ShakshiKharkwal'),
 (8, 'Mukul', 'Joshi', 1, '8457451245', 'NO', 'mukul@gmail.com', 'NO', 'MukulJoshi'),
-(9, '', '', 1, '', 'NO', '', 'NO', 'Harshita');
+(9, '', '', 1, '', 'NO', '', 'NO', 'Harshita'),
+(10, '', '', 1, '', 'NO', '', 'NO', 'PawanPandey'),
+(11, '', '', 1, '', 'NO', '', 'NO', 'MukeshBadhani');
 
 -- --------------------------------------------------------
 

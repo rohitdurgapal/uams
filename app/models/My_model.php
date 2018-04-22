@@ -42,8 +42,8 @@ class My_model extends CI_Model{
 				$data = array(
 				'USERNAME_' => $username_,
 				'PASSWORD_' => $createpwd_,
-				'STATUS'=>$status_,
 				'USER_UPLINE'=>$username_,
+				'STATUS'=>$status_,
 				'TYPEID'=>$type_
 			);
 			$bool = $this->db->insert('login', $data);
@@ -64,6 +64,42 @@ class My_model extends CI_Model{
 		}	
 		return $bool;
 	}
+
+
+
+	//create new user (user management)
+	
+	function submit_user(){
+		$username_ = $this->input->post('uname');
+		$createpwd_ = $this->input->post('cpass');
+		$status_=$this->input->post('sta_');
+		$type_=$this->input->post('type');
+		$user_ = $this->session->userdata('user_');
+		$this->db->where('USERNAME_', $username_);
+		$rs = $this->db->get('login');	
+		if($rs->num_rows() != 0){
+			$bool = false;
+		} else {
+			$bool = true; 
+				$data = array(
+				'USERNAME_' => $username_,
+				'PASSWORD_' => $createpwd_,
+				'TYPEID'=>$type_,
+				'STATUS'=>$status_,
+				'USER_UPLINE'=>$user_
+			);
+			$bool = $this->db->insert('login', $data);
+			}	
+		return $bool;
+	}
+
+
+
+
+
+
+
+
 
 
 	function insertunit(){
@@ -310,7 +346,19 @@ function fetchtype($type='1'){
 	}
 
 
-	function fetchcountry($country=''){
+//for user management
+function fetch_type($type='2'){
+		if($type != ''){
+			$this->db->where('TYPEID',$type);
+		}
+		$query = $this->db->get('user_type');
+		return $query->result();
+	}
+
+
+
+
+function fetchcountry($country=''){
 		if ($country != ''){
 			$this->db->where('COUNTRYID',$country);
 		}
@@ -421,11 +469,6 @@ function fetchtype($type='1'){
 			
 }
 
-
-
-
-
-
 //fetching of unit data from databse
 	function fetchunitdata($unitid='x'){
 		if($unitid != 'x'){
@@ -443,6 +486,26 @@ function fetchtype($type='1'){
 			return $query->result();
 		}
 	}
+
+
+
+
+
+
+
+
+//fetch usermanagement data
+	function fetchuserdata(){
+		$this->db->where('b.USER_UPLINE',$this->session->userdata('user_'));
+		$this->db->select('b.*,c.TYPE');
+		$this->db->from('user_type c');
+		$this->db->join('login b','b.TYPEID=c.TYPEID');
+		$query=$this->db->get();
+		return $query->result();
+	}
+
+
+
 
 //fetching of category data from databse
 	function fetchcategorydata($categoryid='x'){

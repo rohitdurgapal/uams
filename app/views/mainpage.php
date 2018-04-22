@@ -40,7 +40,7 @@
 						</li>
 
 						<li>
-							<a href="<?php echo site_url('start/createuser');?>"<?php if($active == 'createuser'){ echo 'class="active"'; } ?>><i class="fa fa-table nav_icon"></i>Craete New User</a>
+							<a href="<?php echo site_url('start/createuser');?>"<?php if($active == 'createuser'){ echo 'class="active"'; } ?>><i class="fa fa-table nav_icon"></i>Create New User</a>
 						</li>
 
 						<li>
@@ -55,7 +55,7 @@
 					
 				</nav>
 			</div>
-		</div>
+	</div>
 
 
 
@@ -76,16 +76,54 @@
 
 
 			</div>
-
-			
+	</div>
 
 	
+		<div class="header-right">
+			<div class="profile_details_left"><!--notifications of menu start -->
+					<div class="clearfix"> </div>
+			</div>
+				<!--notification menu end -->
+				<div class="profile_details">		
+					<ul>
+						<li class="dropdown profile_details_drop">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<div class="profile_img">	
+									<span class="prfil-img"><img src="images/a.png" alt=""> </span> 
+									<div class="user-name">
+										<?php 
+        									if(count($fetch_info) != 0)
+        									{
+           								foreach($fetch_info as $items)
+           									{
+        								;?> 
 
 
-	</div>
-			<div class="header-right">
+										<p style="font-size:28px;"><?php echo $items->USER_UPLINE; ?></p>
+										<span style="font-size:23px;color:blue;">USER UPLINE</span>
+										<?php
+            								}
+        									}
+        								else{ ?>
+        							
+
+        								<?php } ?>
+
+									</div>
+									<div class="clearfix"></div>	
+								</div>	
+							</a>
+							
+						</li>
+					</ul>
+				</div>
+		</div>
+
+
+
+	<div class="header-right">
 				<div class="profile_details_left"><!--notifications of menu start -->
-							<div class="clearfix"> </div>
+					<div class="clearfix"> </div>
 				</div>
 				<!--notification menu end -->
 				<div class="profile_details">		
@@ -103,8 +141,8 @@
         								;?> 
 
 
-										<p style="font-size:28px;"><?php echo $items->USERNAME_; ?></p>
-										<span style="font-size:22px;">Administrator</span>
+										<p style="font-size:28px;margin-left:-300px;"><?php echo $items->USERNAME_; ?></p>
+										<span style="font-size:23px;color:blue;margin-left:-300px;"><?php echo $items->TYPE; ?></span>
 										<?php
             								}
         									}
@@ -122,13 +160,13 @@
 					</ul>
 				</div>
 												
-			 </div>
+		</div>
 			                    	
 
 
 </div>
-
 </div>
+
 
 
 
