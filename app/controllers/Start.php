@@ -380,6 +380,22 @@ class Start extends CI_Controller {
 
 
 
+	//block user
+	public function b_user($uname){
+		$this->check_login();
+		$this->mm->blockuser($uname);
+		redirect('start/createuser');
+	}
+
+
+	//unblock user
+	public function ub_user($uname){
+		$this->check_login();
+		$this->mm->unblockuser($uname);
+		redirect('start/createuser');
+	}	
+
+
 	public function d_unit($unitid){
 		$this->check_login();
 

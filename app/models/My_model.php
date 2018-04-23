@@ -649,6 +649,34 @@ function fetch_candidates_internal($categ){
 
 
 
+
+//blockuser
+	function blockuser($uname){
+		$this->db->where('USERNAME_',$uname);
+		$data = array(
+				'STATUS'=>0
+			);
+		$this->db->update('login',$data);
+		return $bool;
+	}
+
+
+
+	//unblockuser
+	function unblockuser($uname){
+		$this->db->where('USERNAME_',$uname);
+		$data = array(
+				'STATUS'=>1
+			);
+		$this->db->update('login',$data);
+		return $bool;
+	}
+
+
+
+
+
+
 	//delete unit
 function deleteunit($unitid){
 	$this->load->database();

@@ -9,7 +9,7 @@
 
             <div class="form-body">
                 <div class="form-group">
-                    <label for="selectunit">Select Unit <span style="font-size:13px;color:red">*Required</span></label>
+                    <label for="unit">Select Unit <span style="font-size:13px;color:red">*Required</span></label>
                         <select  id="unit" name="unit" class="form-control">
                             <option selected value="">Select Unit</option>
                             <?php foreach ($unit_ as $item){?>

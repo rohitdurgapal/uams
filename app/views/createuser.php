@@ -87,7 +87,9 @@
                     ?>
 
                     <td>
-                    <a href="#" id="<?php echo $items->USERNAME_;?>" class="userdelete">Delete</a>
+                    <a href="#" id="<?php echo $items->USERNAME_;?>" class="blockuser">Block</a> |
+                    <a href="#" id="<?php echo $items->USERNAME_;?>" class="unblockuser">Unblock</a> |    
+                    <a href="#" id="<?php echo $items->USERNAME_;?>" class="userdelete" >Delete</a>
                     </td>
                 </tr>
         <?php

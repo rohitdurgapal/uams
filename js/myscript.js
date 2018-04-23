@@ -430,9 +430,30 @@ $('#frmuser').submit(function(){
 		if(confirm('Do you want to delete this user?')){
 			$(location).attr('href',url_);
 		}
+	});
+
+
+	//block user management
+	$('body').on('click','.blockuser', function(){
+		var url_ = site_url_ + '/start/b_user/'+this.id;
+		
+		if(confirm('Do you want to Block this user?')){
+			$(location).attr('href',url_);
+		}
 
 	});
 
+
+
+	//unblock user management
+		$('body').on('click','.unblockuser', function(){
+		var url_ = site_url_ + '/start/ub_user/'+this.id;
+		
+		if(confirm('Do you want to Unblock this user?')){
+			$(location).attr('href',url_);
+		}
+
+	});
 
 
 
