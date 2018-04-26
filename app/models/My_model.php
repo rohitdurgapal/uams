@@ -9,15 +9,17 @@ class My_model extends CI_Model{
 
 		$this->db->where('USERNAME_', $user);
 		$this->db->where('PASSWORD_', $pwd);
-		$this->db->select('a.USERNAME_, b.TYPE');
+		$this->db->where('STATUS', 1);
+		$this->db->select('a.USERNAME_, b.TYPE, a.USER_UPLINE');
 		$this->db->from('login a');
 		$this->db->join('user_type b', 'b.TYPEID=a.TYPEID');
 		$query = $this->db->get();
-		
+		//echo $this->db->last_query(); die();
 		if($query->num_rows() != 0){
 			$row = $query->row();
 			$this->session->set_userdata('user_', $row->USERNAME_);
 			$this->session->set_userdata('user_type', $row->TYPE);
+			$this->session->set_userdata('user_upline', $row->USER_UPLINE);
 			$bool_ = true;
 		} else {
 			$bool_ = false;
@@ -190,6 +192,24 @@ return $bool;
 		return $bool;		
 	}
 
+//insertsharing
+	function insertsharing(){
+		$category_ = $this->input->post('category');
+		$sharingname_ = $this->input->post('share');
+		$user_ = $this->session->userdata('user_');
+		$data=array(
+			'CATEGORYID'=>$category_,
+			'USERNAME_'=>$sharingname_,
+			'USER_UPLINE'=>$user_
+	);
+		$bool=$this->db->insert('sharingcandidate', $data);	
+		return $bool;	
+	}
+
+
+
+
+
 
 	//insert attendance
 	function insertattendance(){
@@ -211,7 +231,7 @@ return $bool;
 
 				if($rs->num_rows() !=0){
 					foreach ($candidate as $item) {
-							$this->db->where('USERNAME_', $this->session->userdata('user_'));
+							$this->db->where('USERNAME_', $this->session->userdata('user_upline'));
 							$this->db->where('CATEGORYID',$category_);
 							$this->db->where('UNITID',$unitid_);
 							$this->db->where('DATE',$date_);
@@ -392,8 +412,9 @@ function fetchcountry($country=''){
 		if ($unit !=''){
 			$this->db->where ('UNITID',$unit);
 		}
-		$this->db->where ('USERNAME_',$this->session->userdata('user_'));
+		$this->db->where ('USERNAME_',$this->session->userdata('user_upline'));
 		$query=$this->db->get('unit');
+		
 		return $query->result();
 	}
 
@@ -412,14 +433,14 @@ function fetchcountry($country=''){
 		if ($category !=''){
 			$this->db->where ('CATEGORYID',$category);
 		}
-		$this->db->where ('USERNAME_',$this->session->userdata('user_'));
+		$this->db->where ('USERNAME_',$this->session->userdata('user_upline'));
 		$query=$this->db->get('category');
 		return $query->result();	
 	}
 
 	function fetchcategorybyunit($unit){
 		$this->db->where ('UNITID',$unit);
-		$this->db->where ('USERNAME_',$this->session->userdata('user_'));
+		$this->db->where ('USERNAME_',$this->session->userdata('user_upline'));
 
 		$query=$this->db->get('category');
 		return $query->result();	
@@ -433,6 +454,15 @@ function fetchcountry($country=''){
 		$query=$this->db->get('gender');
 		return $query->result();	
 	}
+	function fetchshare($share=''){
+		if ($share !=''){
+			$this->db->where ('USERNAME_',$share);
+		}
+		$query=$this->db->get('login');
+		return $query->result();	
+	}
+
+
 
 
 //showing reports
@@ -440,7 +470,7 @@ function fetchcountry($country=''){
 
 
 	function fetchunitcategorydata(){
-		$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
+		$this->db->where('a.USER_UPLINE', $this->session->userdata('user_'));
 		$this->db->select( 'a.* ,b.UNITID,b.UNITNAME');
 		$this->db->from('category a');
 		$this->db->join('unit b', 'a.UNITID=b.UNITID');
@@ -452,8 +482,8 @@ function fetchcountry($country=''){
 
 	function fetchcan(){
 		$category_ = $this->input->post('category');
-		$user_ = $this->session->userdata('user_');
-		$this->db->where('USERNAME_', $this->session->userdata('user_'));
+		$user_ = $this->session->userdata('user_uline');
+		$this->db->where('USERNAME_', $this->session->userdata('user_upline'));
 		$this->db->where('CATEGORYID',$category_);
 		$this->db->select('a.CANDIDATEID,a.CANDIDATENAME,a.DOB,a.MOBILENO,a.EMAIL');
 		$this->db->from('candidate a');
@@ -499,6 +529,24 @@ function fetchcountry($country=''){
 			return $query->result();
 		}
 	}
+
+	function fetchsharedata($sharingid='x'){
+		if($sharingid !='x'){
+		$this->db->where('SHARINGID', $sharingid);	
+		}
+		$this->db->where('b.USERNAME_', $this->session->userdata('user_'));
+		$this->db->select('b.*,c.CATEGORYNAME');
+		$this->db->from('category c');
+		$this->db->join('sharingcandidate b','b.CATEGORYID=c.CATEGORYID');
+		$query = $this->db->get();
+		if($sharingid !='x'){
+			return $query->row();
+		}else{
+			return $query->result();	
+		}
+		
+	}
+
 
 
 
@@ -585,7 +633,7 @@ function fetchadditional(){
 function fetch_candidates(){
 		$unitid_ = $this->input->post('unit');
 		$category_ = $this->input->post('category');
-		$user_ = $this->session->userdata('user_');
+		$user_ = $this->session->userdata('user_upline');
 		$candidate = $this->fetch_candidates_internal($category_);
 		$date_ = $this->input->post('date');
 		$time__=$this->input->post('time_');
@@ -646,6 +694,14 @@ function fetch_candidates_internal($categ){
 		$this->db->delete('login');
 		return true;
 	}
+
+//delete sharing authority permision
+	function deleteshare($sharingid){
+		$this->load->database();
+		$this->db->where('SHARINGID',$sharingid);
+		$this->db->delete('sharingcandidate');
+		return true;
+	}	
 
 
 

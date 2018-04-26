@@ -182,6 +182,24 @@ $('#frmuser').submit(function(){
 		return $bool;
 	});
 
+//for sharing candidates
+$('#shareauthority').submit(function(){
+		if($.trim($('#category').val()) == ''){
+			$('#msg_').html('&nbsp;X:Please!..Select Category');
+			$('#category').val('');
+			$('#category').focus();
+			$bool = false;
+		} else if($.trim($('#share').val()) == ''){
+			$('#msg_').html('&nbsp;X:Please!..Select User Name');
+			$('#share').val('');
+			$('#share').focus();
+			$bool = false;
+		} else {
+			$bool = true;
+		}
+		return $bool;
+	});
+
 
 
 
@@ -420,6 +438,19 @@ $('#frmuser').submit(function(){
 		}
 
 	});
+
+
+	//share user and category delete
+	$('body').on('click','.sharedelete', function(){
+		var url_ = site_url_ + '/start/d_share/'+this.id;
+		
+		if(confirm('Do you want to delete this permission?')){
+			$(location).attr('href',url_);
+		}
+
+	});
+
+
 
 
 

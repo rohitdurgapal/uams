@@ -114,6 +114,7 @@ class Start extends CI_Controller {
 //check at login time
 	function signin(){
 		$res_ = $this->mm->authenticate();
+		
 		if($res_ == true){
 			redirect('start/index1');
 		} else {
@@ -229,6 +230,19 @@ class Start extends CI_Controller {
 		}
 
 	}
+
+//submit data to sharing table
+	function sharing(){
+			$res = $this->mm->insertsharing();
+			if($res == true){
+			redirect('start/share');
+		} else {
+			$this->session->set_flashdata('msg_', "Sharing is not possible. Please try again");
+			redirect('start/share');
+		}		
+	}
+
+
 
 //add and update additional information
 	function updateadditional(){
@@ -380,6 +394,16 @@ class Start extends CI_Controller {
 
 
 
+	//delete shareing authority permission
+	public function d_share($sharingid){
+		$this->check_login();
+		$this->mm->deleteshare($sharingid);
+		redirect('start/sharing');
+	}
+
+
+
+
 	//block user
 	public function b_user($uname){
 		$this->check_login();
@@ -521,7 +545,20 @@ class Start extends CI_Controller {
 		
 	}
 
-	//delete users
+	//sharing authority
+	function share(){
+		$this->check_login();
+		//$data['fetch_unit']=$this->mm->fetchunitdata();
+		$data['share_']=$this->mm->fetchshare();
+		$data['category_']=$this->mm->fetchcategory();
+		$data['fetch_info']=$this->mm->fetchmainpagedata();
+		$data['fetch_share']=$this->mm->fetchsharedata();
+		$data['active'] = 'share';
+		$this->load->view('templates/header');
+		$this->load->view('sharing', $data);
+		$this->load->view('templates/footer');
+
+	}
 
 
 	

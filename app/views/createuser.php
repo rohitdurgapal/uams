@@ -14,7 +14,7 @@
 
             <div class="form-group"> 
                 <label for="cpass">Password <span style="font-size:13px;color:red">*Required</span></label> 
-                <input type="text" class="form-control" id="cpass" name="cpass" placeholder="Password"> 
+                <input type="password" class="form-control" id="cpass" name="cpass" placeholder="Password"> 
             </div>
 
             <div class="form-group">

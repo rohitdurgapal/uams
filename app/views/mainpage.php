@@ -5,7 +5,6 @@
 				
 				<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
 					<ul class="nav" id="side-menu">
-						
 
 						<li>
 							<a href="<?php echo site_url('start/index1');?>"<?php if($active == 'dashboard'){ echo 'class="active"'; } ?>><i class="fa fa-home nav_icon"></i>Dashboard</a>
@@ -16,12 +15,16 @@
 							<a href="<?php echo site_url('start/addadditional');?>"<?php if($active == 'addadditional'){ echo 'class="active"'; } ?>><i class="fa fa-book nav_icon"></i>Add Additional Information</a>
 						</li>
 						
+						<?php if($this->session->userdata('user_type') != 'ADMIN'){?>
+							<li>
+							<a href="<?php echo site_url('start/attendance');?>"<?php if($active == 'attendance'){ echo 'class="active"'; } ?>><i class="fa fa-table nav_icon"></i>Take Attendance</a>
+						</li>
+						<?php } else { ?>
 						
 
 						<li>
 							<a href="<?php echo site_url('start/unit');?>"<?php if($active == 'unit'){ echo 'class="active"'; } ?>><i class="fa fa-book nav_icon"></i>Add New Unit</a>
 						</li>
-						
 						
 
 						<li>
@@ -40,9 +43,13 @@
 						</li>
 
 						<li>
-							<a href="<?php echo site_url('start/createuser');?>"<?php if($active == 'createuser'){ echo 'class="active"'; } ?>><i class="fa fa-book nav_icon"></i>Create New User</a>
+							<a href="<?php echo site_url('start/createuser');?>"<?php if($active == 'createuser'){ echo 'class="active"'; } ?>><i class="fa fa-book nav_icon"></i>Add New User</a>
 						</li>
 
+						<li>
+							<a href="<?php echo site_url('start/share');?>"<?php if($active == 'share'){ echo 'class="active"'; } ?>><i class="fa fa-book nav_icon"></i>Share Authority</a>
+						</li>
+						<?php } ?>
 						<li>
 							<a href="<?php echo site_url('start/logout');?>"<?php if($active == 'logout'){ echo 'class="active"'; } ?>><i class="fa fa-table nav_icon"></i>Logout</a>
 						</li>

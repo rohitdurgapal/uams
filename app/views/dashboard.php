@@ -34,7 +34,7 @@
 								<div style="background:linear-gradient(#ddd6f3,#faaca8") class="stats-left ">
 									<h5 style="font-size:21px;color:blue;">All</h5>
 									<h5 style="font-size:22px;color:white;font-weight:bold">CANDIDATES</h5>
-									<h5 style="font-size:20px;color:red;">UNITS AND CATEGORY WISE</h5>
+									<h5 style="font-size:20px;color:white;">UNITS AND CATEGORY WISE</h5>
 								</div>
 
 								<div class="stats-right" style="background:blue;">
@@ -52,7 +52,7 @@
 								<div style="background:linear-gradient(#ddd6f3,#faaca8") class="stats-left">
 									<h5 style="font-size:21px;color:blue;">All</h5>
 									<h5 style="font-size:22px;color:white;font-weight:bold">CANDIDATES</h5>
-									<h5 style="font-size:20px;color:red;">DATE WISE ATTENDANCE</h5>
+									<h5 style="font-size:20px;color:white;">DATE DAY WISE ATTENDANCE</h5>
 								</div>
 
 								<div class="stats-right" style="background:blue;">
@@ -60,24 +60,9 @@
 								</div>	
 							</div>	
 							</a>
-
-							
-							
-
-					
-					
-
+				
 						</div>
 
-
-
-
-
-
-
-
-
-			
 		</div>
 </div>
 
