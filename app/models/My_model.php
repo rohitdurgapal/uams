@@ -14,7 +14,6 @@ class My_model extends CI_Model{
 		$this->db->from('login a');
 		$this->db->join('user_type b', 'b.TYPEID=a.TYPEID');
 		$query = $this->db->get();
-		//echo $this->db->last_query(); die();
 		if($query->num_rows() != 0){
 			$row = $query->row();
 			$this->session->set_userdata('user_', $row->USERNAME_);
@@ -457,6 +456,7 @@ function fetchcountry($country=''){
 	function fetchshare($share=''){
 		if ($share !=''){
 			$this->db->where ('USERNAME_',$share);
+			//$this->db->where('TYPE', ADMIN);
 		}
 		$query=$this->db->get('login');
 		return $query->result();	
@@ -470,7 +470,8 @@ function fetchcountry($country=''){
 
 
 	function fetchunitcategorydata(){
-		$this->db->where('a.USER_UPLINE', $this->session->userdata('user_'));
+		//$this->db->where('a.USER_UPLINE', $this->session->userdata('user_upline'));
+		$this->db->where('a.USERNAME_', $this->session->userdata('user_upline'));
 		$this->db->select( 'a.* ,b.UNITID,b.UNITNAME');
 		$this->db->from('category a');
 		$this->db->join('unit b', 'a.UNITID=b.UNITID');
@@ -482,7 +483,7 @@ function fetchcountry($country=''){
 
 	function fetchcan(){
 		$category_ = $this->input->post('category');
-		$user_ = $this->session->userdata('user_uline');
+		$user_ = $this->session->userdata('user_upline');
 		$this->db->where('USERNAME_', $this->session->userdata('user_upline'));
 		$this->db->where('CATEGORYID',$category_);
 		$this->db->select('a.CANDIDATEID,a.CANDIDATENAME,a.DOB,a.MOBILENO,a.EMAIL');
@@ -490,9 +491,6 @@ function fetchcountry($country=''){
 		$query = $this->db->get();
 		return $query->result();
 	}
-
-
-
 
 	function fetchattedance(){
 		$unitid_ = $this->input->post('unit');
@@ -535,6 +533,7 @@ function fetchcountry($country=''){
 		$this->db->where('SHARINGID', $sharingid);	
 		}
 		$this->db->where('b.USERNAME_', $this->session->userdata('user_'));
+		$this->db->where('b.USERNAME_', $this->session->userdata('user_'));
 		$this->db->select('b.*,c.CATEGORYNAME');
 		$this->db->from('category c');
 		$this->db->join('sharingcandidate b','b.CATEGORYID=c.CATEGORYID');
@@ -557,7 +556,9 @@ function fetchcountry($country=''){
 
 //fetch usermanagement data
 	function fetchuserdata(){
-		$this->db->where('b.USER_UPLINE',$this->session->userdata('user_'));
+		$this->db->where('b.USER_UPLINE',$this->session->userdata('user_upline'));
+		//$this->db->where('TYPE', USER);
+		//$this->db->where('TYPE', USER);
 		$this->db->select('b.*,c.TYPE');
 		$this->db->from('user_type c');
 		$this->db->join('login b','b.TYPEID=c.TYPEID');
@@ -663,7 +664,7 @@ function fetch_candidates(){
 
 			} else {
 			$this->db->where('a.CATEGORYID', $this->input->post('category'));
-			$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
+			$this->db->where('a.USERNAME_', $this->session->userdata('user_upline'));
 			$this->db->select('a.CANDIDATEID,a.CANDIDATENAME');
 			$this->db->from('candidate a');
 			$query=$this->db->get();	
@@ -676,7 +677,7 @@ function fetch_candidates(){
 
 function fetch_candidates_internal($categ){
 			$this->db->where('a.CATEGORYID', $categ);
-		$this->db->where('a.USERNAME_', $this->session->userdata('user_'));
+		$this->db->where('a.USERNAME_', $this->session->userdata('user_upline'));
 		$this->db->select('a.CANDIDATEID,a.CANDIDATENAME');
 		$this->db->from('candidate a');
 		$query=$this->db->get();
