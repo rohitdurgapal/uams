@@ -455,10 +455,16 @@ function fetchcountry($country=''){
 	}
 	function fetchshare($share=''){
 		if ($share !=''){
-			$this->db->where ('USERNAME_',$share);
-			//$this->db->where('TYPE', ADMIN);
+			//$this->db->where('TYPE','ADMIN');
+			//$this->db->get('user_type');
+			$this->db->where ('TYPE','ADMIN');
+			//$this->db->where('TYPE','ADMIN');
 		}
-		$query=$this->db->get('login');
+		$this->db->select('a.*, b.TYPE');
+		$this->db->from('login a');
+		$this->db->join('user_type b', 'b.TYPEID = a.TYPEID');
+		$query=$this->db->get();
+		//$query=$this->db->get('user_type');
 		return $query->result();	
 	}
 
@@ -529,11 +535,7 @@ function fetchcountry($country=''){
 	}
 
 	function fetchsharedata($sharingid='x'){
-		if($sharingid !='x'){
-		$this->db->where('SHARINGID', $sharingid);	
-		}
-		$this->db->where('b.USERNAME_', $this->session->userdata('user_'));
-		$this->db->where('b.USERNAME_', $this->session->userdata('user_'));
+		$this->db->where('b.USER_UPLINE', $this->session->userdata('user_upline'));
 		$this->db->select('b.*,c.CATEGORYNAME');
 		$this->db->from('category c');
 		$this->db->join('sharingcandidate b','b.CATEGORYID=c.CATEGORYID');
@@ -543,7 +545,6 @@ function fetchcountry($country=''){
 		}else{
 			return $query->result();	
 		}
-		
 	}
 
 
@@ -557,8 +558,7 @@ function fetchcountry($country=''){
 //fetch usermanagement data
 	function fetchuserdata(){
 		$this->db->where('b.USER_UPLINE',$this->session->userdata('user_upline'));
-		//$this->db->where('TYPE', USER);
-		//$this->db->where('TYPE', USER);
+		$this->db->where('TYPE', 'USER');
 		$this->db->select('b.*,c.TYPE');
 		$this->db->from('user_type c');
 		$this->db->join('login b','b.TYPEID=c.TYPEID');
@@ -696,16 +696,13 @@ function fetch_candidates_internal($categ){
 		return true;
 	}
 
-//delete sharing authority permision
+//delete sharing permission
 	function deleteshare($sharingid){
 		$this->load->database();
 		$this->db->where('SHARINGID',$sharingid);
 		$this->db->delete('sharingcandidate');
 		return true;
 	}	
-
-
-
 
 //blockuser
 	function blockuser($uname){

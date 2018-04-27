@@ -64,7 +64,7 @@
                     <td><?php echo $items->CATEGORYNAME; ?></td>
                     <td><?php echo $items->USERNAME_; ?></td>
                     <td><?php echo $items->USER_UPLINE; ?></td>
-                    <?php 
+                     <?php 
                         $data=array(
                             $items->SHARINGID,
                             $items->CATEGORYNAME,
@@ -72,7 +72,6 @@
                             $items->USER_UPLINE
                         );
                     ?>
-
                     <td> 
                         <a href="#" id="<?php echo $items->SHARINGID;?>" class="sharedelete">Delete</a>
                     </td>

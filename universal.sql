@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2018 at 03:11 PM
+-- Generation Time: Apr 27, 2018 at 11:46 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -39,58 +39,12 @@ CREATE TABLE IF NOT EXISTS `attendance` (
   KEY `USERNAME_` (`USERNAME_`),
   KEY `CATEGORYID` (`CATEGORYID`),
   KEY `CANDIDATEID` (`CANDIDATEID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=56 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=192 ;
 
 --
 -- Dumping data for table `attendance`
 --
 
-INSERT INTO `attendance` (`ATTENDANCEID`, `ATTENDANCESTATUS`, `DATE`, `TIME`, `UNITID`, `CATEGORYID`, `CANDIDATEID`, `USERNAME_`) VALUES
-(10, '1', '2018-04-18', '02:15 PM', 2, 7, 14, 'RohitDurgapal'),
-(11, '1', '2018-04-18', '02:15 PM', 2, 7, 15, 'RohitDurgapal'),
-(12, '1', '2018-04-18', '02:15 PM', 2, 7, 16, 'RohitDurgapal'),
-(13, '1', '2018-04-18', '02:15 PM', 2, 7, 17, 'RohitDurgapal'),
-(14, '1', '2018-04-18', '02:15 PM', 2, 7, 18, 'RohitDurgapal'),
-(15, '1', '2018-04-18', '02:15 PM', 2, 7, 19, 'RohitDurgapal'),
-(16, '1', '2018-04-18', '02:15 PM', 2, 7, 20, 'RohitDurgapal'),
-(17, '1', '2018-04-18', '02:15 PM', 2, 7, 21, 'RohitDurgapal'),
-(18, '1', '2018-04-18', '02:15 PM', 2, 7, 22, 'RohitDurgapal'),
-(20, '0', '2018-04-19', '11:19 PM', 2, 7, 14, 'RohitDurgapal'),
-(21, '0', '2018-04-19', '11:19 PM', 2, 7, 15, 'RohitDurgapal'),
-(22, '0', '2018-04-19', '11:19 PM', 2, 7, 16, 'RohitDurgapal'),
-(23, '1', '2018-04-19', '11:19 PM', 2, 7, 17, 'RohitDurgapal'),
-(24, '1', '2018-04-19', '11:19 PM', 2, 7, 18, 'RohitDurgapal'),
-(25, '0', '2018-04-19', '11:19 PM', 2, 7, 19, 'RohitDurgapal'),
-(26, '0', '2018-04-19', '11:19 PM', 2, 7, 20, 'RohitDurgapal'),
-(27, '0', '2018-04-19', '11:19 PM', 2, 7, 21, 'RohitDurgapal'),
-(28, '0', '2018-04-19', '11:19 PM', 2, 7, 22, 'RohitDurgapal'),
-(29, '1', '2018-04-19', '11:25 PM', 2, 7, 14, 'RohitDurgapal'),
-(30, '1', '2018-04-19', '11:25 PM', 2, 7, 15, 'RohitDurgapal'),
-(31, '1', '2018-04-19', '11:25 PM', 2, 7, 16, 'RohitDurgapal'),
-(32, '1', '2018-04-19', '11:25 PM', 2, 7, 17, 'RohitDurgapal'),
-(33, '1', '2018-04-19', '11:25 PM', 2, 7, 18, 'RohitDurgapal'),
-(34, '1', '2018-04-19', '11:25 PM', 2, 7, 19, 'RohitDurgapal'),
-(35, '1', '2018-04-19', '11:25 PM', 2, 7, 20, 'RohitDurgapal'),
-(36, '1', '2018-04-19', '11:25 PM', 2, 7, 21, 'RohitDurgapal'),
-(37, '1', '2018-04-19', '11:25 PM', 2, 7, 22, 'RohitDurgapal'),
-(38, '1', '2018-04-19', '11:27 PM', 2, 7, 14, 'RohitDurgapal'),
-(39, '1', '2018-04-19', '11:27 PM', 2, 7, 15, 'RohitDurgapal'),
-(40, '1', '2018-04-19', '11:27 PM', 2, 7, 16, 'RohitDurgapal'),
-(41, '1', '2018-04-19', '11:27 PM', 2, 7, 17, 'RohitDurgapal'),
-(42, '1', '2018-04-19', '11:27 PM', 2, 7, 18, 'RohitDurgapal'),
-(43, '1', '2018-04-19', '11:27 PM', 2, 7, 19, 'RohitDurgapal'),
-(44, '1', '2018-04-19', '11:27 PM', 2, 7, 20, 'RohitDurgapal'),
-(45, '1', '2018-04-19', '11:27 PM', 2, 7, 21, 'RohitDurgapal'),
-(46, '1', '2018-04-19', '11:27 PM', 2, 7, 22, 'RohitDurgapal'),
-(47, '1', '2018-04-20', '09:53 PM', 2, 7, 14, 'RohitDurgapal'),
-(48, '0', '2018-04-20', '09:53 PM', 2, 7, 15, 'RohitDurgapal'),
-(49, '1', '2018-04-20', '09:53 PM', 2, 7, 16, 'RohitDurgapal'),
-(50, '0', '2018-04-20', '09:53 PM', 2, 7, 17, 'RohitDurgapal'),
-(51, '1', '2018-04-20', '09:53 PM', 2, 7, 18, 'RohitDurgapal'),
-(52, '0', '2018-04-20', '09:53 PM', 2, 7, 19, 'RohitDurgapal'),
-(53, '1', '2018-04-20', '09:53 PM', 2, 7, 20, 'RohitDurgapal'),
-(54, '1', '2018-04-20', '09:53 PM', 2, 7, 21, 'RohitDurgapal'),
-(55, '1', '2018-04-20', '09:53 PM', 2, 7, 22, 'RohitDurgapal');
 
 -- --------------------------------------------------------
 
@@ -111,22 +65,12 @@ CREATE TABLE IF NOT EXISTS `candidate` (
   KEY `CATEGORYID` (`CATEGORYID`),
   KEY `GENDERID` (`GENDERID`),
   KEY `USERNAME_` (`USERNAME_`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `candidate`
 --
 
-INSERT INTO `candidate` (`CANDIDATEID`, `CANDIDATENAME`, `GENDERID`, `MOBILENO`, `DOB`, `EMAIL`, `CATEGORYID`, `USERNAME_`) VALUES
-(14, 'Rohit', 1, '9547845124', '1998-08-27', '', 7, 'RohitDurgapal'),
-(15, 'Rohit Bisht', 1, '', '1996-12-12', '', 7, 'RohitDurgapal'),
-(16, 'Sachin', 1, '', '2018-04-17', '', 7, 'RohitDurgapal'),
-(17, 'Sandeep', 1, '', '2018-04-17', '', 7, 'RohitDurgapal'),
-(18, 'Shakshi', 2, '', '2018-04-17', '', 7, 'RohitDurgapal'),
-(19, 'Raj', 1, '', '2018-04-17', '', 7, 'RohitDurgapal'),
-(20, 'Rakesh', 1, '', '2018-04-17', '', 7, 'RohitDurgapal'),
-(21, 'Harshita', 2, '', '2018-04-17', '', 7, 'RohitDurgapal'),
-(22, 'Priyanka', 2, '', '2018-04-17', '', 7, 'RohitDurgapal');
 
 -- --------------------------------------------------------
 
@@ -143,17 +87,12 @@ CREATE TABLE IF NOT EXISTS `category` (
   PRIMARY KEY (`CATEGORYID`),
   KEY `USERNAME_` (`USERNAME_`),
   KEY `UNITID` (`UNITID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`CATEGORYID`, `CATEGORYNAME`, `PURPOSE`, `USERNAME_`, `UNITID`) VALUES
-(7, 'Lab Schedule', '', 'RohitDurgapal', 2),
-(8, 'Viva', '', 'RohitDurgapal', 2),
-(9, 'BCA', '', 'RohitDurgapal', 2),
-(10, 'MCA', '', 'RohitDurgapal', 2);
 
 -- --------------------------------------------------------
 
@@ -238,14 +177,6 @@ CREATE TABLE IF NOT EXISTS `login` (
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`USERNAME_`, `PASSWORD_`, `STATUS`, `USER_UPLINE`, `TYPEID`) VALUES
-('Himani', '12345', '1', 'RohitDurgapal', 2),
-('NitinDeepak', '12345', '1', 'NitinDeepak', 1),
-('RohitBisht', '12345', '1', 'RohitBisht', 1),
-('RohitDurgapal', '12345', '1', 'RohitDurgapal', 1),
-('SachinRaikwal', '12345', '1', 'SachinRaikwal', 1),
-('SandeepKSingh', '12345', '1', 'SandeepKSingh', 1),
-('ShakshiKharkwal', '12345', '1', 'ShakshiKharkwal', 1);
 
 -- --------------------------------------------------------
 
@@ -266,20 +197,12 @@ CREATE TABLE IF NOT EXISTS `registration` (
   PRIMARY KEY (`REGID`),
   KEY `USERNAME_` (`USERNAME_`),
   KEY `GENDERID` (`GENDERID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `registration`
 --
 
-INSERT INTO `registration` (`REGID`, `FNAME`, `LNAME`, `GENDERID`, `MOBILE_NO`, `MOBILE_VERIFICATION`, `EMAIL`, `EMAIL_VERIFICATION`, `USERNAME_`) VALUES
-(1, 'Nitin', 'Mathur', 1, '9874578457', 'NO', 'nitin@gmail.com', 'NO', 'NitinDeepak'),
-(2, 'Rohit', 'Durgapal', 1, '9675537951', 'NO', 'rohitdurgapal18@gmail.com', 'NO', 'RohitDurgapal'),
-(4, 'Rohit Singh', 'Bisht', 1, '9874578457', 'NO', 'rohit@gmail.com', 'NO', 'RohitBisht'),
-(5, 'Sachin', 'Raikwal', 1, '8745784124', 'NO', 'sachinraikwal@gmail.com', 'NO', 'SachinRaikwal'),
-(6, 'Sandeep Kumar', 'Singh', 1, '8745784124', 'NO', 'sandeep1111@gmail.com', 'NO', 'SandeepKSingh'),
-(7, 'Shakshi', 'Kharkwal', 2, '9874514785', 'NO', 'shakshi123@gmail.com', 'NO', 'ShakshiKharkwal'),
-(14, '', '', 1, '', 'NO', '', 'NO', 'Himani');
 
 -- --------------------------------------------------------
 
@@ -288,14 +211,14 @@ INSERT INTO `registration` (`REGID`, `FNAME`, `LNAME`, `GENDERID`, `MOBILE_NO`, 
 --
 
 CREATE TABLE IF NOT EXISTS `sharingcandidate` (
-  `SHARINGID` int(5) NOT NULL,
+  `SHARINGID` int(5) NOT NULL AUTO_INCREMENT,
   `CATEGORYID` int(5) NOT NULL,
   `USERNAME_` varchar(15) NOT NULL,
   `USER_UPLINE` varchar(15) NOT NULL,
   PRIMARY KEY (`SHARINGID`),
   KEY `CATEGORYID` (`CATEGORYID`),
   KEY `USERNAME_` (`USERNAME_`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `sharingcandidate`
@@ -365,20 +288,12 @@ CREATE TABLE IF NOT EXISTS `unit` (
   PRIMARY KEY (`UNITID`),
   KEY `USERNAME_` (`USERNAME_`),
   KEY `STATEID` (`STATEID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `unit`
 --
 
-INSERT INTO `unit` (`UNITID`, `UNITNAME`, `USERNAME_`, `STATEID`) VALUES
-(2, 'ProjectWork', 'RohitDurgapal', 16),
-(3, 'Amrapali Institutes', 'RohitDurgapal', 44),
-(4, 'Dolphin', 'RohitDurgapal', 35),
-(5, 'BFIT', 'RohitDurgapal', 33),
-(6, 'SSJ ', 'RohitDurgapal', 31),
-(7, 'DSB', 'RohitDurgapal', 33),
-(8, 'MBPG', 'RohitDurgapal', 34);
 
 -- --------------------------------------------------------
 

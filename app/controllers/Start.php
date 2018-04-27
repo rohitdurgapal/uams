@@ -392,13 +392,11 @@ class Start extends CI_Controller {
 		redirect('start/createuser');
 	}
 
-
-
-	//delete shareing authority permission
+//delete sharing permission
 	public function d_share($sharingid){
 		$this->check_login();
 		$this->mm->deleteshare($sharingid);
-		redirect('start/sharing');
+		redirect('start/share');
 	}
 
 
@@ -548,8 +546,7 @@ class Start extends CI_Controller {
 	//sharing authority
 	function share(){
 		$this->check_login();
-		//$data['fetch_unit']=$this->mm->fetchunitdata();
-		$data['share_']=$this->mm->fetchshare();
+		$data['share_']=$this->mm->fetchshare('share');
 		$data['category_']=$this->mm->fetchcategory();
 		$data['fetch_info']=$this->mm->fetchmainpagedata();
 		$data['fetch_share']=$this->mm->fetchsharedata();
