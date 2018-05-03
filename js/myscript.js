@@ -319,6 +319,33 @@ $('#frmuser').submit(function(){
 		return $bool;
 	}
 
+//for sharing authority
+	$('#shareauthority').submit(function(){
+		if($.trim($('#category').val()) == ''){
+			$('#msg_').html('&nbsp;X:Please!..Select Category');
+			$('#category').val('');
+			$('#category').focus();
+			$bool = false;
+		}else if($.trim($('#share').val()) == ''){
+			$('#msg_').html('&nbsp;X:Please!..Select User');
+			$('#share').val('');
+			$('#share').focus();
+			$bool = false;
+		}else {
+			$bool = true;
+		}
+		return $bool;
+	});
+
+
+
+
+
+
+
+
+
+
 
 	//for add additional information
 	$('#add').submit(function(){

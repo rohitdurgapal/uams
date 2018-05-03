@@ -482,6 +482,7 @@ class Start extends CI_Controller {
 	//showing data for report
 	function showunitcategory(){
 		$this->check_login();
+		$data['unit_']=$this->mm->fetchunit();
 		$data['fetch_unitcategory']=$this->mm->fetchunitcategorydata();
 		$data['fetch_info']=$this->mm->fetchmainpagedata();
 		$data['active'] = 'dashboard';

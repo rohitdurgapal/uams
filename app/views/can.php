@@ -42,8 +42,8 @@
  </form>
 
  <div class="table-responsive" id="hidedata1" style="display:none">
-    <table class="table table-bodered">
-        <tr class="danger" style="font-size:15px;">
+    <table class="table table-bordered table-condensed">
+        <tr style="font-size:20px;background:#F8F9F9;">
             <th>Candidate ID</th>
             <th>Candidate Name</th>
             <th>Date Of Birth</th>
@@ -51,7 +51,7 @@
             <th>Email</th>            
         </tr>
         
-        <tbody class="success" style="background:linear-gradient(#a1c4fd,#c2e9fb)" id="candidateshere">
+        <tbody id="candidateshere">
         </tbody>
 
          </table>
