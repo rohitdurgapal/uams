@@ -53,7 +53,14 @@ body {
 
 </style>
 
-
+<style media="print">
+.hide_all{
+	display: none;
+}
+.content_print{
+	font-family: 'times new roman' !important
+}
+</style>
 
 </head> 
 <body class="cbp-spmenu-push">

@@ -1,7 +1,7 @@
-<div id="container">
+<div id="container" class="content_print">
      <div class="form-title col-sm-12">
         <center><h2>ALL UNITS AND CATEGORIES</h2>
-            <a href="<?php echo site_url('start/index1') ;?>">
+            <a href="<?php echo site_url('start/index1') ;?>" class="hide_all">
             <span style="font-size:20px;">Back To Dashboard</span>
             </a>
         </center>

@@ -43,10 +43,9 @@
 
 
              <div class="form-group"> 
-                 <label for="time">Time</label> 
+                 <label for="time_">Time</label> 
                
                <?php
-                    date_default_timezone_set('Asia/Kolkata');
                     $currentTime = date ( 'h:i A', time () );
                     
                 ?>
@@ -54,7 +53,7 @@
 
 
 
-                 <div style="border:#C0C0C0 solid 1px; padding: 3px"><?php echo $currentTime;?></div>  <input type="hidden" class="form-control" id="time_" name="time_" value="<?php echo $currentTime ; ?>">
+                 <div style="border:#C0C0C0 solid 1px;display:none; padding: 3px"><?php echo $currentTime;?></div>  <input type="time" class="form-control" id="time_" name="time_">
             </div>
 
 
@@ -71,9 +70,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><div class="panel-title>">Attendance Form</div></div>
                     <div class="panel-body">
-                        <table class="table table-bodered table-responsive">
+                        <table class="table table-bordered table-condensed">
                           <thead>
-                            <tr class="danger">
+                            <tr style="font-size:20px;background:#F8F9F9;">
                                 <th>Candidate ID</th>
                                 <th>Candidate Name</th>
                                 <th>Action</th>
@@ -85,7 +84,7 @@
                                   </table>
                                 </th>                
                             </tr>
-                          <tbody id="candidates_here" style="background:#D3D3D3;">
+                          <tbody id="candidates_here">
                           
                           </tbody>
                          </thead> 

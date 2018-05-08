@@ -6,7 +6,6 @@ class My_model extends CI_Model{
 	function authenticate(){
 		$user = $this->input->post('TXT_USER');
 		$pwd = $this->input->post('TXT_PWD');
-
 		$this->db->where('USERNAME_', $user);
 		$this->db->where('PASSWORD_', $pwd);
 		$this->db->where('STATUS', 1);
@@ -15,17 +14,16 @@ class My_model extends CI_Model{
 		$this->db->join('user_type b', 'b.TYPEID=a.TYPEID');
 		$query = $this->db->get();
 		if($query->num_rows() != 0){
-			$row = $query->row();
-			$this->session->set_userdata('user_', $row->USERNAME_);
-			$this->session->set_userdata('user_type', $row->TYPE);
-			$this->session->set_userdata('user_upline', $row->USER_UPLINE);
-			$bool_ = true;
+		$row = $query->row();
+		$this->session->set_userdata('user_', $row->USERNAME_);
+		$this->session->set_userdata('user_type', $row->TYPE);
+		$this->session->set_userdata('user_upline', $row->USER_UPLINE);
+		$bool_ = true;
 		} else {
-			$bool_ = false;
+		$bool_ = false;
 		}
-
-	return $bool_;
-	}
+		return $bool_;
+		}
 
 
 
@@ -37,34 +35,33 @@ class My_model extends CI_Model{
 		$this->db->where('USERNAME_', $username_);
 		$rs = $this->db->get('login');	
 		if($rs->num_rows() != 0){
-			$bool = false;
+		$bool = false;
 		} else {
-			$bool = true; 
-				$data = array(
-				'USERNAME_' => $username_,
-				'PASSWORD_' => $createpwd_,
-				'USER_UPLINE'=>$username_,
-				'STATUS'=>$status_,
-				'TYPEID'=>$type_
-			);
-			$bool = $this->db->insert('login', $data);
-			
-			if($bool == true){
-				$data=array(
-					'FNAME'=>'',
-					'LNAME'=>'',
-					'GENDERID'=>'1',
-					'MOBILE_NO'=>'',
-					'MOBILE_VERIFICATION'=>'NO',
-					'EMAIL'=>'',
-					'EMAIL_VERIFICATION'=>'NO',
-					'USERNAME_'=>$username_
-				);
-				$bool=$this->db->insert('registration', $data);
-			}
+		$bool = true; 
+		$data = array(
+		'USERNAME_' => $username_,
+		'PASSWORD_' => $createpwd_,
+		'USER_UPLINE'=>$username_,
+		'STATUS'=>$status_,
+		'TYPEID'=>$type_
+		);
+		$bool = $this->db->insert('login', $data);
+		if($bool == true){
+		$data=array(
+		'FNAME'=>'',
+		'LNAME'=>'',
+		'GENDERID'=>'1',
+		'MOBILE_NO'=>'',
+		'MOBILE_VERIFICATION'=>'NO',
+		'EMAIL'=>'',
+		'EMAIL_VERIFICATION'=>'NO',
+		'USERNAME_'=>$username_
+		);
+		$bool=$this->db->insert('registration', $data);
+		}
 		}	
 		return $bool;
-	}
+		}
 
 
 
@@ -79,33 +76,33 @@ class My_model extends CI_Model{
 		$this->db->where('USERNAME_', $username_);
 		$rs = $this->db->get('login');	
 		if($rs->num_rows() != 0){
-			$bool = false;
+		$bool = false;
 		} else {
-			$bool = true; 
-				$data = array(
-				'USERNAME_' => $username_,
-				'PASSWORD_' => $createpwd_,
-				'TYPEID'=>$type_,
-				'STATUS'=>$status_,
-				'USER_UPLINE'=>$user_
-			);
-			$bool = $this->db->insert('login', $data);
-			if($bool == true){
-				$data=array(
-					'FNAME'=>'',
-					'LNAME'=>'',
-					'GENDERID'=>'1',
-					'MOBILE_NO'=>'',
-					'MOBILE_VERIFICATION'=>'NO',
-					'EMAIL'=>'',
-					'EMAIL_VERIFICATION'=>'NO',
-					'USERNAME_'=>$username_
-				);
-				$bool=$this->db->insert('registration', $data);
-			}
-			}	
+		$bool = true; 
+		$data = array(
+		'USERNAME_' => $username_,
+		'PASSWORD_' => $createpwd_,
+		'TYPEID'=>$type_,
+		'STATUS'=>$status_,
+		'USER_UPLINE'=>$user_
+		);
+		$bool = $this->db->insert('login', $data);
+		if($bool == true){
+		$data=array(
+		'FNAME'=>'',
+		'LNAME'=>'',
+		'GENDERID'=>'1',
+		'MOBILE_NO'=>'',
+		'MOBILE_VERIFICATION'=>'NO',
+		'EMAIL'=>'',
+		'EMAIL_VERIFICATION'=>'NO',
+		'USERNAME_'=>$username_
+		);
+		$bool=$this->db->insert('registration', $data);
+		}
+		}	
 		return $bool;
-	}
+		}
 
 
 
@@ -121,24 +118,21 @@ class My_model extends CI_Model{
 		$country = $this->input->post('country');
 		$state = $this->input->post('state'); 
 		$user_ = $this->session->userdata('user_');
-		
 		$this->db->where('USERNAME_',$user_);
 		$this->db->where('UNITNAME',$unitname_);
 		$rs = $this->db->get('unit');	
 		if ($rs->num_rows() !=0){
-			$bool=false;
+		$bool=false;
 		}else {
 		$data=array(
-			'UNITNAME'=>$unitname_,
-			'USERNAME_'=>$user_,
-			'STATEID'=>$state
-	);
+		'UNITNAME'=>$unitname_,
+		'USERNAME_'=>$user_,
+		'STATEID'=>$state
+		);
 		$bool=$this->db->insert('unit', $data);
-
-	}
-	return $bool;	
-
-}
+		}
+		return $bool;	
+		}
 
 	function insertcategory(){
 		$unitname_ = $this->input->post('unit');
@@ -149,23 +143,20 @@ class My_model extends CI_Model{
 		$user_ = $this->session->userdata('user_');
 		$this->db->where('USERNAME_',$user_);
 		$this->db->where('CATEGORYNAME',$categoryname_);
-
 		$rs = $this->db->get('category');	
 		if ($rs->num_rows() !=0){
-			$bool=false;
+		$bool=false;
 		}else {
 		$data=array(
-			'CATEGORYNAME'=>$categoryname_,
-			'PURPOSE'=>$purpose,
-			'USERNAME_'=>$user_,
-			'UNITID'=>$unit_
-			
-	);
+		'CATEGORYNAME'=>$categoryname_,
+		'PURPOSE'=>$purpose,
+		'USERNAME_'=>$user_,
+		'UNITID'=>$unit_
+		);
 		$bool=$this->db->insert('category', $data);
-
-	}
-return $bool;
-	}
+		}
+		return $bool;
+		}
 
 
 
@@ -179,17 +170,17 @@ return $bool;
 		$email_ = $this->input->post('email');
 		$user_ = $this->session->userdata('user_');
 		$data=array(
-			'CANDIDATENAME'=>$candidatename_,
-			'GENDERID'=>$gender_,
-			'MOBILENO'=>$mobileno_,
-			'DOB'=>$dob_,
-			'EMAIL'=>$email_,
-			'CATEGORYID'=>$category_,
-			'USERNAME_'=>$user_
-	);
+		'CANDIDATENAME'=>$candidatename_,
+		'GENDERID'=>$gender_,
+		'MOBILENO'=>$mobileno_,
+		'DOB'=>$dob_,
+		'EMAIL'=>$email_,
+		'CATEGORYID'=>$category_,
+		'USERNAME_'=>$user_
+		);
 		$bool=$this->db->insert('candidate', $data);	
 		return $bool;		
-	}
+		}
 
 //insertsharing
 	function insertsharing(){
@@ -197,13 +188,13 @@ return $bool;
 		$sharingname_ = $this->input->post('share');
 		$user_ = $this->session->userdata('user_');
 		$data=array(
-			'CATEGORYID'=>$category_,
-			'USERNAME_'=>$sharingname_,
-			'USER_UPLINE'=>$user_
-	);
+		'CATEGORYID'=>$category_,
+		'USERNAME_'=>$sharingname_,
+		'USER_UPLINE'=>$user_
+		);
 		$bool=$this->db->insert('sharingcandidate', $data);	
 		return $bool;	
-	}
+		}
 
 
 
@@ -217,56 +208,49 @@ return $bool;
 		$user_ = $this->session->userdata('user_');
 		$candidate = $this->fetch_candidates_internal($category_);
 		$date_ = $this->input->post('date');
-		//$time__='"'.$this->input->post('time_')."'";
 		$time__=$this->input->post('time_');
-
-				$this->db->where('USERNAME_', $this->session->userdata('user_'));
-				$this->db->where('CATEGORYID',$category_);
-				$this->db->where('UNITID',$unitid_);
-				$this->db->where('DATE',$date_);
-				$this->db->where('TIME',$time__);
-				$rs = $this->db->get('attendance');	
-				
-
-				if($rs->num_rows() !=0){
-					foreach ($candidate as $item) {
-							$this->db->where('USERNAME_', $this->session->userdata('user_upline'));
-							$this->db->where('CATEGORYID',$category_);
-							$this->db->where('UNITID',$unitid_);
-							$this->db->where('DATE',$date_);
-							$this->db->where('TIME',$time__);
-				$data=array(
-						'UNITID'=>$unitid_,
-						'CATEGORYID'=>$category_,
-						'CANDIDATEID'=>$item->CANDIDATEID,
-						'USERNAME_'=>$user_,
-						'ATTENDANCESTATUS'=>$this->input->post($item->CANDIDATEID),
-						'DATE'=>$date_,
-						'TIME'=>$time__		
-						);
-							
-							$bool=$this->db->update('attendance', $data); 
-					  }	
-					  $this->session->set_flashdata('msg_', "Successfully Updated.");
-					}
- 
-		 			else{
-
-					foreach ($candidate as $item) {
-					$data=array(
-						'UNITID'=>$unitid_,
-						'CATEGORYID'=>$category_,
-						'CANDIDATEID'=>$item->CANDIDATEID,
-						'USERNAME_'=>$user_,
-						'ATTENDANCESTATUS'=>$this->input->post($item->CANDIDATEID),
-						'DATE'=>$date_,
-						'TIME'=>$time__		
-						);
-							$bool=$this->db->insert('attendance', $data); 
-					  }	
-					  $this->session->set_flashdata('msg_', "Successfully submited.");
-					}
-
+		$this->db->where('USERNAME_', $this->session->userdata('user_'));
+		$this->db->where('CATEGORYID',$category_);
+		$this->db->where('UNITID',$unitid_);
+		$this->db->where('DATE',$date_);
+		$this->db->where('TIME',$time__);
+		$rs = $this->db->get('attendance');	
+		if($rs->num_rows() !=0){
+		foreach ($candidate as $item) {
+		$this->db->where('USERNAME_', $this->session->userdata('user_upline'));
+		$this->db->where('CATEGORYID',$category_);
+		$this->db->where('UNITID',$unitid_);
+		$this->db->where('DATE',$date_);
+		$this->db->where('TIME',$time__);
+		$this->db->where('CANDIDATEID', $item->CANDIDATEID);
+		$data=array(
+		'UNITID'=>$unitid_,
+		'CATEGORYID'=>$category_,
+		'CANDIDATEID'=>$item->CANDIDATEID,
+		'USERNAME_'=>$user_,
+		'ATTENDANCESTATUS'=>$this->input->post($item->CANDIDATEID),
+		'DATE'=>$date_,
+		'TIME'=>$time__		
+		);		
+		$bool=$this->db->update('attendance', $data); 
+		}	
+		$this->session->set_flashdata('msg_', "Successfully Updated.");
+		}
+		else{
+		foreach ($candidate as $item) {
+		$data=array(
+		'UNITID'=>$unitid_,
+		'CATEGORYID'=>$category_,
+		'CANDIDATEID'=>$item->CANDIDATEID,
+		'USERNAME_'=>$user_,
+		'ATTENDANCESTATUS'=>$this->input->post($item->CANDIDATEID),
+		'DATE'=>$date_,
+		'TIME'=>$time__		
+		);
+		$bool=$this->db->insert('attendance', $data); 
+		}	
+		$this->session->set_flashdata('msg_', "Successfully submited.");
+		}
 		return $bool;
 		}
 
@@ -303,15 +287,15 @@ return $bool;
 		$state = $this->input->post('state'); 
 		$user_ = $this->session->userdata('user_');
 		$data=array(
-			'UNITNAME'=>$unitname_,
-			'USERNAME_'=>$user_,
-			'STATEID'=>$state
-	);
+		'UNITNAME'=>$unitname_,
+		'USERNAME_'=>$user_,
+		'STATEID'=>$state
+		);
 		$this->db->where('USERNAME_',$user_);
 		$this->db->where('UNITID',$unitid_);
 		$bool=$this->db->update('unit', $data);
 		return $bool;
-	}
+		}
 
 //update category table data
 	function updatecategory(){
@@ -322,18 +306,17 @@ return $bool;
 		$state = $this->input->post('state'); 
 		$unit_ = $this->input->post('unit');
 		$user_ = $this->session->userdata('user_');
-			$data=array(
-			'CATEGORYNAME'=>$categoryname_,
-			'PURPOSE'=>$purpose,
-			'USERNAME_'=>$user_,
-			'UNITID'=>$unit_
-			
-	);
+		$data=array(
+		'CATEGORYNAME'=>$categoryname_,
+		'PURPOSE'=>$purpose,
+		'USERNAME_'=>$user_,
+		'UNITID'=>$unit_	
+		);
 		$this->db->where('USERNAME_',$user_);
 		$this->db->where('CATEGORYID',$categoryid_);
 		$bool=$this->db->update('category', $data);
 		return $bool;	
-	}
+		}
 
 //update candidate table
 	function updatecandidate(){
@@ -347,21 +330,20 @@ return $bool;
 		$email_ = $this->input->post('email');
 		$user_ = $this->session->userdata('user_');
 		$data=array(
-			'CANDIDATENAME'=>$candidatename_,
-			'GENDERID'=>$gender_,
-			'MOBILENO'=>$mobileno_,
-			'DOB'=>$dob_,
-			'EMAIL'=>$email_,
-			'CATEGORYID'=>$category_,
-			'USERNAME_'=>$user_,
-			'CANDIDATEID'=>$candidateid_
+		'CANDIDATENAME'=>$candidatename_,
+		'GENDERID'=>$gender_,
+		'MOBILENO'=>$mobileno_,
+		'DOB'=>$dob_,
+		'EMAIL'=>$email_,
+		'CATEGORYID'=>$category_,
+		'USERNAME_'=>$user_,
+		'CANDIDATEID'=>$candidateid_
 		);
 		$this->db->where('USERNAME_',$user_);
 		$this->db->where('CANDIDATEID',$candidateid_);
 		$bool=$this->db->update('candidate', $data);
 		return $bool;
-
-	}
+		}
 
 
 

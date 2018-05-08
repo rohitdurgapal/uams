@@ -5,7 +5,7 @@ class Start extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('My_model', 'mm');
-	}
+		}
 
 
 
@@ -32,7 +32,7 @@ class Start extends CI_Controller {
 		$this->load->view('templates1/header1');
 		$this->load->view('login');
 		$this->load->view('templates1/footer1');
-	}
+		}
 
 //registration
 	function registration(){
@@ -40,7 +40,7 @@ class Start extends CI_Controller {
 		$this->load->view('templates1/header1');
 		$this->load->view('registration', $data);
 		$this->load->view('templates1/footer1');	
-	}
+		}
 //unit
 	function unit(){
 		$this->check_login();
@@ -52,7 +52,7 @@ class Start extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('unit', $data);
 		$this->load->view('templates/footer');
-	}
+		}
 //category
 	function category(){
 		$this->check_login();
@@ -63,7 +63,7 @@ class Start extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('category',$data);
 		$this->load->view('templates/footer');
-	}	
+		}	
 //fetchcategory_via_ajax
 	function fetchcategory_via_ajax(){
 		$unit = $this->input->post('unit');
@@ -83,7 +83,7 @@ class Start extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('addcan',$data);
 		$this->load->view('templates/footer');
-	}	
+		}	
 
 //add additional information
 	function addadditional(){
@@ -96,7 +96,7 @@ class Start extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('addadditional', $data);
 		$this->load->view('templates/footer');
-	}
+		}
 
 //attendance
 	function attendance(){
@@ -108,7 +108,7 @@ class Start extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('attendance',$data);
 		$this->load->view('templates/footer');
-	}
+		}
 
 
 //check at login time
@@ -120,7 +120,7 @@ class Start extends CI_Controller {
 		} else {
 			redirect('start/login');
 		}
-	}
+		}
 
 
 
@@ -132,7 +132,7 @@ class Start extends CI_Controller {
 		if(!$this->session->userdata('user_')){
 			redirect('start/login');
 		}
-	}
+		}
 
 
 	function check_login1(){
@@ -141,7 +141,7 @@ class Start extends CI_Controller {
 		} else{
 			redirect ('start/index1');
 		}
-	}
+		}
 
 	
 
@@ -160,118 +160,106 @@ class Start extends CI_Controller {
 
 //insert registration
 	function submitRegistration(){
-
 		$res = $this->mm->insertlogin();
-
 		if($res == true){
-			$this->session->set_flashdata('msg_', "Successfully submited.");
-			redirect('start/login');
+		$this->session->set_flashdata('msg_', "Successfully submited.");
+		redirect('start/login');
 		} else {
-			$this->session->set_flashdata('msg_', "User Already Exists. Please try again");
-			redirect('start/registration');
+		$this->session->set_flashdata('msg_', "User Already Exists. Please try again");
+		redirect('start/registration');
 		}
-	}
-
-
-
+		}
 
 //insert unit
 	function submitunit(){
-
 		$res = $this->mm->insertunit();
-
 		if($res == true){
-			$this->session->set_flashdata('msg_', "Successfully submited.");
-			redirect('start/unit');
+		$this->session->set_flashdata('msg_', "Successfully submited.");
+		redirect('start/unit');
 		} else {
-			$this->session->set_flashdata('msg_', "Unit Already Exists. Please try again");
-			redirect('start/unit');
+		$this->session->set_flashdata('msg_', "Unit Already Exists. Please try again");
+		redirect('start/unit');
 		}	
-	}
+		}
 
 
 //insert category
 	function submitcategory(){
 		$res = $this->mm->insertcategory();
-
 		if($res == true){
-			$this->session->set_flashdata('msg_', "Successfully submited.");
-			redirect('start/category');
+		$this->session->set_flashdata('msg_', "Successfully submited.");
+		redirect('start/category');
 		} else {
-			$this->session->set_flashdata('msg_', "Category Already Exists. Please try again");
-			redirect('start/category');
+		$this->session->set_flashdata('msg_', "Category Already Exists. Please try again");
+		redirect('start/category');
 		}	
-	}	
+		}	
 
 //insert candidate
 	
 	function submitcandidate(){
 		$res = $this->mm->insertcandidate();
-
 		if($res == true){
-			$this->session->set_flashdata('msg_', "Successfully submited.");
-			redirect('start/addcan');
+		$this->session->set_flashdata('msg_', "Successfully submited.");
+		redirect('start/addcan');
 		} else {
-			$this->session->set_flashdata('msg_', "Candidate Already Exists. Please try again");
-			redirect('start/addcan');
+		$this->session->set_flashdata('msg_', "Candidate Already Exists. Please try again");
+		redirect('start/addcan');
 		}
-	}
+		}
 
 
 //insert attendance
 	function submitattendance(){
-		
 		$res = $this->mm->insertattendance();
-			if($res == true){
-			redirect('start/attendance');
+		if($res == true){
+		redirect('start/attendance');
 		} else {
-			$this->session->set_flashdata('msg_', "Attendance can't Submit. Please try again");
-			redirect('start/attendance');
+		$this->session->set_flashdata('msg_', "Attendance can't Submit. Please try again");
+		redirect('start/attendance');
 		}
-
-	}
+		}
 
 //submit data to sharing table
 	function sharing(){
-			$res = $this->mm->insertsharing();
-			if($res == true){
-			redirect('start/share');
+		$res = $this->mm->insertsharing();
+		if($res == true){
+		redirect('start/share');
 		} else {
-			$this->session->set_flashdata('msg_', "Sharing is not possible. Please try again");
-			redirect('start/share');
+		$this->session->set_flashdata('msg_', "Sharing is not possible. Please try again");
+		redirect('start/share');
 		}		
-	}
+		}
 
 
 
 //add and update additional information
 	function updateadditional(){
 		$res = $this->mm->updateadditional();
-			$this->session->set_flashdata('msg_', "Information Already Exists. Please try again");
-			redirect('start/addadditional');
-	}
+		$this->session->set_flashdata('msg_', "Successfull");
+		redirect('start/addadditional');
+		}
 
 
 
 														//upddation of forms
 	function updateunit(){
 			$res = $this->mm->updateunit();
-			$this->session->set_flashdata('msg_', "Information Already Exists. Please try again");
+			$this->session->set_flashdata('msg_', "Successful");
 			redirect('start/unit');
-
-	}
+			}
 
 	function updatecategory(){
 			$res = $this->mm->updatecategory();
-			$this->session->set_flashdata('msg_', "Information Already Exists. Please try again");
+			$this->session->set_flashdata('msg_', "Successful");
 			redirect('start/category');
-	}
+			}
 
 	function updatecandidate(){
 			$res = $this->mm->updatecandidate();
-			$this->session->set_flashdata('msg_', "Information Already Exists. Please try again");
+			$this->session->set_flashdata('msg_', "Successful");
 			redirect('start/addcan');	
-	}
+			}
 
 
 
@@ -312,7 +300,6 @@ class Start extends CI_Controller {
 
 	function u_unit($unitid='x'){
 		$this->check_login();
-		
 		$data['fetch_info']=$this->mm->fetchmainpagedata();
 		$data['fetch_unit']=$this->mm->fetchunitdata();
 		$data['fetch_unit_single']=$this->mm->fetchunitdata($unitid);
@@ -322,7 +309,7 @@ class Start extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('updateunit', $data);
 		$this->load->view('templates/footer');
-	}
+		}
 
 
 	function u_category($categoryid='x'){
@@ -335,8 +322,7 @@ class Start extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('updatecategory', $data);
 		$this->load->view('templates/footer');
-
-	}
+		}
 		
 
 	function u_candidates($candidateid='x', $categid){
@@ -352,7 +338,7 @@ class Start extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('updatecandidate',$data);
 		$this->load->view('templates/footer');
-	}	
+		}	
 
 	
 
@@ -365,7 +351,7 @@ class Start extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('updateadditional', $data);
 		$this->load->view('templates/footer');
-	}
+		}
 
 	
 
@@ -378,7 +364,7 @@ class Start extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('updateattendance',$data);
 		$this->load->view('templates/footer');
-	}
+		}
 
 
 
@@ -390,14 +376,14 @@ class Start extends CI_Controller {
 		$this->check_login();
 		$this->mm->deleteuser($uname);
 		redirect('start/createuser');
-	}
+		}
 
 //delete sharing permission
 	public function d_share($sharingid){
 		$this->check_login();
 		$this->mm->deleteshare($sharingid);
 		redirect('start/share');
-	}
+		}
 
 
 
@@ -407,7 +393,7 @@ class Start extends CI_Controller {
 		$this->check_login();
 		$this->mm->blockuser($uname);
 		redirect('start/createuser');
-	}
+		}
 
 
 	//unblock user
@@ -415,14 +401,12 @@ class Start extends CI_Controller {
 		$this->check_login();
 		$this->mm->unblockuser($uname);
 		redirect('start/createuser');
-	}	
+		}	
 
 
 	public function d_unit($unitid){
 		$this->check_login();
-
 		$this->mm->deleteunit($unitid);
-
 		$data['fetch_info']=$this->mm->fetchmainpagedata();
 		$data['fetch_unit']=$this->mm->fetchunitdata();
 		$data['country_'] = $this->mm->fetchcountry();
@@ -432,16 +416,13 @@ class Start extends CI_Controller {
 		$this->load->view('unit', $data);
 		$this->load->view('templates/footer');
 		$this->mm->deleteunit($unitid);
-		
 		redirect('start/unit');
-	}
+		}
 
 
 	public function d_category($categoryid){
 		$this->check_login();
-
 		$this->mm->deletecategory($categoryid);
-
 		$data['fetch_info']=$this->mm->fetchmainpagedata();
 		$data['fetch_category']=$this->mm->fetchcategorydata();
 		$data['unit_']=$this->mm->fetchunit();
@@ -449,17 +430,14 @@ class Start extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('category',$data);
 		$this->load->view('templates/footer');
-		$this->mm->deletecategory($categoryid);
-		
+		$this->mm->deletecategory($categoryid);	
 		redirect('start/category');
-	}
+		}
 
 
 	public function d_candidate($candidateid){
 		$this->check_login();
-
 		$this->mm->deletecandidate($candidateid);
-
 		$data['fetch_candidate']=$this->mm->fetchcandidatedata();
 		$data['active'] = 'addcan';
 		$data['fetch_info']=$this->mm->fetchmainpagedata();
@@ -470,9 +448,8 @@ class Start extends CI_Controller {
 		$this->load->view('addcan',$data);
 		$this->load->view('templates/footer');
 		$this->mm->deletecandidate($candidateid);
-		
-			redirect('start/addcan');	
-	}
+		redirect('start/addcan');	
+		}
 
 
 
@@ -555,8 +532,7 @@ class Start extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('sharing', $data);
 		$this->load->view('templates/footer');
-
-	}
+		}
 
 
 	

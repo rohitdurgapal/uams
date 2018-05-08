@@ -1,5 +1,5 @@
 <?php $this->load->view('dashboard')?>
-<?php $this->load->view('mainpage')?>
+<?php //$this->load->view('mainpage')?>
 <div id="page-wrapper">
     <form name="frmShowCan" id="frmShowCan">
     <div class="form-grids row widget-shadow" data-example-id="basic-forms" style="margin-top:-90px;"> 

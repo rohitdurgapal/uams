@@ -4,7 +4,7 @@
 			<div style="background:linear-gradient(#ddd6f3,#faaca8") class="form-title">
                 <h2 >Reports Available</h2>
             </div>
-			<div class="main-page">
+			<div class="main-page" style="z-index: 99999 !important">
 				
 						<div class="row-one">
 							
@@ -25,10 +25,6 @@
 								
 								</div>
 							</a>
-
-
-							
-
 							<a href="<?php echo site_url('start/submitunitandcategory') ;?>">
 							<div class="col-md-4 widget states-mdl">
 								<div style="background:linear-gradient(#ddd6f3,#faaca8") class="stats-left ">
